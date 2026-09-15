@@ -26,7 +26,7 @@ const Footer = () => {
             {/* Social icons — brand SVGs */}
             <div className="flex gap-2.5">
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/917313726773"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="WhatsApp"
@@ -284,7 +284,7 @@ const Footer = () => {
               {/* WhatsApp */}
               <li>
                 <a
-                  href="https://wa.me/919876543210"
+                  href="https://wa.me/917313726773"
                   target="_blank"
                   rel="noreferrer"
                   className="group flex items-start gap-3 text-[0.9rem] text-white/85 leading-relaxed hover:text-[#25d366] transition-colors"
