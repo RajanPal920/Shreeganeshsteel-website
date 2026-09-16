@@ -1,140 +1,20 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
-// Same data from Home — ideally extract this to a shared file later
-const allProducts = {
-  // Categories
-  "ss-flanges": {
-    id: 1,
-    slug: "ss-flanges",
-    name: "Stainless Steel Flanges",
-    desc: "ANSI, DIN, JIS & custom forged flanges in SS 304/316/321.",
-    image: "/images/categories/ss-flanges.jpg",
-    category: "Category",
-  },
-  "butt-weld-fittings": {
-    id: 2,
-    slug: "butt-weld-fittings",
-    name: "Butt Weld Fittings",
-    desc: "Elbows, tees, reducers, caps per ASME B16.9 standards.",
-    image: "/images/categories/butt-weld-fittings.jpg",
-    category: "Category",
-  },
-  "forged-fittings": {
-    id: 3,
-    slug: "forged-fittings",
-    name: "Forged Fittings",
-    desc: "High-pressure socket weld & threaded fittings.",
-    image: "/images/categories/forged-fittings.jpg",
-    category: "Category",
-  },
-  "ss-pipes-tubes": {
-    id: 4,
-    slug: "ss-pipes-tubes",
-    name: "SS Pipes & Tubes",
-    desc: "Seamless & welded pipes and precision tubing.",
-    image: "/images/categories/ss-pipes-tubes.jpg",
-    category: "Category",
-  },
-  "steel-bars": {
-    id: 5,
-    slug: "steel-bars",
-    name: "Steel Bars",
-    desc: "Round, hex, square bars in SS, duplex & alloys.",
-    image: "/images/categories/steel-bars.jpg",
-    category: "Category",
-  },
-  "nipples-unions": {
-    id: 6,
-    slug: "nipples-unions",
-    name: "Nipples & Unions",
-    desc: "Barrel nipples, hex nipples, unions in all sizes.",
-    image: "/images/categories/nipples-unions.jpg",
-    category: "Category",
-  },
-  "industrial-valves": {
-    id: 7,
-    slug: "industrial-valves",
-    name: "Industrial Valves",
-    desc: "Ball, gate, globe & check valves for critical service.",
-    image: "/images/categories/industrial-valves.jpg",
-    category: "Category",
-  },
-  "duplex-steel": {
-    id: 8,
-    slug: "duplex-steel",
-    name: "Duplex Steel Products",
-    desc: "Duplex 2205 & Super Duplex 2507 range.",
-    image: "/images/categories/duplex-steel.jpg",
-    category: "Category",
-  },
-  // Featured
-  "ss-316l-pipe": {
-    id: 101,
-    slug: "ss-316l-pipe",
-    name: "SS 316L Seamless Pipe",
-    material: "ASTM A312 TP316L",
-    spec: '1/2" – 24" NB',
-    image: "/images/featured/ss-316l-pipe.jpg",
-    category: "Featured",
-  },
-  "ss-304-flange": {
-    id: 102,
-    slug: "ss-304-flange",
-    name: "SS 304 WN Flange",
-    material: "ASTM A182 F304",
-    spec: '1/2" – 40" · Class 150 – 2500#',
-    image: "/images/featured/ss-304-flange.jpg",
-    category: "Featured",
-  },
-  "duplex-2205-elbow": {
-    id: 103,
-    slug: "duplex-2205-elbow",
-    name: "Duplex 2205 Elbow 90°",
-    material: "ASTM A815 UNS S31803",
-    spec: '1/2" – 24" · LR / SR',
-    image: "/images/featured/duplex-elbow.jpg",
-    category: "Featured",
-  },
-  "alloy-forged-fitting": {
-    id: 104,
-    slug: "alloy-forged-fitting",
-    name: "Alloy Steel Forged Fitting",
-    material: "ASTM A182 F22",
-    spec: '1/2" – 4" · 3000# / 6000#',
-    image: "/images/featured/alloy-forged-fitting.jpg",
-    category: "Featured",
-  },
-  "barrel-nipple": {
-    id: 105,
-    slug: "barrel-nipple",
-    name: "SS Barrel Nipple",
-    material: "SS 304 / 316",
-    spec: '1/8" – 4" · NPT / BSP',
-    image: "/images/featured/barrel-nipple.jpg",
-    category: "Featured",
-  },
-  "carbon-steel-pipe": {
-    id: 106,
-    slug: "carbon-steel-pipe",
-    name: "Carbon Steel Pipe",
-    material: "ASTM A106 Gr.B",
-    spec: '1/2" – 36" · Seamless',
-    image: "/images/featured/carbon-steel-pipe.jpg",
-    category: "Featured",
-  },
-};
+import { products } from "../data/products";
 
 export default function ProductDetail() {
   const { slug } = useParams();
-  const product = allProducts[slug];
 
+  // Find product by slug (fallback to id)
+  const product = products.find(
+    (p) => p.slug === slug || String(p.id) === String(slug),
+  );
+
+  // If not found
   if (!product) {
     return (
       <div className="w-full">
-        <Header />
         <div className="min-h-[60vh] flex items-center justify-center px-5">
           <div className="text-center">
             <h1 className="text-4xl font-bold text-[#0a1628] mb-4">
@@ -151,18 +31,20 @@ export default function ProductDetail() {
             </Link>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
 
+  // Related products — same category, exclude current
+  const relatedProducts = products
+    .filter((p) => p.category === product.category && p.id !== product.id)
+    .slice(0, 4);
+
   return (
     <div className="w-full bg-white">
-      <Header />
-
       {/* Breadcrumb */}
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 pt-8">
-        <nav className="flex items-center gap-2 text-xs text-[#8896a6] font-mono tracking-wider uppercase">
+        <nav className="flex items-center gap-2 text-xs text-[#8896a6] font-mono tracking-wider uppercase flex-wrap">
           <Link to="/" className="hover:text-[#c9a961] transition-colors">
             Home
           </Link>
@@ -173,8 +55,21 @@ export default function ProductDetail() {
           >
             Products
           </Link>
+          {product.category && (
+            <>
+              <span>/</span>
+              <Link
+                to={`/products?category=${encodeURIComponent(product.category)}`}
+                className="hover:text-[#c9a961] transition-colors"
+              >
+                {product.category}
+              </Link>
+            </>
+          )}
           <span>/</span>
-          <span className="text-[#0a1628] font-bold">{product.name}</span>
+          <span className="text-[#0a1628] font-bold truncate max-w-[200px]">
+            {product.name}
+          </span>
         </nav>
       </div>
 
@@ -183,23 +78,30 @@ export default function ProductDetail() {
         <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             {/* Image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(10,22,40,0.15)] border border-gray-200">
+            <div className="relative rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(10,22,40,0.15)] border border-gray-200 bg-[#f7f8fa]">
               <img
                 src={product.image}
                 alt={product.name}
                 className="w-full h-auto object-cover"
+                onError={(e) => {
+                  e.target.style.display = "none";
+                }}
               />
-              <span className="absolute top-4 left-4 bg-[#0a1628] text-[#c9a961] text-xs font-bold font-mono tracking-widest uppercase px-3 py-1.5 rounded">
-                {product.category}
-              </span>
+              {product.category && (
+                <span className="absolute top-4 left-4 bg-[#0a1628] text-[#c9a961] text-xs font-bold font-mono tracking-widest uppercase px-3 py-1.5 rounded">
+                  {product.category}
+                </span>
+              )}
             </div>
 
             {/* Details */}
             <div>
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4">
-                <span className="w-6 h-px bg-[#c9a961]" />
-                {product.category}
-              </div>
+              {product.category && (
+                <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4">
+                  <span className="w-6 h-px bg-[#c9a961]" />
+                  {product.category}
+                </div>
+              )}
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-6">
                 {product.name}
@@ -210,14 +112,19 @@ export default function ProductDetail() {
                   `${product.name} — engineered for critical industrial applications.`}
               </p>
 
-              {product.material && (
+              {/* Specs Box */}
+              {(product.material || product.spec || product.standards) && (
                 <div className="space-y-3 mb-8 p-5 bg-[#f7f8fa] rounded-xl border border-gray-200">
-                  <div className="flex justify-between gap-4 text-sm">
-                    <span className="text-[#8896a6] font-medium">Material</span>
-                    <span className="font-bold text-[#0a1628] text-right">
-                      {product.material}
-                    </span>
-                  </div>
+                  {product.material && (
+                    <div className="flex justify-between gap-4 text-sm">
+                      <span className="text-[#8896a6] font-medium">
+                        Material
+                      </span>
+                      <span className="font-bold text-[#0a1628] text-right">
+                        {product.material}
+                      </span>
+                    </div>
+                  )}
                   {product.spec && (
                     <div className="flex justify-between gap-4 text-sm">
                       <span className="text-[#8896a6] font-medium">
@@ -228,12 +135,25 @@ export default function ProductDetail() {
                       </span>
                     </div>
                   )}
+                  {product.standards && (
+                    <div className="flex justify-between gap-4 text-sm">
+                      <span className="text-[#8896a6] font-medium">
+                        Standards
+                      </span>
+                      <span className="font-bold text-[#0a1628] text-right">
+                        {product.standards}
+                      </span>
+                    </div>
+                  )}
                 </div>
               )}
 
+              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://wa.me/919876543210"
+                  href={`https://wa.me/917313726773?text=${encodeURIComponent(
+                    `Hello Shree Ganesh Steel, I would like to inquire about: ${product.name}`,
+                  )}`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-7 py-3.5 rounded-lg transition-all duration-300"
@@ -252,7 +172,57 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      <Footer />
+      {/* Related Products */}
+      {relatedProducts.length > 0 && (
+        <section className="py-14 sm:py-16 bg-[#f7f8fa] border-t border-gray-200">
+          <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-3">
+                <span className="w-6 h-px bg-[#c9a961]" />
+                Related Products
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight">
+                More from {product.category}
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {relatedProducts.map((p) => (
+                <Link
+                  key={p.id ?? p.slug}
+                  to={`/products/${p.slug ?? p.id}`}
+                  className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(10,22,40,0.12)] hover:border-[#c9a961]/50 transition-all duration-300"
+                >
+                  <div className="aspect-[5/4] bg-[#f7f8fa] overflow-hidden">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                      }}
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-sm font-bold text-[#0a1628] group-hover:text-[#c9a961] transition-colors leading-snug line-clamp-2">
+                      {p.name}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <style>{`
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 }

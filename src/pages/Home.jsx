@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
+import { products } from "../data/products";
 
 // ============================================
 // HERO SLIDES DATA
@@ -45,102 +45,6 @@ const heroSlides = [
     image: "/images/hero/slide-4.jpg",
     primary: "Our Quality Standards",
     secondary: "Request a Quote",
-  },
-];
-
-const categories = [
-  {
-    id: 1,
-    name: "Stainless Steel Flanges",
-    desc: "ANSI, DIN, JIS & custom forged flanges in SS 304/316/321.",
-    image: "/images/categories/ss-flanges.jpg",
-  },
-  {
-    id: 2,
-    name: "Butt Weld Fittings",
-    desc: "Elbows, tees, reducers, caps per ASME B16.9 standards.",
-    image: "/images/categories/butt-weld-fittings.jpg",
-  },
-  {
-    id: 3,
-    name: "Forged Fittings",
-    desc: "High-pressure socket weld & threaded fittings.",
-    image: "/images/categories/forged-fittings.jpg",
-  },
-  {
-    id: 4,
-    name: "SS Pipes & Tubes",
-    desc: "Seamless & welded pipes and precision tubing.",
-    image: "/images/categories/ss-pipes-tubes.jpg",
-  },
-  {
-    id: 5,
-    name: "Steel Bars",
-    desc: "Round, hex, square bars in SS, duplex & alloys.",
-    image: "/images/categories/steel-bars.jpg",
-  },
-  {
-    id: 6,
-    name: "Nipples & Unions",
-    desc: "Barrel nipples, hex nipples, unions in all sizes.",
-    image: "/images/categories/nipples-unions.jpg",
-  },
-  {
-    id: 7,
-    name: "Industrial Valves",
-    desc: "Ball, gate, globe & check valves for critical service.",
-    image: "/images/categories/industrial-valves.jpg",
-  },
-  {
-    id: 8,
-    name: "Duplex Steel Products",
-    desc: "Duplex 2205 & Super Duplex 2507 range.",
-    image: "/images/categories/duplex-steel.jpg",
-  },
-];
-
-const featured = [
-  {
-    id: 1,
-    name: "SS 316L Seamless Pipe",
-    material: "ASTM A312 TP316L",
-    spec: '1/2" – 24" NB · Sch 10 – XXS',
-    image: "/images/featured/ss-316l-pipe.jpg",
-  },
-  {
-    id: 2,
-    name: "SS 304 WN Flange",
-    material: "ASTM A182 F304",
-    spec: '1/2" – 40" · Class 150 – 2500#',
-    image: "/images/featured/ss-304-flange.jpg",
-  },
-  {
-    id: 3,
-    name: "Duplex 2205 Elbow 90°",
-    material: "ASTM A815 UNS S31803",
-    spec: '1/2" – 24" · LR / SR',
-    image: "/images/featured/duplex-elbow.jpg",
-  },
-  {
-    id: 4,
-    name: "Alloy Steel Forged Fitting",
-    material: "ASTM A182 F22",
-    spec: '1/2" – 4" · 3000# / 6000#',
-    image: "/images/featured/alloy-forged-fitting.jpg",
-  },
-  {
-    id: 5,
-    name: "SS Barrel Nipple",
-    material: "SS 304 / 316",
-    spec: '1/8" – 4" · NPT / BSP',
-    image: "/images/featured/barrel-nipple.jpg",
-  },
-  {
-    id: 6,
-    name: "Carbon Steel Pipe",
-    material: "ASTM A106 Gr.B",
-    spec: '1/2" – 36" · Seamless',
-    image: "/images/featured/carbon-steel-pipe.jpg",
   },
 ];
 
@@ -205,35 +109,38 @@ function CountUp({ end, suffix = "", duration = 2000 }) {
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-useEffect(() => {
-  const heroSection = document.getElementById("home");
-  if (!heroSection) return;
+  // Use first 8 for categories, first 6 for featured (or adjust as needed)
+  const categories = products.slice(0, 8);
+  const featured = products.slice(0, 6);
 
-  const handleScroll = () => {
-    const heroTop = heroSection.offsetTop;
-    const heroHeight = heroSection.offsetHeight;
-    const scrollY = window.scrollY;
+  useEffect(() => {
+    const heroSection = document.getElementById("home");
+    if (!heroSection) return;
 
-    // Progress: 0 se 1 tak hero ke andar scroll hone pe
-    const progress = Math.max(
-      0,
-      Math.min(1, (scrollY - heroTop) / heroHeight)
-    );
+    const handleScroll = () => {
+      const heroTop = heroSection.offsetTop;
+      const heroHeight = heroSection.offsetHeight;
+      const scrollY = window.scrollY;
 
-    // 4 slides split: 0-25% = slide 0, 25-50% = slide 1, etc.
-    const slideIndex = Math.min(
-      Math.floor(progress * heroSlides.length),
-      heroSlides.length - 1
-    );
+      const progress = Math.max(
+        0,
+        Math.min(1, (scrollY - heroTop) / heroHeight),
+      );
 
-    setCurrentSlide(slideIndex);
-  };
+      const slideIndex = Math.min(
+        Math.floor(progress * heroSlides.length),
+        heroSlides.length - 1,
+      );
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  handleScroll(); // initial run
+      setCurrentSlide(slideIndex);
+    };
 
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const goToSlide = (i) => setCurrentSlide(i);
   const nextSlide = () =>
     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -246,8 +153,6 @@ useEffect(() => {
 
   return (
     <div className="w-full overflow-x-hidden bg-white text-[#1a1a1a]">
-      <Header />
-
       <main>
         {/* ==================== HERO ==================== */}
         <section id="home" className="relative w-full bg-white">
@@ -267,17 +172,16 @@ useEffect(() => {
               <div className="max-w-[1320px] w-full mx-auto px-5 sm:px-8">
                 <div
                   key={currentSlide}
-                  className="max-w-3xl hero-fade-up bg-[#0a1628]/20 backdrop-blur-md border border-white/5 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+                  className="max-w-3xl hero-fade-up bg-[#0a1628]/35 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
                 >
-                  <div className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#c9a961] mb-4">
-                    <span className="w-6 sm:w-8 h-px bg-[#c9a961]" />
+                  <div className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#d2b46f] mb-4">
+                    <span className="w-6 sm:w-8 h-px bg-[#d6b66c]" />
                     {slide.eyebrow}
                   </div>
-
-                  <h1 className="text-[1.9rem] leading-[1.1] sm:text-[2.6rem] lg:text-[3.4rem] xl:text-[3.8rem] font-extrabold tracking-tight text-white mb-4 sm:mb-5">
+                  <h1 className="text-[1.9rem] leading-[1.1] sm:text-[2.6rem] lg:text-[3.4rem] xl:text-[3.8rem] font-medium sm:font-extrabold tracking-tight text-white mb-4 sm:mb-5">
                     {slide.titleLine1}
                     <br />
-                    <em className="not-italic text-[#c9a961]">
+                    <em className="not-italic text-[#dbbe7a]">
                       {slide.titleLine2}
                     </em>
                   </h1>
@@ -287,13 +191,19 @@ useEffect(() => {
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-7 sm:mb-9">
-                    <button className="inline-flex items-center justify-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-7 py-3.5 rounded-md shadow-md hover:shadow-xl transition-all duration-300">
+                    <Link
+                      to="/products"
+                      className="inline-flex items-center justify-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-7 py-3.5 rounded-md shadow-md hover:shadow-xl transition-all duration-300"
+                    >
                       {slide.primary}
                       <span>→</span>
-                    </button>
-                    <button className="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold text-sm px-7 py-3.5 rounded-md hover:bg-white/10 transition-all duration-300">
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold text-sm px-7 py-3.5 rounded-md hover:bg-white/10 transition-all duration-300"
+                    >
                       {slide.secondary}
-                    </button>
+                    </Link>
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 pt-6 border-t border-white/20">
@@ -353,16 +263,12 @@ useEffect(() => {
 
         {/* ==================== STATS ==================== */}
         <section className="relative bg-[#0a1628] overflow-hidden">
-          {/* Decorative background */}
           <div className="absolute inset-0">
-            {/* Animated gradient orbs */}
             <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-[#c9a961]/10 rounded-full blur-3xl animate-pulse" />
             <div
               className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-[#c8102e]/10 rounded-full blur-3xl animate-pulse"
               style={{ animationDelay: "1s" }}
             />
-
-            {/* Grid pattern overlay */}
             <div
               className="absolute inset-0 opacity-[0.04]"
               style={{
@@ -371,15 +277,11 @@ useEffect(() => {
                 backgroundSize: "50px 50px",
               }}
             />
-
-            {/* Top gold gradient line */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#c9a961] to-transparent" />
-            {/* Bottom gold gradient line */}
             <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#c9a961]/50 to-transparent" />
           </div>
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 py-14 sm:py-18 lg:py-20 relative z-10">
-            {/* Stats grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {[
                 {
@@ -473,34 +375,23 @@ useEffect(() => {
                     animation: `statFadeUp 0.7s ease ${i * 0.12}s both`,
                   }}
                 >
-                  {/* Top gold accent bar */}
                   <span className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#c9a961] via-[#c9a961] to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700" />
-
-                  {/* Shimmer sweep on hover */}
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#c9a961]/8 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms] pointer-events-none" />
-
-                  {/* Corner glow */}
                   <span className="absolute -top-16 -right-16 w-40 h-40 bg-[#c9a961]/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                  {/* Content wrapper */}
                   <div className="relative">
-                    {/* Icon + number row */}
                     <div className="flex items-center gap-3 mb-5">
-                      {/* Icon badge */}
                       <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
                         <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#c9a961]/20 to-[#c9a961]/5 border border-[#c9a961]/30 group-hover:border-[#c9a961] group-hover:from-[#c9a961] group-hover:to-[#b89851] transition-all duration-500" />
                         <div className="relative w-full h-full p-3 flex items-center justify-center text-[#c9a961] group-hover:text-[#0a1628] group-hover:rotate-6 transition-all duration-500">
                           {stat.icon}
                         </div>
                       </div>
-
-                      {/* Number text */}
                       <div className="text-[0.65rem] sm:text-xs font-mono font-bold tracking-widest text-[#c9a961]/70 group-hover:text-[#c9a961] transition-colors">
                         {String(i + 1).padStart(2, "0")}
                       </div>
                     </div>
 
-                    {/* Big number */}
                     <div className="mb-3">
                       <b className="block text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none group-hover:text-[#c9a961] transition-colors duration-500">
                         {stat.end !== null && stat.end !== undefined ? (
@@ -511,7 +402,6 @@ useEffect(() => {
                       </b>
                     </div>
 
-                    {/* Label */}
                     <h4 className="text-sm sm:text-base font-bold text-white/95 mb-1 leading-snug">
                       {stat.label}
                     </h4>
@@ -519,48 +409,23 @@ useEffect(() => {
                       {stat.sub}
                     </p>
                   </div>
-
-                  {/* Bottom arrow accent */}
-                  <span className="absolute bottom-4 right-4 text-[#c9a961] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-500">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  </span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Keyframes */}
           <style>{`
-    @keyframes statFadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  `}</style>
+            @keyframes statFadeUp {
+              from { opacity: 0; transform: translateY(30px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
         </section>
 
         {/* ==================== ABOUT ==================== */}
         <section id="about" className="py-16 sm:py-20 lg:py-28 bg-white">
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-              {/* ✅ Image — full 100% visible, no crop */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl w-full max-w-md mx-auto lg:max-w-none min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]">
                 <img
                   src="/images/hero/homeAbout.jpg"
@@ -624,9 +489,12 @@ useEffect(() => {
                   ))}
                 </div>
 
-                <button className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-7 py-3.5 rounded-md transition-all duration-300">
+                <Link
+                  to="/about"
+                  className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-7 py-3.5 rounded-md transition-all duration-300"
+                >
                   Discover Our Company <span>→</span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -637,12 +505,10 @@ useEffect(() => {
           id="products"
           className="py-16 sm:py-20 lg:py-28 bg-[#f7f8fa] relative overflow-hidden"
         >
-          {/* Decorative background glow */}
           <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#c9a961]/5 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#0a1628]/4 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
-            {/* ✅ Centered heading */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4 justify-center">
                 <span className="w-6 h-px bg-[#c9a961]" />
@@ -662,24 +528,19 @@ useEffect(() => {
               </p>
             </div>
 
-            {/* Product category cards */}
+            {/* ✅ Clickable product cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
               {categories.map((c, i) => (
-                <div
+                <Link
                   key={c.id}
+                  to={`/products/${c.slug}`}
                   className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(10,22,40,0.15)] hover:border-[#c9a961]/50 transition-all duration-500 flex flex-col"
-                  style={{
-                    animation: `catFadeUp 0.6s ease ${i * 0.06}s both`,
-                  }}
+                  style={{ animation: `catFadeUp 0.6s ease ${i * 0.06}s both` }}
                 >
-                  {/* Image */}
                   <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                    {/* Category number badge */}
                     <span className="absolute top-3 left-3 z-20 w-8 h-8 rounded-full bg-[#0a1628] text-[#c9a961] text-xs font-bold font-mono flex items-center justify-center shadow-lg border border-[#c9a961]/30">
                       {String(c.id).padStart(2, "0")}
                     </span>
-
-                    {/* Top-right arrow icon (appears on hover) */}
                     <span className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-[#c9a961] text-[#0a1628] flex items-center justify-center opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 shadow-lg">
                       <svg
                         width="14"
@@ -695,22 +556,18 @@ useEffect(() => {
                         <polyline points="7 7 17 7 17 17" />
                       </svg>
                     </span>
-
-                    {/* Image */}
                     <img
                       src={c.image}
                       alt={c.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                      }}
                     />
-
-                    {/* Gradient overlay on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    {/* Bottom shimmer line */}
                     <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#c9a961] via-[#c9a961] to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
                   </div>
 
-                  {/* Content */}
                   <div className="p-5 flex flex-col flex-1">
                     <h3 className="text-lg font-bold text-[#0a1628] mb-2.5 leading-snug group-hover:text-[#c9a961] transition-colors duration-300">
                       {c.name}
@@ -718,59 +575,44 @@ useEffect(() => {
                     <p className="text-sm text-[#5a6b7d] leading-relaxed mb-5 flex-1">
                       {c.desc}
                     </p>
-
-                    {/* Explore link */}
-                    <a
-                      href="#"
-                      className="text-xs font-bold tracking-widest uppercase text-[#0a1628] group-hover:text-[#c9a961] transition-colors inline-flex items-center justify-between gap-2 pt-4 border-t border-gray-100 group-hover:border-[#c9a961]/30"
-                    >
+                    <span className="text-xs font-bold tracking-widest uppercase text-[#0a1628] group-hover:text-[#c9a961] transition-colors inline-flex items-center justify-between gap-2 pt-4 border-t border-gray-100 group-hover:border-[#c9a961]/30">
                       <span>Explore Products</span>
                       <span className="inline-flex items-center gap-1 transform group-hover:translate-x-1 transition-transform duration-300">
                         →
                       </span>
-                    </a>
+                    </span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 
-            {/* View All CTA */}
             <div className="text-center mt-12 sm:mt-14">
-              <a
-                href="/products"
+              <Link
+                to="/products"
                 className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-8 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl group"
               >
                 View Complete Product Range
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
                   →
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
 
-          {/* Keyframes */}
           <style>{`
-    @keyframes catFadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  `}</style>
+            @keyframes catFadeUp {
+              from { opacity: 0; transform: translateY(30px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
         </section>
 
         {/* ==================== FEATURED ==================== */}
         <section className="py-16 sm:py-20 lg:py-28 bg-white relative overflow-hidden">
-          {/* Subtle decorative glow */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c9a961]/5 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#0a1628]/3 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
-            {/* ✅ Centered heading */}
             <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4 justify-center">
                 <span className="w-6 h-px bg-[#c9a961]" />
@@ -797,34 +639,32 @@ useEffect(() => {
                     animation: `featFadeUp 0.6s ease ${i * 0.08}s both`,
                   }}
                 >
-                  {/* Image */}
-                  <div className="relative aspect-[16/11] overflow-hidden bg-gray-100">
-                    {/* Featured badge */}
-                    <span className="absolute top-4 left-4 z-20 bg-gradient-to-r from-[#0a1628] to-[#142b4d] text-white text-[0.65rem] font-bold tracking-widest uppercase px-3 py-1.5 rounded-md shadow-lg border border-white/10">
-                      ★ Featured
-                    </span>
+                  {/* Clickable area for card (link to product page) */}
+                  <Link to={`/products/${p.slug}`} className="block">
+                    <div className="relative aspect-[16/11] overflow-hidden bg-gray-100">
+                      <span className="absolute top-4 left-4 z-20 bg-gradient-to-r from-[#0a1628] to-[#142b4d] text-white text-[0.65rem] font-bold tracking-widest uppercase px-3 py-1.5 rounded-md shadow-lg border border-white/10">
+                        ★ Featured
+                      </span>
+                      <span className="absolute top-0 right-0 z-20 w-20 h-20 bg-[#c9a961] rotate-45 translate-x-10 -translate-y-10 group-hover:translate-x-8 group-hover:-translate-y-8 transition-transform duration-500" />
+                      <img
+                        src={p.image}
+                        alt={p.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                        }}
+                      />
+                      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+                  </Link>
 
-                    {/* Gold corner ribbon on hover */}
-                    <span className="absolute top-0 right-0 z-20 w-20 h-20 bg-[#c9a961] rotate-45 translate-x-10 -translate-y-10 group-hover:translate-x-8 group-hover:-translate-y-8 transition-transform duration-500" />
-
-                    {/* Image with zoom on hover */}
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    />
-
-                    {/* Bottom gradient overlay */}
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </div>
-
-                  {/* Content */}
                   <div className="p-5 sm:p-6 flex flex-col flex-1">
-                    <h3 className="text-lg font-bold text-[#0a1628] mb-4 leading-snug group-hover:text-[#c9a961] transition-colors duration-300">
-                      {p.name}
-                    </h3>
+                    <Link to={`/products/${p.slug}`}>
+                      <h3 className="text-lg font-bold text-[#0a1628] mb-4 leading-snug group-hover:text-[#c9a961] transition-colors duration-300">
+                        {p.name}
+                      </h3>
+                    </Link>
 
-                    {/* Specs */}
                     <div className="space-y-2.5 py-4 border-y border-gray-100 mb-5">
                       <div className="flex justify-between gap-3 text-sm">
                         <span className="text-[#8896a6] font-medium">
@@ -839,50 +679,62 @@ useEffect(() => {
                           Specification
                         </span>
                         <span className="font-bold text-[#0a1628] text-right">
-                          {p.spec}
+                          {p.standards}
                         </span>
                       </div>
                     </div>
 
-                    {/* Actions */}
                     <div className="flex gap-2.5 mt-auto">
-                      <button className="flex-1 text-xs font-bold tracking-widest uppercase py-3 rounded-lg border-2 border-[#0a1628]/15 hover:border-[#c9a961] hover:text-[#c9a961] hover:bg-[#c9a961]/5 text-[#0a1628] transition-all duration-300">
+                      {/* View Details — links to product page */}
+                      <Link
+                        to={`/products/${p.slug}`}
+                        className="flex-1 text-xs font-bold tracking-widest uppercase py-3 rounded-lg border-2 border-[#0a1628]/15 group-hover:border-[#c9a961] group-hover:text-[#c9a961] text-[#0a1628] text-center transition-all duration-300"
+                      >
                         View Details
-                      </button>
-                      <button className="flex-1 text-xs font-bold tracking-widest uppercase py-3 rounded-lg bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white transition-all duration-300 shadow-md hover:shadow-lg">
+                      </Link>
+
+                      {/* ✅ Send Inquiry — opens WhatsApp with product name */}
+                      <a
+                        href={`https://wa.me/917313726773?text=${encodeURIComponent(
+                          `Hello Shree Ganesh Steel, I would like to inquire about: ${p.name}\n\nMaterial: ${p.material}\nSpecification: ${p.standards}\n\nPlease share pricing and availability.`,
+                        )}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex-1 text-xs font-bold tracking-widest uppercase py-3 rounded-lg bg-[#0a1628] hover:bg-[#25d366] text-white text-center transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center justify-center gap-1.5"
+                      >
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                        </svg>
                         Send Inquiry
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* View All CTA */}
             <div className="text-center mt-12 sm:mt-14">
-              <a
-                href="/products"
+              <Link
+                to="/products"
                 className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-8 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl group"
               >
                 View All Products
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
                   →
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
 
-          {/* Keyframes */}
           <style>{`
     @keyframes featFadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   `}</style>
         </section>
@@ -892,11 +744,8 @@ useEffect(() => {
           id="why"
           className="py-16 sm:py-20 lg:py-28 bg-[#0a1628] text-white relative overflow-hidden"
         >
-          {/* Decorative background glows */}
           <div className="absolute -top-24 -right-24 w-[600px] h-[600px] bg-[#c9a961]/8 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-[#c8102e]/8 rounded-full blur-3xl pointer-events-none" />
-
-          {/* Subtle grid pattern */}
           <div
             className="absolute inset-0 opacity-[0.03] pointer-events-none"
             style={{
@@ -907,7 +756,6 @@ useEffect(() => {
           />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
-            {/* Heading */}
             <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4 justify-center">
                 <span className="w-6 h-px bg-[#c9a961]" />
@@ -925,7 +773,6 @@ useEffect(() => {
               </p>
             </div>
 
-            {/* Feature cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
               {[
                 {
@@ -1050,33 +897,21 @@ useEffect(() => {
                 <div
                   key={i}
                   className="group relative p-7 sm:p-8 bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 rounded-xl hover:border-[#c9a961]/50 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(201,169,97,0.15)] transition-all duration-500 overflow-hidden"
-                  style={{
-                    animation: `fadeInUp 0.6s ease ${i * 0.1}s both`,
-                  }}
+                  style={{ animation: `fadeInUp 0.6s ease ${i * 0.1}s both` }}
                 >
-                  {/* Top gold accent bar */}
                   <span className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#c9a961] via-[#c9a961] to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
-
-                  {/* Shimmer effect on hover */}
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#c9a961]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
-
-                  {/* Corner glow */}
                   <span className="absolute -top-12 -right-12 w-32 h-32 bg-[#c9a961]/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                  {/* Icon + number row */}
                   <div className="relative flex items-start justify-between mb-6">
-                    {/* Icon */}
                     <div className="w-12 h-12 sm:w-14 sm:h-14 p-2.5 rounded-lg bg-[#c9a961]/10 border border-[#c9a961]/20 text-[#c9a961] group-hover:bg-[#c9a961] group-hover:text-[#0a1628] group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                       {x.icon}
                     </div>
-
-                    {/* Number */}
                     <span className="font-mono text-xs font-bold tracking-widest text-[#c9a961]/60 group-hover:text-[#c9a961] transition-colors duration-300 pt-2">
                       {x.n}
                     </span>
                   </div>
 
-                  {/* Content */}
                   <div className="relative">
                     <h3 className="text-lg sm:text-xl font-bold mb-3 text-white group-hover:text-[#c9a961] transition-colors duration-300 leading-snug">
                       {x.t}
@@ -1085,33 +920,17 @@ useEffect(() => {
                       {x.d}
                     </p>
                   </div>
-
-                  {/* Bottom arrow */}
-                  <div className="relative mt-6 flex items-center gap-2 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-500">
-                    <span className="w-6 h-px bg-[#c9a961]" />
-                    <span className="text-xs font-bold tracking-widest uppercase text-[#c9a961]">
-                      Explore
-                    </span>
-                    <span className="text-[#c9a961] text-sm">→</span>
-                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Keyframes for entrance animation */}
           <style>{`
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  `}</style>
+            @keyframes fadeInUp {
+              from { opacity: 0; transform: translateY(30px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
         </section>
 
         {/* ==================== INDUSTRIES ==================== */}
@@ -1134,7 +953,6 @@ useEffect(() => {
               </p>
             </div>
 
-            {/* ✅ Sirf width change — 4 cols → 3 cols */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
               {industries.map((ind, i) => (
                 <div
@@ -1146,7 +964,7 @@ useEffect(() => {
                     alt={ind.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/95 via-[#0a1628]/40 to-transparent group-hover:from-[#0a1628]/95 group-hover:via-[#c9a961]/30 transition-all duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/95 via-[#0a1628]/40 to-transparent group-hover:from-[#0a1628]/95 transition-all duration-300" />
                   <div className="absolute inset-x-0 bottom-0 p-5 text-white">
                     <h4 className="text-base font-bold group-hover:text-[#c9a961] transition-colors">
                       {ind.name}
@@ -1233,9 +1051,12 @@ useEffect(() => {
                   ))}
                 </div>
 
-                <button className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-7 py-3.5 rounded-md transition-all duration-300">
+                <Link
+                  to="/quality"
+                  className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-7 py-3.5 rounded-md transition-all duration-300"
+                >
                   View Quality Standards <span>→</span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -1245,9 +1066,7 @@ useEffect(() => {
         <section id="infra" className="relative py-20 lg:py-32 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: 'url("/images/infrastructure.jpg")',
-            }}
+            style={{ backgroundImage: 'url("/images/infrastructure.jpg")' }}
           />
           <div className="absolute inset-0 bg-[#0a1628]/55" />
 
@@ -1266,16 +1085,18 @@ useEffect(() => {
               bulk industrial orders with efficiency — from inventory management
               and material handling to export-grade packaging.
             </p>
-            <button className="inline-flex items-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-7 py-3.5 rounded-md shadow-md transition-all">
+            <Link
+              to="/infra"
+              className="inline-flex items-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-7 py-3.5 rounded-md shadow-md transition-all"
+            >
               Explore Our Infrastructure <span>→</span>
-            </button>
+            </Link>
           </div>
         </section>
 
         {/* ==================== GLOBAL ==================== */}
         <section className="py-16 sm:py-20 lg:py-28 bg-[#f7f8fa]">
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
-            {/* Heading */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#c9a961] mb-4 justify-center">
                 <span className="w-6 h-px bg-[#c9a961]" />
@@ -1292,7 +1113,6 @@ useEffect(() => {
               </p>
             </div>
 
-            {/* Countries grid — flags as SVG images from flagcdn */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
               {[
                 { code: "us", name: "United States" },
@@ -1320,12 +1140,8 @@ useEffect(() => {
                   key={i}
                   className="group bg-white rounded-lg p-5 shadow-[0_2px_8px_rgba(10,22,40,0.06)] hover:shadow-[0_20px_50px_rgba(10,22,40,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center cursor-pointer border border-gray-100 hover:border-transparent relative overflow-hidden"
                 >
-                  {/* Hover gradient bg */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#c9a961] via-[#c9a961] to-[#0a1628] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
-
-                  {/* Content */}
                   <div className="relative z-10 w-full flex flex-col items-center">
-                    {/* ✅ SVG flag image */}
                     <div className="w-14 h-10 sm:w-16 sm:h-12 rounded overflow-hidden shadow-sm mb-3 group-hover:scale-110 transition-transform duration-300 bg-gray-100">
                       <img
                         src={`https://flagcdn.com/w160/${c.code}.png`}
@@ -1335,12 +1151,9 @@ useEffect(() => {
                         loading="lazy"
                       />
                     </div>
-
                     <h4 className="text-xs sm:text-sm font-bold text-[#0a1628] group-hover:text-white transition-colors duration-300 uppercase tracking-wider leading-tight mb-3">
                       {c.name}
                     </h4>
-
-                    {/* Button appears on hover */}
                     <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                       <span className="inline-flex items-center gap-1.5 text-[0.65rem] font-bold tracking-widest uppercase text-white bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30">
                         ✈ Export Market
@@ -1355,7 +1168,6 @@ useEffect(() => {
 
         {/* ==================== CTA ==================== */}
         <section className="relative py-20 lg:py-32 overflow-hidden">
-          {/* Background image */}
           <div
             className="absolute inset-0 bg-cover bg-center scale-105 animate-[subtleZoom_20s_ease-in-out_infinite_alternate]"
             style={{
@@ -1363,18 +1175,12 @@ useEffect(() => {
                 'url("https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920&q=85")',
             }}
           />
-
-          {/* Multi-layer overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/95 via-[#0a1628]/90 to-[#0a1628]/85" />
-
-          {/* Decorative glows */}
           <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#c9a961]/15 rounded-full blur-3xl animate-pulse" />
           <div
             className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#c8102e]/15 rounded-full blur-3xl animate-pulse"
             style={{ animationDelay: "1.5s" }}
           />
-
-          {/* Grid pattern */}
           <div
             className="absolute inset-0 opacity-[0.04]"
             style={{
@@ -1383,60 +1189,23 @@ useEffect(() => {
               backgroundSize: "50px 50px",
             }}
           />
-
-          {/* Top gold accent line */}
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#c9a961] to-transparent" />
 
-          {/* Floating decorative icons (subtle) */}
-          <div className="absolute top-20 left-10 text-[#c9a961]/10 animate-[floatY_6s_ease-in-out_infinite]">
-            <svg
-              width="80"
-              height="80"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 6v6l4 2" />
-            </svg>
-          </div>
-          <div
-            className="absolute bottom-20 right-10 text-[#c9a961]/10 animate-[floatY_8s_ease-in-out_infinite]"
-            style={{ animationDelay: "1s" }}
-          >
-            <svg
-              width="100"
-              height="100"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            >
-              <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" />
-            </svg>
-          </div>
-
-          {/* Content */}
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center text-white">
-              {/* Eyebrow */}
               <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#c9a961] mb-6 justify-center">
                 <span className="w-8 h-px bg-[#c9a961]" />
                 Get Started Today
                 <span className="w-8 h-px bg-[#c9a961]" />
               </div>
 
-              {/* Heading */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
                 Have a{" "}
                 <em className="not-italic text-[#c9a961] relative inline-block">
                   Steel Requirement?
-                  <span className="absolute bottom-1 left-0 w-full h-1 rounded-full" />
                 </em>
               </h2>
 
-              {/* Subheading */}
               <p className="text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
                 Tell us what you need. Our team will help you find the right
                 product and specification —{" "}
@@ -1446,7 +1215,6 @@ useEffect(() => {
                 .
               </p>
 
-              {/* CTA buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
                 <a
                   href="https://wa.me/919876543210?text=Hello%20Shree%20Ganesh%20Steel%2C%20I%20would%20like%20to%20request%20a%20quote."
@@ -1454,7 +1222,6 @@ useEffect(() => {
                   rel="noreferrer"
                   className="group relative inline-flex items-center justify-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-8 py-4 rounded-lg shadow-[0_10px_30px_rgba(201,169,97,0.3)] hover:shadow-[0_15px_40px_rgba(201,169,97,0.5)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                 >
-                  {/* Shimmer sweep */}
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   <svg
                     width="18"
@@ -1477,7 +1244,6 @@ useEffect(() => {
                     →
                   </span>
                 </a>
-
                 <a
                   href="tel:+919876543210"
                   className="group inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-[#c9a961] hover:bg-[#c9a961]/10 text-white hover:text-[#c9a961] font-semibold text-sm px-8 py-4 rounded-lg transition-all duration-300 backdrop-blur-sm"
@@ -1498,7 +1264,6 @@ useEffect(() => {
                 </a>
               </div>
 
-              {/* Trust strip */}
               <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 pt-8 border-t border-white/15">
                 {[
                   {
@@ -1590,17 +1355,12 @@ useEffect(() => {
             </div>
           </div>
 
-          {/* Keyframes */}
           <style>{`
-    @keyframes subtleZoom {
-      from { transform: scale(1.05); }
-      to { transform: scale(1.15); }
-    }
-    @keyframes floatY {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-  `}</style>
+            @keyframes subtleZoom {
+              from { transform: scale(1.05); }
+              to { transform: scale(1.15); }
+            }
+          `}</style>
         </section>
 
         {/* ==================== CONTACT ==================== */}
@@ -1608,12 +1368,10 @@ useEffect(() => {
           id="contact"
           className="py-16 sm:py-20 lg:py-28 bg-white relative overflow-hidden"
         >
-          {/* Decorative background */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c9a961]/5 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#0a1628]/4 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
-            {/* Centered Heading */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4 justify-center">
                 <span className="w-6 h-px bg-[#c9a961]" />
@@ -1633,7 +1391,6 @@ useEffect(() => {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              {/* Contact Info */}
               <div className="space-y-4">
                 {[
                   {
@@ -1717,18 +1474,13 @@ useEffect(() => {
                     }
                     className="group flex gap-4 items-start p-4 sm:p-5 bg-white border border-gray-200 rounded-2xl hover:border-[#c9a961] hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(10,22,40,0.1)] transition-all duration-400 relative overflow-hidden"
                   >
-                    {/* Gold accent bar */}
                     <span className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-[#c9a961] to-transparent scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500" />
-
-                    {/* Icon badge */}
                     <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 mt-0.5">
                       <div className="absolute inset-0 rounded-xl bg-[#f7f8fa] border border-gray-200 group-hover:bg-gradient-to-br group-hover:from-[#c9a961] group-hover:to-[#b89851] group-hover:border-[#c9a961] transition-all duration-500" />
                       <div className="relative w-full h-full p-3 flex items-center justify-center text-[#c9a961] group-hover:text-[#0a1628] group-hover:rotate-6 transition-all duration-500">
                         {item.icon}
                       </div>
                     </div>
-
-                    {/* Text */}
                     <div className="min-w-0 flex-1">
                       <b className="block text-[0.7rem] font-bold tracking-widest uppercase text-[#8896a6] mb-1.5 group-hover:text-[#c9a961] transition-colors">
                         {item.label}
@@ -1737,32 +1489,11 @@ useEffect(() => {
                         {item.value}
                       </p>
                     </div>
-
-                    {/* Arrow icon (hidden on address card for cleaner look) */}
-                    {item.label !== "Address" && (
-                      <div className="text-[#c9a961] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 self-center">
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                      </div>
-                    )}
                   </a>
                 ))}
               </div>
 
-              {/* Contact Form */}
               <div className="relative p-7 sm:p-10 bg-gradient-to-br from-[#0a1628] to-[#142b4d] rounded-2xl shadow-[0_25px_60px_rgba(10,22,40,0.2)] overflow-hidden">
-                {/* Decorative glow inside form */}
                 <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#c9a961]/15 rounded-full blur-3xl pointer-events-none" />
                 <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[#c9a961]/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -1778,13 +1509,11 @@ useEffect(() => {
                     We respond within 24 hours.
                   </p>
 
-                  {/* ✅ Working form — submits to info@shreeganeshsteel.com */}
                   <form
                     action="https://formspree.io/f/xyzabcde"
                     method="POST"
                     className="space-y-3.5"
                   >
-                    {/* Name + Email row (desktop) */}
                     <div className="grid sm:grid-cols-2 gap-3.5">
                       <input
                         type="text"
@@ -1801,21 +1530,18 @@ useEffect(() => {
                         className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#c9a961] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#c9a961]/20 outline-none transition-all"
                       />
                     </div>
-
                     <input
                       type="tel"
                       name="phone"
                       placeholder="Phone Number"
                       className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#c9a961] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#c9a961]/20 outline-none transition-all"
                     />
-
                     <input
                       type="text"
                       name="subject"
                       placeholder="Subject"
                       className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#c9a961] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#c9a961]/20 outline-none transition-all"
                     />
-
                     <textarea
                       name="message"
                       rows="4"
@@ -1823,7 +1549,6 @@ useEffect(() => {
                       placeholder="Your Message *"
                       className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#c9a961] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#c9a961]/20 outline-none transition-all resize-y min-h-[120px]"
                     />
-
                     <button
                       type="submit"
                       className="group w-full inline-flex items-center justify-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-7 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
@@ -1833,7 +1558,6 @@ useEffect(() => {
                         →
                       </span>
                     </button>
-
                     <p className="text-[0.7rem] text-center text-white/50 pt-2">
                       Or email us directly at{" "}
                       <a
@@ -1850,8 +1574,6 @@ useEffect(() => {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }
