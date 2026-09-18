@@ -103,43 +103,20 @@ function CountUp({ end, suffix = "", duration = 2000 }) {
   );
 }
 
-// ============================================
-// HOME COMPONENT
-// ============================================
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Use first 8 for categories, first 6 for featured (or adjust as needed)
-  const categories = products.slice(0, 8);
-  const featured = products.slice(0, 6);
-
+  // ✅ Auto-play — pause on hover
   useEffect(() => {
-    const heroSection = document.getElementById("home");
-    if (!heroSection) return;
+    if (isPaused) return;
 
-    const handleScroll = () => {
-      const heroTop = heroSection.offsetTop;
-      const heroHeight = heroSection.offsetHeight;
-      const scrollY = window.scrollY;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
 
-      const progress = Math.max(
-        0,
-        Math.min(1, (scrollY - heroTop) / heroHeight),
-      );
-
-      const slideIndex = Math.min(
-        Math.floor(progress * heroSlides.length),
-        heroSlides.length - 1,
-      );
-
-      setCurrentSlide(slideIndex);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   const goToSlide = (i) => setCurrentSlide(i);
   const nextSlide = () =>
@@ -156,7 +133,7 @@ export default function Home() {
       <main>
         {/* ==================== HERO ==================== */}
         <section id="home" className="relative w-full bg-white">
-          <div className="relative w-full h-[calc(100vh-105px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-90px)] min-h-[550px] sm:min-h-[650px] lg:min-h-[650px] overflow-hidden">
+          <div className="relative w-full h-[calc(85vh-100px)] sm:h-[calc(100vh-100px)] lg:h-[calc(94vh-90px)] min-h-[550px] sm:min-h-[650px] lg:min-h-[600px] overflow-hidden">
             {heroSlides.map((s, i) => (
               <div
                 key={s.id}
@@ -172,41 +149,70 @@ export default function Home() {
               <div className="max-w-[1320px] w-full mx-auto px-5 sm:px-8">
                 <div
                   key={currentSlide}
-                  className="max-w-3xl hero-fade-up bg-[#0a1628]/35 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+                  className="max-w-3xl backdrop-blur-s bg-[#0B3E8C]/40 border border-white/90 rounded-2xl p-5 sm:p-6 lg:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
                 >
-                  <div className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#d2b46f] mb-4">
-                    <span className="w-6 sm:w-8 h-px bg-[#d6b66c]" />
+                  {/* Eyebrow — animation delay 0.1s */}
+                  <div
+                    className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#fba9b0] mb-3"
+                    style={{ animation: "heroFadeUp 0.8s ease-out 0.1s both" }}
+                  >
+                    <span className="w-6 sm:w-8 h-px bg-[#E63946]" />
                     {slide.eyebrow}
                   </div>
-                  <h1 className="text-[1.9rem] leading-[1.1] sm:text-[2.6rem] lg:text-[3.4rem] xl:text-[3.8rem] font-medium sm:font-extrabold tracking-tight text-white mb-4 sm:mb-5">
-                    {slide.titleLine1}
-                    <br />
-                    <em className="not-italic text-[#dbbe7a]">
+
+                  {/* Heading — two lines animate separately */}
+                  <h1 className="text-[1.7rem] leading-[1.1] sm:text-[2.3rem] lg:text-[3rem] xl:text-[3.3rem] font-medium sm:font-extrabold tracking-tight text-white mb-3 sm:mb-4">
+                    <span
+                      className="block"
+                      style={{
+                        animation: "heroFadeUp 0.9s ease-out 0.25s both",
+                      }}
+                    >
+                      {slide.titleLine1}
+                    </span>
+                    <em
+                      className="not-italic text-[#ed505d] block"
+                      style={{
+                        animation: "heroFadeUp 0.9s ease-out 0.45s both",
+                      }}
+                    >
                       {slide.titleLine2}
                     </em>
                   </h1>
 
-                  <p className="text-[0.95rem] sm:text-base lg:text-lg text-white/90 leading-relaxed max-w-2xl mb-6 sm:mb-8">
+                  {/* Description — delay 0.65s */}
+                  <p
+                    className="text-[0.9rem] sm:text-[0.95rem] lg:text-base text-white/90 leading-relaxed max-w-2xl mb-5 sm:mb-6"
+                    style={{ animation: "heroFadeUp 0.9s ease-out 0.65s both" }}
+                  >
                     {slide.desc}
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-7 sm:mb-9">
+                  {/* CTA Buttons — delays 0.85s / 0.95s */}
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-5 sm:mb-6">
                     <Link
                       to="/products"
-                      className="inline-flex items-center justify-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-7 py-3.5 rounded-md shadow-md hover:shadow-xl transition-all duration-300"
+                      className="inline-flex items-center justify-center gap-2 bg-[#C8102E] hover:bg-[#a5384a] text-white font-bold text-sm px-6 py-3 rounded-md shadow-md hover:shadow-xl transition-all duration-300"
+                      style={{
+                        animation: "heroFadeUp 0.9s ease-out 0.85s both",
+                      }}
                     >
                       {slide.primary}
                       <span>→</span>
                     </Link>
                     <Link
                       to="/contact"
-                      className="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold text-sm px-7 py-3.5 rounded-md hover:bg-white/10 transition-all duration-300"
+                      className="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold text-sm px-6 py-3 rounded-md hover:bg-white/10 transition-all duration-300"
+                      style={{
+                        animation: "heroFadeUp 0.9s ease-out 0.95s both",
+                      }}
                     >
                       {slide.secondary}
                     </Link>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 pt-6 border-t border-white/20">
+                  {/* Trust badges — stagger animation */}
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-5 pt-5 border-t border-white/20">
                     {[
                       "Quality Assured",
                       "Industrial Grade",
@@ -214,9 +220,12 @@ export default function Home() {
                     ].map((pill, i) => (
                       <div
                         key={i}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-white"
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-white"
+                        style={{
+                          animation: `heroFadeUp 0.8s ease-out ${1.1 + i * 0.12}s both`,
+                        }}
                       >
-                        <span className="w-5 h-5 rounded-full bg-[#c9a961]/30 text-[#c9a961] text-xs font-bold inline-flex items-center justify-center">
+                        <span className="w-5 h-5 rounded-full bg-[#E63946] text-[white] text-xs font-bold inline-flex items-center justify-center">
                           ✓
                         </span>
                         {pill}
@@ -231,14 +240,14 @@ export default function Home() {
             <button
               onClick={prevSlide}
               aria-label="Previous slide"
-              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-[#c9a961] text-white hover:text-[#0a1628] flex items-center justify-center text-2xl font-bold shadow-lg backdrop-blur-md border border-white/20 transition-all"
+              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-[#C8102E] text-white flex items-center justify-center text-2xl font-bold shadow-lg backdrop-blur-md border border-white/20 transition-all"
             >
               ‹
             </button>
             <button
               onClick={nextSlide}
               aria-label="Next slide"
-              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-[#c9a961] text-white hover:text-[#0a1628] flex items-center justify-center text-2xl font-bold shadow-lg backdrop-blur-md border border-white/20 transition-all"
+              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-[#C8102E] text-white flex items-center justify-center text-2xl font-bold shadow-lg backdrop-blur-md border border-white/20 transition-all"
             >
               ›
             </button>
@@ -252,33 +261,52 @@ export default function Home() {
                   aria-label={`Go to slide ${i + 1}`}
                   className={`h-[3px] rounded-full transition-all duration-300 ${
                     i === currentSlide
-                      ? "w-10 bg-[#c9a961]"
+                      ? "w-10 bg-[#C8102E]"
                       : "w-6 bg-white/60 hover:bg-white"
                   }`}
                 />
               ))}
             </div>
           </div>
+
+          {/* ✅ Animation Keyframes */}
+          <style>{`
+    @keyframes heroFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #home * {
+        animation: none !important;
+      }
+    }
+  `}</style>
         </section>
 
         {/* ==================== STATS ==================== */}
-        <section className="relative bg-[#0a1628] overflow-hidden">
+        <section className="relative bg-[#0B3E8C] overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-[#c9a961]/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-[#1E6FD9]/15 rounded-full blur-3xl animate-pulse" />
             <div
-              className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-[#c8102e]/10 rounded-full blur-3xl animate-pulse"
+              className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-[#C8102E]/20 rounded-full blur-3xl animate-pulse"
               style={{ animationDelay: "1s" }}
             />
             <div
               className="absolute inset-0 opacity-[0.04]"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(201,169,97,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,97,0.6) 1px, transparent 1px)",
+                  "linear-gradient(rgba(30,111,217,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(30,111,217,0.6) 1px, transparent 1px)",
                 backgroundSize: "50px 50px",
               }}
             />
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#c9a961] to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#c9a961]/50 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C8102E] to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#1E6FD9]/50 to-transparent" />
           </div>
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 py-14 sm:py-18 lg:py-20 relative z-10">
@@ -303,6 +331,7 @@ export default function Home() {
                   suffix: "+",
                   label: "Industry Experience",
                   sub: "Years",
+                  accent: "#E63946",
                 },
                 {
                   icon: (
@@ -325,6 +354,7 @@ export default function Home() {
                   suffix: "+",
                   label: "Products & Specifications",
                   sub: "Catalogue",
+                  accent: "#4A9EFF",
                 },
                 {
                   icon: (
@@ -345,6 +375,7 @@ export default function Home() {
                   suffix: "+",
                   label: "Industrial Applications",
                   sub: "Verticals",
+                  accent: "#E63946",
                 },
                 {
                   icon: (
@@ -366,34 +397,44 @@ export default function Home() {
                   textValue: "Global",
                   label: "Supply Capability",
                   sub: "Worldwide",
+                  accent: "#4A9EFF",
                 },
               ].map((stat, i) => (
                 <div
                   key={i}
-                  className="group relative p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 hover:border-[#c9a961]/50 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(201,169,97,0.15)] transition-all duration-500 overflow-hidden"
+                  className="group relative p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 hover:border-[#4A9EFF]/50 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(30,111,217,0.2)] transition-all duration-500 overflow-hidden"
                   style={{
                     animation: `statFadeUp 0.7s ease ${i * 0.12}s both`,
                   }}
                 >
-                  <span className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#c9a961] via-[#c9a961] to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700" />
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#c9a961]/8 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms] pointer-events-none" />
-                  <span className="absolute -top-16 -right-16 w-40 h-40 bg-[#c9a961]/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  <span className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#E63946] via-[#4A9EFF] to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1E6FD9]/8 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms] pointer-events-none" />
+                  <span className="absolute -top-16 -right-16 w-40 h-40 bg-[#E63946]/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-5">
                       <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
-                        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#c9a961]/20 to-[#c9a961]/5 border border-[#c9a961]/30 group-hover:border-[#c9a961] group-hover:from-[#c9a961] group-hover:to-[#b89851] transition-all duration-500" />
-                        <div className="relative w-full h-full p-3 flex items-center justify-center text-[#c9a961] group-hover:text-[#0a1628] group-hover:rotate-6 transition-all duration-500">
+                        <div
+                          className="absolute inset-0 rounded-xl border transition-all duration-500"
+                          style={{
+                            background: `linear-gradient(135deg, ${stat.accent}20, ${stat.accent}05)`,
+                            borderColor: `${stat.accent}50`,
+                          }}
+                        />
+                        <div
+                          className="relative w-full h-full p-3 flex items-center justify-center group-hover:text-white group-hover:rotate-6 transition-all duration-500"
+                          style={{ color: stat.accent }}
+                        >
                           {stat.icon}
                         </div>
                       </div>
-                      <div className="text-[0.65rem] sm:text-xs font-mono font-bold tracking-widest text-[#c9a961]/70 group-hover:text-[#c9a961] transition-colors">
+                      <div className="text-[0.65rem] sm:text-xs font-mono font-bold tracking-widest text-[#4A9EFF]/70 group-hover:text-[#4A9EFF] transition-colors">
                         {String(i + 1).padStart(2, "0")}
                       </div>
                     </div>
 
                     <div className="mb-3">
-                      <b className="block text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none group-hover:text-[#c9a961] transition-colors duration-500">
+                      <b className="block text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none group-hover:text-[#4A9EFF] transition-colors duration-500">
                         {stat.end !== null && stat.end !== undefined ? (
                           <CountUp end={stat.end} suffix={stat.suffix} />
                         ) : (
@@ -405,7 +446,10 @@ export default function Home() {
                     <h4 className="text-sm sm:text-base font-bold text-white/95 mb-1 leading-snug">
                       {stat.label}
                     </h4>
-                    <p className="text-xs font-mono tracking-widest uppercase text-[#c9a961]/60 group-hover:text-[#c9a961] transition-colors duration-300">
+                    <p
+                      className="text-xs font-mono tracking-widest uppercase transition-colors duration-300"
+                      style={{ color: `${stat.accent}99` }}
+                    >
                       {stat.sub}
                     </p>
                   </div>
@@ -432,25 +476,25 @@ export default function Home() {
                   alt="Steel warehouse"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#0a1628]/90 to-transparent text-white">
+                <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#0B3E8C]/95 to-transparent text-white">
                   <b className="block text-lg font-bold">
                     Committed to Quality.
                   </b>
-                  <span className="text-sm text-[#c9a961] italic">
+                  <span className="text-sm text-[#E63946] italic font-semibold">
                     Committed to You.
                   </span>
                 </div>
               </div>
 
               <div>
-                <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4">
-                  <span className="w-6 h-px bg-[#c9a961]" />
+                <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#1E6FD9] mb-4">
+                  <span className="w-6 h-px bg-[#E63946]" />
                   About Shree Ganesh Steel
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-6">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-6">
                   Engineering Quality.
                   <br />
-                  <em className="not-italic text-[#c9a961]">
+                  <em className="not-italic text-[#C8102E]">
                     Delivering Confidence.
                   </em>
                 </h2>
@@ -476,11 +520,11 @@ export default function Home() {
                     },
                   ].map((p, i) => (
                     <div key={i} className="flex gap-4 items-start">
-                      <div className="w-9 h-9 rounded-md bg-[#f7f8fa] border border-gray-200 flex items-center justify-center text-[#c9a961] text-sm flex-shrink-0">
+                      <div className="w-9 h-9 rounded-md bg-[#f7f8fa] border border-gray-200 flex items-center justify-center text-[#C8102E] text-sm flex-shrink-0">
                         ◆
                       </div>
                       <div>
-                        <b className="block text-sm font-bold text-[#0a1628] mb-1">
+                        <b className="block text-sm font-bold text-[#0B3E8C] mb-1">
                           {p.t}
                         </b>
                         <p className="text-sm text-[#5a6b7d]">{p.d}</p>
@@ -491,7 +535,7 @@ export default function Home() {
 
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-7 py-3.5 rounded-md transition-all duration-300"
+                  className="inline-flex items-center gap-2 bg-[#0B3E8C] hover:bg-[#C8102E] text-white font-bold text-sm px-7 py-3.5 rounded-md transition-all duration-300"
                 >
                   Discover Our Company <span>→</span>
                 </Link>
@@ -505,20 +549,20 @@ export default function Home() {
           id="products"
           className="py-16 sm:py-20 lg:py-28 bg-[#f7f8fa] relative overflow-hidden"
         >
-          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#c9a961]/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#0a1628]/4 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#1E6FD9]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#C8102E]/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4 justify-center">
-                <span className="w-6 h-px bg-[#c9a961]" />
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#1E6FD9] mb-4 justify-center">
+                <span className="w-6 h-px bg-[#E63946]" />
                 Our Product Range
-                <span className="w-6 h-px bg-[#c9a961]" />
+                <span className="w-6 h-px bg-[#E63946]" />
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-5">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-5">
                 Industrial Steel Products,
                 <br />
-                <em className="not-italic text-[#c9a961]">
+                <em className="not-italic text-[#C8102E]">
                   Built for Every Requirement.
                 </em>
               </h2>
@@ -528,68 +572,81 @@ export default function Home() {
               </p>
             </div>
 
-            {/* ✅ Clickable product cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
-              {categories.map((c, i) => (
-                <Link
-                  key={c.id}
-                  to={`/products/${c.slug}`}
-                  className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(10,22,40,0.15)] hover:border-[#c9a961]/50 transition-all duration-500 flex flex-col"
-                  style={{ animation: `catFadeUp 0.6s ease ${i * 0.06}s both` }}
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                    <span className="absolute top-3 left-3 z-20 w-8 h-8 rounded-full bg-[#0a1628] text-[#c9a961] text-xs font-bold font-mono flex items-center justify-center shadow-lg border border-[#c9a961]/30">
-                      {String(c.id).padStart(2, "0")}
-                    </span>
-                    <span className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-[#c9a961] text-[#0a1628] flex items-center justify-center opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 shadow-lg">
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <line x1="7" y1="17" x2="17" y2="7" />
-                        <polyline points="7 7 17 7 17 17" />
-                      </svg>
-                    </span>
-                    <img
-                      src={c.image}
-                      alt={c.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                      onError={(e) => {
-                        e.target.style.display = "none";
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#c9a961] via-[#c9a961] to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
-                  </div>
-
-                  <div className="p-5 flex flex-col flex-1">
-                    <h3 className="text-lg font-bold text-[#0a1628] mb-2.5 leading-snug group-hover:text-[#c9a961] transition-colors duration-300">
-                      {c.name}
-                    </h3>
-                    <p className="text-sm text-[#5a6b7d] leading-relaxed mb-5 flex-1">
-                      {c.desc}
-                    </p>
-                    <span className="text-xs font-bold tracking-widest uppercase text-[#0a1628] group-hover:text-[#c9a961] transition-colors inline-flex items-center justify-between gap-2 pt-4 border-t border-gray-100 group-hover:border-[#c9a961]/30">
-                      <span>Explore Products</span>
-                      <span className="inline-flex items-center gap-1 transform group-hover:translate-x-1 transition-transform duration-300">
-                        →
+              {[
+                "sheets-plates",
+                "pipes-tubes",
+                "round-bars",
+                "fasteners",
+                "flanges",
+                "buttweld-fittings",
+                "coils",
+                "wires",
+              ]
+                .map((slug) => products.find((c) => c.slug === slug))
+                .filter(Boolean)
+                .map((c, i) => (
+                  <Link
+                    key={c.id}
+                    to={`/categories/${c.slug}`}
+                    className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(11,62,140,0.15)] hover:border-[#1E6FD9]/50 transition-all duration-500 flex flex-col"
+                    style={{
+                      animation: `catFadeUp 0.6s ease ${i * 0.06}s both`,
+                    }}
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                      <span className="absolute top-3 left-3 z-20 w-8 h-8 rounded-full bg-[#0B3E8C] text-white text-xs font-bold font-mono flex items-center justify-center shadow-lg border border-[#1E6FD9]/30">
+                        {String(i + 1).padStart(2, "0")}
                       </span>
-                    </span>
-                  </div>
-                </Link>
-              ))}
+                      <span className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-[#C8102E] text-white flex items-center justify-center opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 shadow-lg">
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </span>
+                      <img
+                        src={c.image || "/images/categories/placeholder.jpg"}
+                        alt={c.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                        }}
+                      />
+
+                      <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#C8102E] via-[#1E6FD9] to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+                    </div>
+
+                    <div className="p-5 flex flex-col flex-1">
+                      <h3 className="text-lg font-bold text-[#0B3E8C] mb-2.5 leading-snug group-hover:text-[#C8102E] transition-colors duration-300">
+                        {c.name}
+                      </h3>
+                      <p className="text-sm text-[#5a6b7d] leading-relaxed mb-5 flex-1">
+                        {c.desc}
+                      </p>
+                      <span className="text-xs font-bold tracking-widest uppercase text-[#0B3E8C] group-hover:text-[#C8102E] transition-colors inline-flex items-center justify-between gap-2 pt-4 border-t border-gray-100 group-hover:border-[#C8102E]/30">
+                        <span>Explore Products</span>
+                        <span className="inline-flex items-center gap-1 transform group-hover:translate-x-1 transition-transform duration-300">
+                          →
+                        </span>
+                      </span>
+                    </div>
+                  </Link>
+                ))}
             </div>
 
             <div className="text-center mt-12 sm:mt-14">
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-8 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl group"
+                className="inline-flex items-center gap-2 bg-[#0B3E8C] hover:bg-[#C8102E] text-white font-bold text-sm px-8 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl group"
               >
                 View Complete Product Range
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
@@ -600,28 +657,28 @@ export default function Home() {
           </div>
 
           <style>{`
-            @keyframes catFadeUp {
-              from { opacity: 0; transform: translateY(30px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
-          `}</style>
+    @keyframes catFadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  `}</style>
         </section>
 
         {/* ==================== FEATURED ==================== */}
         <section className="py-16 sm:py-20 lg:py-28 bg-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c9a961]/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#0a1628]/3 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1E6FD9]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#C8102E]/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4 justify-center">
-                <span className="w-6 h-px bg-[#c9a961]" />
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#1E6FD9] mb-4 justify-center">
+                <span className="w-6 h-px bg-[#E63946]" />
                 Featured Products
-                <span className="w-6 h-px bg-[#c9a961]" />
+                <span className="w-6 h-px bg-[#E63946]" />
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-5">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-5">
                 Precision-Engineered{" "}
-                <em className="not-italic text-[#c9a961]">Specifications.</em>
+                <em className="not-italic text-[#C8102E]">Specifications.</em>
               </h2>
               <p className="text-[#5a6b7d] leading-relaxed max-w-2xl mx-auto">
                 Selected industrial products with full traceability and material
@@ -629,99 +686,105 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Featured cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-              {featured.map((p, i) => (
-                <div
-                  key={p.id}
-                  className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-[0_25px_60px_rgba(10,22,40,0.15)] hover:border-[#c9a961]/50 hover:-translate-y-2 transition-all duration-500 flex flex-col"
-                  style={{
-                    animation: `featFadeUp 0.6s ease ${i * 0.08}s both`,
-                  }}
-                >
-                  {/* Clickable area for card (link to product page) */}
-                  <Link to={`/products/${p.slug}`} className="block">
-                    <div className="relative aspect-[16/11] overflow-hidden bg-gray-100">
-                      <span className="absolute top-4 left-4 z-20 bg-gradient-to-r from-[#0a1628] to-[#142b4d] text-white text-[0.65rem] font-bold tracking-widest uppercase px-3 py-1.5 rounded-md shadow-lg border border-white/10">
-                        ★ Featured
-                      </span>
-                      <span className="absolute top-0 right-0 z-20 w-20 h-20 bg-[#c9a961] rotate-45 translate-x-10 -translate-y-10 group-hover:translate-x-8 group-hover:-translate-y-8 transition-transform duration-500" />
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                        onError={(e) => {
-                          e.target.style.display = "none";
-                        }}
-                      />
-                      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    </div>
-                  </Link>
-
-                  <div className="p-5 sm:p-6 flex flex-col flex-1">
-                    <Link to={`/products/${p.slug}`}>
-                      <h3 className="text-lg font-bold text-[#0a1628] mb-4 leading-snug group-hover:text-[#c9a961] transition-colors duration-300">
-                        {p.name}
-                      </h3>
+              {[
+                "dairy-fittings",
+                "hose-pipe",
+                "forged-fittings",
+                "patta-patti",
+                "perforated-sheet",
+                "wire-mesh",
+              ]
+                .map((slug) => products.find((c) => c.slug === slug))
+                .filter(Boolean)
+                .map((p, i) => (
+                  <div
+                    key={`${p.id}-${i}`}
+                    className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-[0_25px_60px_rgba(11,62,140,0.15)] hover:border-[#1E6FD9]/50 hover:-translate-y-2 transition-all duration-500 flex flex-col"
+                    style={{
+                      animation: `featFadeUp 0.6s ease ${i * 0.08}s both`,
+                    }}
+                  >
+                    <Link to={`/categories/${p.slug}`} className="block">
+                      <div className="relative aspect-[16/11] overflow-hidden bg-gray-100">
+                        <span className="absolute top-4 left-4 z-20 bg-gradient-to-r from-[#C8102E] to-[#E63946] text-white text-[0.65rem] font-bold tracking-widest uppercase px-3 py-1.5 rounded-md shadow-lg border border-white/10">
+                          ★ Featured
+                        </span>
+                        <span className="absolute top-0 right-0 z-20 w-20 h-20 bg-[#C8102E] rotate-45 translate-x-10 -translate-y-10 group-hover:translate-x-8 group-hover:-translate-y-8 transition-transform duration-500" />
+                        <img
+                          src={p.image || "/images/categories/placeholder.jpg"}
+                          alt={p.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                          onError={(e) => {
+                            e.target.style.display = "none";
+                          }}
+                        />
+                        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
                     </Link>
 
-                    <div className="space-y-2.5 py-4 border-y border-gray-100 mb-5">
-                      <div className="flex justify-between gap-3 text-sm">
-                        <span className="text-[#8896a6] font-medium">
-                          Material
-                        </span>
-                        <span className="font-bold text-[#0a1628] text-right">
-                          {p.material}
-                        </span>
-                      </div>
-                      <div className="flex justify-between gap-3 text-sm">
-                        <span className="text-[#8896a6] font-medium">
-                          Specification
-                        </span>
-                        <span className="font-bold text-[#0a1628] text-right">
-                          {p.standards}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex gap-2.5 mt-auto">
-                      {/* View Details — links to product page */}
-                      <Link
-                        to={`/products/${p.slug}`}
-                        className="flex-1 text-xs font-bold tracking-widest uppercase py-3 rounded-lg border-2 border-[#0a1628]/15 group-hover:border-[#c9a961] group-hover:text-[#c9a961] text-[#0a1628] text-center transition-all duration-300"
-                      >
-                        View Details
+                    <div className="p-5 sm:p-6 flex flex-col flex-1">
+                      <Link to={`/categories/${p.slug}`}>
+                        <h3 className="text-lg font-bold text-[#0B3E8C] mb-4 leading-snug group-hover:text-[#C8102E] transition-colors duration-300">
+                          {p.name}
+                        </h3>
                       </Link>
 
-                      {/* ✅ Send Inquiry — opens WhatsApp with product name */}
-                      <a
-                        href={`https://wa.me/917313726773?text=${encodeURIComponent(
-                          `Hello Shree Ganesh Steel, I would like to inquire about: ${p.name}\n\nMaterial: ${p.material}\nSpecification: ${p.standards}\n\nPlease share pricing and availability.`,
-                        )}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 text-xs font-bold tracking-widest uppercase py-3 rounded-lg bg-[#0a1628] hover:bg-[#25d366] text-white text-center transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center justify-center gap-1.5"
-                      >
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
+                      <div className="space-y-2.5 py-4 border-y border-gray-100 mb-5">
+                        <div className="flex justify-between gap-3 text-sm">
+                          <span className="text-[#8896a6] font-medium">
+                            Division
+                          </span>
+                          <span className="font-bold text-[#0B3E8C] text-right capitalize">
+                            {p.division}
+                          </span>
+                        </div>
+                        <div className="flex justify-between gap-3 text-sm">
+                          <span className="text-[#8896a6] font-medium">
+                            Type
+                          </span>
+                          <span className="font-bold text-[#0B3E8C] text-right">
+                            {p.desc?.split("&")[0]?.trim() || "Industrial"}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2.5 mt-auto">
+                        <Link
+                          to={`/categories/${p.slug}`}
+                          className="flex-1 text-xs font-bold tracking-widest uppercase py-3 rounded-lg border-2 border-[#0B3E8C]/15 group-hover:border-[#C8102E] group-hover:text-[#C8102E] text-[#0B3E8C] text-center transition-all duration-300"
                         >
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                        </svg>
-                        Send Inquiry
-                      </a>
+                          View Details
+                        </Link>
+
+                        <a
+                          href={`https://wa.me/917313726773?text=${encodeURIComponent(
+                            `Hello Shree Ganesh Steel, I would like to inquire about: ${p.name}\n\nPlease share pricing and availability.`,
+                          )}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex-1 text-xs font-bold tracking-widest uppercase py-3 rounded-lg bg-[#0B3E8C] hover:bg-[#25d366] text-white text-center transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center justify-center gap-1.5"
+                        >
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                          </svg>
+                          Send Inquiry
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
 
             <div className="text-center mt-12 sm:mt-14">
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-8 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl group"
+                className="inline-flex items-center gap-2 bg-[#0B3E8C] hover:bg-[#C8102E] text-white font-bold text-sm px-8 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl group"
               >
                 View All Products
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
@@ -742,29 +805,29 @@ export default function Home() {
         {/* ==================== WHY US ==================== */}
         <section
           id="why"
-          className="py-16 sm:py-20 lg:py-28 bg-[#0a1628] text-white relative overflow-hidden"
+          className="py-16 sm:py-20 lg:py-28 bg-[#0B3E8C] text-white relative overflow-hidden"
         >
-          <div className="absolute -top-24 -right-24 w-[600px] h-[600px] bg-[#c9a961]/8 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-[#c8102e]/8 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 -right-24 w-[600px] h-[600px] bg-[#1E6FD9]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-[#C8102E]/20 rounded-full blur-3xl pointer-events-none" />
           <div
             className="absolute inset-0 opacity-[0.03] pointer-events-none"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(201,169,97,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,97,0.5) 1px, transparent 1px)",
+                "linear-gradient(rgba(30,111,217,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(30,111,217,0.5) 1px, transparent 1px)",
               backgroundSize: "60px 60px",
             }}
           />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4 justify-center">
-                <span className="w-6 h-px bg-[#c9a961]" />
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#4A9EFF] mb-4 justify-center">
+                <span className="w-6 h-px bg-[#E63946]" />
                 Why Choose Us
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-5">
                 Why Industries Choose
                 <br />
-                <em className="not-italic text-[#c9a961]">
+                <em className="not-italic text-[#E63946]">
                   Shree Ganesh Steel.
                 </em>
               </h2>
@@ -779,6 +842,7 @@ export default function Home() {
                   n: "01",
                   t: "Premium Quality",
                   d: "Consistent quality materials meeting industrial requirements.",
+                  accent: "#E63946",
                   icon: (
                     <svg
                       viewBox="0 0 24 24"
@@ -799,6 +863,7 @@ export default function Home() {
                   n: "02",
                   t: "Wide Product Range",
                   d: "Comprehensive range of steel products and fittings.",
+                  accent: "#4A9EFF",
                   icon: (
                     <svg
                       viewBox="0 0 24 24"
@@ -820,6 +885,7 @@ export default function Home() {
                   n: "03",
                   t: "Technical Expertise",
                   d: "Experienced team focused on accurate product specifications.",
+                  accent: "#E63946",
                   icon: (
                     <svg
                       viewBox="0 0 24 24"
@@ -839,6 +905,7 @@ export default function Home() {
                   n: "04",
                   t: "Reliable Supply",
                   d: "Efficient sourcing, inventory management and timely dispatch.",
+                  accent: "#4A9EFF",
                   icon: (
                     <svg
                       viewBox="0 0 24 24"
@@ -860,6 +927,7 @@ export default function Home() {
                   n: "05",
                   t: "Custom Requirements",
                   d: "Solutions based on customer-specific sizes and specifications.",
+                  accent: "#E63946",
                   icon: (
                     <svg
                       viewBox="0 0 24 24"
@@ -878,6 +946,7 @@ export default function Home() {
                   n: "06",
                   t: "Customer First",
                   d: "Long-term relationships built on trust and transparency.",
+                  accent: "#4A9EFF",
                   icon: (
                     <svg
                       viewBox="0 0 24 24"
@@ -896,24 +965,50 @@ export default function Home() {
               ].map((x, i) => (
                 <div
                   key={i}
-                  className="group relative p-7 sm:p-8 bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 rounded-xl hover:border-[#c9a961]/50 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(201,169,97,0.15)] transition-all duration-500 overflow-hidden"
+                  className="group relative p-7 sm:p-8 bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 rounded-xl hover:border-[#4A9EFF]/50 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,111,217,0.2)] transition-all duration-500 overflow-hidden"
                   style={{ animation: `fadeInUp 0.6s ease ${i * 0.1}s both` }}
                 >
-                  <span className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#c9a961] via-[#c9a961] to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#c9a961]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
-                  <span className="absolute -top-12 -right-12 w-32 h-32 bg-[#c9a961]/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <span
+                    className="absolute top-0 left-0 w-full h-0.5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"
+                    style={{
+                      background: `linear-gradient(to right, ${x.accent}, ${x.accent}, transparent)`,
+                    }}
+                  />
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1E6FD9]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
+                  <span
+                    className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{ backgroundColor: `${x.accent}30` }}
+                  />
 
                   <div className="relative flex items-start justify-between mb-6">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 p-2.5 rounded-lg bg-[#c9a961]/10 border border-[#c9a961]/20 text-[#c9a961] group-hover:bg-[#c9a961] group-hover:text-[#0a1628] group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                    <div
+                      className="w-12 h-12 sm:w-14 sm:h-14 p-2.5 rounded-lg border transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                      style={{
+                        backgroundColor: `${x.accent}20`,
+                        borderColor: `${x.accent}50`,
+                        color: x.accent,
+                      }}
+                    >
                       {x.icon}
                     </div>
-                    <span className="font-mono text-xs font-bold tracking-widest text-[#c9a961]/60 group-hover:text-[#c9a961] transition-colors duration-300 pt-2">
+                    <span
+                      className="font-mono text-xs font-bold tracking-widest transition-colors duration-300 pt-2"
+                      style={{ color: `${x.accent}99` }}
+                    >
                       {x.n}
                     </span>
                   </div>
 
                   <div className="relative">
-                    <h3 className="text-lg sm:text-xl font-bold mb-3 text-white group-hover:text-[#c9a961] transition-colors duration-300 leading-snug">
+                    <h3
+                      className="text-lg sm:text-xl font-bold mb-3 text-white transition-colors duration-300 leading-snug"
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.color = x.accent)
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color = "white")
+                      }
+                    >
                       {x.t}
                     </h3>
                     <p className="text-sm sm:text-[0.95rem] text-white/70 group-hover:text-white/90 leading-relaxed transition-colors duration-300">
@@ -937,13 +1032,13 @@ export default function Home() {
         <section id="industries" className="py-16 sm:py-20 lg:py-28 bg-white">
           <div className="max-w-[1300px] mx-auto px-5 sm:px-8">
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4">
-                <span className="w-6 h-px bg-[#c9a961]" />
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#1E6FD9] mb-4">
+                <span className="w-6 h-px bg-[#E63946]" />
                 Industries We Serve
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-5">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-5">
                 Serving{" "}
-                <em className="not-italic text-[#c9a961]">
+                <em className="not-italic text-[#C8102E]">
                   Critical Industries.
                 </em>
               </h2>
@@ -964,12 +1059,12 @@ export default function Home() {
                     alt={ind.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/95 via-[#0a1628]/40 to-transparent group-hover:from-[#0a1628]/95 transition-all duration-300" />
+                  <div className="absolute inset-0 transition-all duration-300" />
                   <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-                    <h4 className="text-base font-bold group-hover:text-[#c9a961] transition-colors">
+                    <h4 className="text-base font-bold group-hover:text-[#E63946] transition-colors">
                       {ind.name}
                     </h4>
-                    <span className="inline-block text-[#c9a961] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mt-1">
+                    <span className="inline-block text-[#E63946] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mt-1">
                       →
                     </span>
                   </div>
@@ -992,14 +1087,14 @@ export default function Home() {
               </div>
 
               <div>
-                <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4">
-                  <span className="w-6 h-px bg-[#c9a961]" />
+                <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#1E6FD9] mb-4">
+                  <span className="w-6 h-px bg-[#E63946]" />
                   Quality Assurance
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-6">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-6">
                   Quality You Can
                   <br />
-                  <em className="not-italic text-[#c9a961]">
+                  <em className="not-italic text-[#C8102E]">
                     Measure. Trust You Can Build.
                   </em>
                 </h2>
@@ -1030,9 +1125,9 @@ export default function Home() {
                   ].map((p, i) => (
                     <div
                       key={i}
-                      className="p-4 bg-white border border-gray-200 rounded-lg hover:border-[#c9a961] hover:-translate-y-0.5 hover:shadow-md transition-all"
+                      className="p-4 bg-white border border-gray-200 rounded-lg hover:border-[#C8102E] hover:-translate-y-0.5 hover:shadow-md transition-all"
                     >
-                      <b className="block text-xs font-bold tracking-wider uppercase text-[#0a1628] mb-1.5">
+                      <b className="block text-xs font-bold tracking-wider uppercase text-[#0B3E8C] mb-1.5">
                         {p.t}
                       </b>
                       <p className="text-xs text-[#5a6b7d]">{p.d}</p>
@@ -1044,7 +1139,7 @@ export default function Home() {
                   {["ISO 9001:2015", "MSME", "MTC"].map((c, i) => (
                     <div
                       key={i}
-                      className="px-4 py-2.5 bg-white border border-gray-200 rounded-md font-mono text-xs font-bold tracking-widest uppercase text-[#0a1628] hover:border-[#c9a961] hover:text-[#c9a961] transition-all"
+                      className="px-4 py-2.5 bg-white border border-gray-200 rounded-md font-mono text-xs font-bold tracking-widest uppercase text-[#0B3E8C] hover:border-[#C8102E] hover:text-[#C8102E] transition-all"
                     >
                       {c}
                     </div>
@@ -1053,7 +1148,7 @@ export default function Home() {
 
                 <Link
                   to="/quality"
-                  className="inline-flex items-center gap-2 bg-[#0a1628] hover:bg-[#c9a961] hover:text-[#0a1628] text-white font-bold text-sm px-7 py-3.5 rounded-md transition-all duration-300"
+                  className="inline-flex items-center gap-2 bg-[#0B3E8C] hover:bg-[#C8102E] text-white font-bold text-sm px-7 py-3.5 rounded-md transition-all duration-300"
                 >
                   View Quality Standards <span>→</span>
                 </Link>
@@ -1068,26 +1163,26 @@ export default function Home() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: 'url("/images/infrastructure.jpg")' }}
           />
-          <div className="absolute inset-0 bg-[#0a1628]/55" />
+          <div className="absolute inset-0 bg-[#0B3E8C]/15" />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10 text-white">
-            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#c9a961] mb-5">
-              <span className="w-8 h-px bg-[#c9a961]" />
+            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#4A9EFF] mb-5">
+              <span className="w-8 h-px bg-[#E63946]" />
               Infrastructure
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight mb-6 max-w-2xl">
               Built for Scale.
               <br />
-              <em className="not-italic text-[#c9a961]">Ready for Industry.</em>
+              <em className="not-italic text-[#E63946]">Ready for Industry.</em>
             </h2>
-            <p className="text-white/80 leading-relaxed max-w-2xl mb-10 text-base sm:text-lg">
+            <p className="text-white leading-relaxed max-w-2xl mb-10 text-base font-extrabold sm:text-lg">
               Our warehouse and dispatch infrastructure is designed to handle
               bulk industrial orders with efficiency — from inventory management
               and material handling to export-grade packaging.
             </p>
             <Link
               to="/infra"
-              className="inline-flex items-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-7 py-3.5 rounded-md shadow-md transition-all"
+              className="inline-flex items-center gap-2 bg-[#C8102E] hover:bg-[#1E6FD9] text-white font-bold text-sm px-7 py-3.5 rounded-md shadow-md transition-all"
             >
               Explore Our Infrastructure <span>→</span>
             </Link>
@@ -1098,14 +1193,14 @@ export default function Home() {
         <section className="py-16 sm:py-20 lg:py-28 bg-[#f7f8fa]">
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#c9a961] mb-4 justify-center">
-                <span className="w-6 h-px bg-[#c9a961]" />
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#1E6FD9] mb-4 justify-center">
+                <span className="w-6 h-px bg-[#E63946]" />
                 Global Presence
-                <span className="w-6 h-px bg-[#c9a961]" />
+                <span className="w-6 h-px bg-[#E63946]" />
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-5">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-5">
                 Countries We{" "}
-                <em className="not-italic text-[#c9a961]">Export To.</em>
+                <em className="not-italic text-[#C8102E]">Export To.</em>
               </h2>
               <p className="text-[#5a6b7d] leading-relaxed">
                 We proudly serve clients across 50+ countries worldwide with our
@@ -1138,9 +1233,9 @@ export default function Home() {
               ].map((c, i) => (
                 <div
                   key={i}
-                  className="group bg-white rounded-lg p-5 shadow-[0_2px_8px_rgba(10,22,40,0.06)] hover:shadow-[0_20px_50px_rgba(10,22,40,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center cursor-pointer border border-gray-100 hover:border-transparent relative overflow-hidden"
+                  className="group bg-white rounded-lg p-5 shadow-[0_2px_8px_rgba(11,62,140,0.06)] hover:shadow-[0_20px_50px_rgba(200,16,46,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center cursor-pointer border border-gray-100 hover:border-transparent relative overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#c9a961] via-[#c9a961] to-[#0a1628] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#C8102E] via-[#1E6FD9] to-[#0B3E8C] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
                   <div className="relative z-10 w-full flex flex-col items-center">
                     <div className="w-14 h-10 sm:w-16 sm:h-12 rounded overflow-hidden shadow-sm mb-3 group-hover:scale-110 transition-transform duration-300 bg-gray-100">
                       <img
@@ -1151,7 +1246,7 @@ export default function Home() {
                         loading="lazy"
                       />
                     </div>
-                    <h4 className="text-xs sm:text-sm font-bold text-[#0a1628] group-hover:text-white transition-colors duration-300 uppercase tracking-wider leading-tight mb-3">
+                    <h4 className="text-xs sm:text-sm font-bold text-[#0B3E8C] group-hover:text-white transition-colors duration-300 uppercase tracking-wider leading-tight mb-3">
                       {c.name}
                     </h4>
                     <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
@@ -1175,33 +1270,33 @@ export default function Home() {
                 'url("https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920&q=85")',
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/95 via-[#0a1628]/90 to-[#0a1628]/85" />
-          <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#c9a961]/15 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0B3E8C]/95 via-[#0B3E8C]/90 to-[#092a54]/85" />
+          <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#1E6FD9]/20 rounded-full blur-3xl animate-pulse" />
           <div
-            className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#c8102e]/15 rounded-full blur-3xl animate-pulse"
+            className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#C8102E]/25 rounded-full blur-3xl animate-pulse"
             style={{ animationDelay: "1.5s" }}
           />
           <div
             className="absolute inset-0 opacity-[0.04]"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(201,169,97,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,97,0.8) 1px, transparent 1px)",
+                "linear-gradient(rgba(30,111,217,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(30,111,217,0.8) 1px, transparent 1px)",
               backgroundSize: "50px 50px",
             }}
           />
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#c9a961] to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C8102E] to-transparent" />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center text-white">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#c9a961] mb-6 justify-center">
-                <span className="w-8 h-px bg-[#c9a961]" />
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#E63946] mb-6 justify-center">
+                <span className="w-8 h-px bg-[#E63946]" />
                 Get Started Today
-                <span className="w-8 h-px bg-[#c9a961]" />
+                <span className="w-8 h-px bg-[#E63946]" />
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
                 Have a{" "}
-                <em className="not-italic text-[#c9a961] relative inline-block">
+                <em className="not-italic text-[#E63946] relative inline-block">
                   Steel Requirement?
                 </em>
               </h2>
@@ -1209,7 +1304,7 @@ export default function Home() {
               <p className="text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
                 Tell us what you need. Our team will help you find the right
                 product and specification —{" "}
-                <span className="text-[#c9a961] font-semibold">
+                <span className="text-[#E63946] font-semibold">
                   within 24 hours
                 </span>
                 .
@@ -1217,10 +1312,10 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
                 <a
-                  href="https://wa.me/919876543210?text=Hello%20Shree%20Ganesh%20Steel%2C%20I%20would%20like%20to%20request%20a%20quote."
+                  href="https://wa.me/917313726773?text=Hello%20Shree%20Ganesh%20Steel%2C%20I%20would%20like%20to%20request%20a%20quote."
                   target="_blank"
                   rel="noreferrer"
-                  className="group relative inline-flex items-center justify-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-8 py-4 rounded-lg shadow-[0_10px_30px_rgba(201,169,97,0.3)] hover:shadow-[0_15px_40px_rgba(201,169,97,0.5)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                  className="group relative inline-flex items-center justify-center gap-2 bg-[#C8102E] hover:bg-[#1E6FD9] text-white font-bold text-sm px-8 py-4 rounded-lg shadow-[0_10px_30px_rgba(200,16,46,0.4)] hover:shadow-[0_15px_40px_rgba(30,111,217,0.5)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   <svg
@@ -1245,8 +1340,8 @@ export default function Home() {
                   </span>
                 </a>
                 <a
-                  href="tel:+919876543210"
-                  className="group inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-[#c9a961] hover:bg-[#c9a961]/10 text-white hover:text-[#c9a961] font-semibold text-sm px-8 py-4 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                  href="tel:+917313726773"
+                  className="group inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-[#E63946] hover:bg-[#C8102E]/10 text-white hover:text-[#E63946] font-semibold text-sm px-8 py-4 rounded-lg transition-all duration-300 backdrop-blur-sm"
                 >
                   <svg
                     width="18"
@@ -1343,9 +1438,9 @@ export default function Home() {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="group inline-flex items-center gap-2 text-xs sm:text-sm text-white/70 hover:text-[#c9a961] transition-colors duration-300"
+                    className="group inline-flex items-center gap-2 text-xs sm:text-sm text-white/70 hover:text-[#E63946] transition-colors duration-300"
                   >
-                    <span className="text-[#c9a961] group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-[#E63946] group-hover:scale-110 transition-transform duration-300">
                       {item.icon}
                     </span>
                     <span className="font-medium">{item.text}</span>
@@ -1368,19 +1463,19 @@ export default function Home() {
           id="contact"
           className="py-16 sm:py-20 lg:py-28 bg-white relative overflow-hidden"
         >
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c9a961]/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#0a1628]/4 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1E6FD9]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#C8102E]/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4 justify-center">
-                <span className="w-6 h-px bg-[#c9a961]" />
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#1E6FD9] mb-4 justify-center">
+                <span className="w-6 h-px bg-[#E63946]" />
                 Get In Touch
-                <span className="w-6 h-px bg-[#c9a961]" />
+                <span className="w-6 h-px bg-[#E63946]" />
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-5">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-5">
                 Let's Discuss{" "}
-                <em className="not-italic text-[#c9a961]">
+                <em className="not-italic text-[#C8102E]">
                   Your Requirements.
                 </em>
               </h2>
@@ -1408,8 +1503,8 @@ export default function Home() {
                       </svg>
                     ),
                     label: "Phone",
-                    value: "+91 98765 43210",
-                    href: "tel:+919876543210",
+                    value: "+91 73137 26773",
+                    href: "tel:+917313726773",
                   },
                   {
                     icon: (
@@ -1461,8 +1556,8 @@ export default function Home() {
                       </svg>
                     ),
                     label: "WhatsApp",
-                    value: "+91 98765 43210",
-                    href: "https://wa.me/919876543210",
+                    value: "+91 73137 26773",
+                    href: "https://wa.me/917313726773",
                   },
                 ].map((item, i) => (
                   <a
@@ -1472,20 +1567,20 @@ export default function Home() {
                     rel={
                       item.href.startsWith("http") ? "noreferrer" : undefined
                     }
-                    className="group flex gap-4 items-start p-4 sm:p-5 bg-white border border-gray-200 rounded-2xl hover:border-[#c9a961] hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(10,22,40,0.1)] transition-all duration-400 relative overflow-hidden"
+                    className="group flex gap-4 items-start p-4 sm:p-5 bg-white border border-gray-200 rounded-2xl hover:border-[#C8102E] hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(200,16,46,0.1)] transition-all duration-400 relative overflow-hidden"
                   >
-                    <span className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-[#c9a961] to-transparent scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500" />
+                    <span className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-[#C8102E] to-transparent scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500" />
                     <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 mt-0.5">
-                      <div className="absolute inset-0 rounded-xl bg-[#f7f8fa] border border-gray-200 group-hover:bg-gradient-to-br group-hover:from-[#c9a961] group-hover:to-[#b89851] group-hover:border-[#c9a961] transition-all duration-500" />
-                      <div className="relative w-full h-full p-3 flex items-center justify-center text-[#c9a961] group-hover:text-[#0a1628] group-hover:rotate-6 transition-all duration-500">
+                      <div className="absolute inset-0 rounded-xl bg-[#f7f8fa] border border-gray-200 group-hover:bg-gradient-to-br group-hover:from-[#C8102E] group-hover:to-[#1E6FD9] group-hover:border-[#C8102E] transition-all duration-500" />
+                      <div className="relative w-full h-full p-3 flex items-center justify-center text-[#C8102E] group-hover:text-white group-hover:rotate-6 transition-all duration-500">
                         {item.icon}
                       </div>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <b className="block text-[0.7rem] font-bold tracking-widest uppercase text-[#8896a6] mb-1.5 group-hover:text-[#c9a961] transition-colors">
+                      <b className="block text-[0.7rem] font-bold tracking-widest uppercase text-[#8896a6] mb-1.5 group-hover:text-[#C8102E] transition-colors">
                         {item.label}
                       </b>
-                      <p className="text-sm sm:text-base font-semibold text-[#0a1628] m-0 break-words leading-relaxed">
+                      <p className="text-sm sm:text-base font-semibold text-[#0B3E8C] m-0 break-words leading-relaxed">
                         {item.value}
                       </p>
                     </div>
@@ -1493,13 +1588,13 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="relative p-7 sm:p-10 bg-gradient-to-br from-[#0a1628] to-[#142b4d] rounded-2xl shadow-[0_25px_60px_rgba(10,22,40,0.2)] overflow-hidden">
-                <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#c9a961]/15 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[#c9a961]/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative p-7 sm:p-10 bg-gradient-to-br from-[#0B3E8C] to-[#092a54] rounded-2xl shadow-[0_25px_60px_rgba(11,62,140,0.2)] overflow-hidden">
+                <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#1E6FD9]/20 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[#C8102E]/20 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="relative">
-                  <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#c9a961] mb-4">
-                    <span className="w-4 h-px bg-[#c9a961]" />
+                  <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#E63946] mb-4">
+                    <span className="w-4 h-px bg-[#E63946]" />
                     Quick Enquiry
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
@@ -1520,38 +1615,38 @@ export default function Home() {
                         name="name"
                         required
                         placeholder="Your Name *"
-                        className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#c9a961] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#c9a961]/20 outline-none transition-all"
+                        className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#E63946] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#E63946]/20 outline-none transition-all"
                       />
                       <input
                         type="email"
                         name="email"
                         required
                         placeholder="Your Email *"
-                        className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#c9a961] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#c9a961]/20 outline-none transition-all"
+                        className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#E63946] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#E63946]/20 outline-none transition-all"
                       />
                     </div>
                     <input
                       type="tel"
                       name="phone"
                       placeholder="Phone Number"
-                      className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#c9a961] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#c9a961]/20 outline-none transition-all"
+                      className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#E63946] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#E63946]/20 outline-none transition-all"
                     />
                     <input
                       type="text"
                       name="subject"
                       placeholder="Subject"
-                      className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#c9a961] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#c9a961]/20 outline-none transition-all"
+                      className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#E63946] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#E63946]/20 outline-none transition-all"
                     />
                     <textarea
                       name="message"
                       rows="4"
                       required
                       placeholder="Your Message *"
-                      className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#c9a961] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#c9a961]/20 outline-none transition-all resize-y min-h-[120px]"
+                      className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/15 rounded-lg text-sm text-white placeholder:text-white/50 focus:border-[#E63946] focus:bg-white/[0.08] focus:ring-2 focus:ring-[#E63946]/20 outline-none transition-all resize-y min-h-[120px]"
                     />
                     <button
                       type="submit"
-                      className="group w-full inline-flex items-center justify-center gap-2 bg-[#c9a961] hover:bg-[#b89851] text-[#0a1628] font-bold text-sm px-7 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                      className="group w-full inline-flex items-center justify-center gap-2 bg-[#C8102E] hover:bg-[#1E6FD9] text-white font-bold text-sm px-7 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                     >
                       Send Message
                       <span className="group-hover:translate-x-1 transition-transform duration-300">
@@ -1562,7 +1657,7 @@ export default function Home() {
                       Or email us directly at{" "}
                       <a
                         href="mailto:info@shreeganeshsteel.com"
-                        className="text-[#c9a961] hover:underline"
+                        className="text-[#E63946] hover:underline"
                       >
                         info@shreeganeshsteel.com
                       </a>

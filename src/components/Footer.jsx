@@ -3,126 +3,82 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0a1628] text-white">
-      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 pt-14 sm:pt-20 lg:pt-24">
-        {/* ============ TOP GRID ============ */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-12 pb-12 sm:pb-16 border-b border-white/10">
-          {/* Brand column */}
-          <div className="lg:col-span-4">
-            <div className="relative w-[46px] h-[46px] rounded-md bg-gradient-to-br from-[#0a1628] to-[#142b4d] text-[#c9a961] flex items-center justify-center font-black text-base tracking-wider shadow-[0_4px_14px_rgba(10,22,40,0.25)] overflow-hidden mb-5">
-              <span className="relative z-10 font-mono">SG</span>
-              <span className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-br from-transparent to-[#c9a961]/30 rotate-45" />
+    <footer className="bg-[#0d2b4e] text-white">
+      {/* ==========================================
+          MAIN FOOTER
+         ========================================== */}
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 pt-14 sm:pt-16 lg:pt-20 pb-10 sm:pb-12">
+        {/* 4-COLUMN GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+          {/* ============ COLUMN 1: BRAND ============ */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            {/* Logo card */}
+            <Link
+              to="/"
+              className="inline-block bg-white rounded-lg px-4 py-3 mb-5 shadow-md hover:shadow-lg transition-shadow duration-300"
+            >
+              <img
+                src="/images/logo.png"
+                alt="Shree Ganesh Steel Corporation"
+                className="h-12 sm:h-14 w-auto object-contain"
+              />
+            </Link>
+
+            {/* Certification badge */}
+            <div className="inline-flex items-center gap-2 bg-[#1a4a7a] border border-[#3B8FE8]/30 rounded-md px-3 py-1.5 mb-5">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#3B8FE8"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              <span className="text-[0.65rem] font-bold tracking-[0.15em] uppercase text-white">
+                ISO 9001:2015 Certified Company
+              </span>
             </div>
 
-            <h4 className="text-white font-bold text-lg sm:text-xl mb-4 tracking-tight">
-              Shree Ganesh Steel Corporation
-            </h4>
-            <p className="text-[0.9rem] text-white/80 leading-relaxed mb-6 max-w-md">
-              Trusted manufacturer, supplier and exporter of premium stainless
-              steel, carbon steel and alloy steel products for global
-              industries.
+            {/* Description */}
+            <p className="text-[0.85rem] text-white/75 leading-relaxed mb-5">
+              Shree Ganesh Steel Corporation is a premier stockist & supplier of
+              high-grade industrial raw materials, stainless steel pipes, tubes,
+              fittings, flanges, sheets, plates, coils, and fasteners.
             </p>
 
-            {/* Social icons — brand SVGs */}
-            <div className="flex gap-2.5">
-              <a
-                href="https://wa.me/917313726773"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="WhatsApp"
-                title="WhatsApp"
-                className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-[#25d366] hover:bg-[#25d366] hover:text-white hover:border-[#25d366] hover:-translate-y-1 transition-all duration-300"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                </svg>
-              </a>
-              <a
-                href="https://instagram.com/shreeganeshsteel"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                title="Instagram"
-                className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-[#e4405f] hover:bg-[#e4405f] hover:text-white hover:border-[#e4405f] hover:-translate-y-1 transition-all duration-300"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                </svg>
-              </a>
-              <a
-                href="https://facebook.com/shreeganeshsteel"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                title="Facebook"
-                className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-[#1877f2] hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] hover:-translate-y-1 transition-all duration-300"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.78-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.43-4.92 8.43-9.94z" />
-                </svg>
-              </a>
-              <a
-                href="https://linkedin.com/company/shreeganeshsteel"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                title="LinkedIn"
-                className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-[#0a66c2] hover:bg-[#0a66c2] hover:text-white hover:border-[#0a66c2] hover:-translate-y-1 transition-all duration-300"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
+            {/* GSTIN */}
+            <div className="text-[0.75rem] font-mono tracking-wider text-white/60">
+              <span className="text-[#3B8FE8] font-bold">GSTIN:</span>{" "}
+              <span className="text-white/85">27AQWPV4546L1ZP</span>
             </div>
           </div>
 
-          {/* Company */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[#c9a961] text-[0.75rem] font-bold tracking-[0.2em] uppercase mb-6 font-mono">
-              Company
+          {/* ============ COLUMN 2: QUICK LINKS ============ */}
+          <div>
+            <h4 className="text-white text-[0.8rem] font-bold tracking-[0.2em] uppercase mb-6 pb-3 border-b border-white/10">
+              Quick Links
             </h4>
             <ul className="flex flex-col gap-3">
               {[
+                { to: "/", label: "Home" },
                 { to: "/about", label: "About Us" },
-                { to: "/infra", label: "Infrastructure" },
-                { to: "/quality", label: "Quality" },
+                { to: "/products", label: "Products" },
                 { to: "/industries", label: "Industries" },
+                { to: "/certificate", label: "Certificates" },
+                { to: "/contact", label: "Contact Us" },
               ].map((link, i) => (
                 <li key={i}>
                   <Link
                     to={link.to}
-                    className="text-[0.92rem] text-white/85 hover:text-[#c9a961] hover:pl-1 transition-all duration-300 font-medium"
+                    className="group flex items-center gap-2 text-[0.88rem] text-white/80 hover:text-[#E63946] transition-colors font-medium"
                   >
+                    <span className="text-[#E63946] font-bold text-[0.9rem] leading-none group-hover:translate-x-0.5 transition-transform">
+                      ›
+                    </span>
                     {link.label}
                   </Link>
                 </li>
@@ -130,190 +86,198 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Products */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[#c9a961] text-[0.75rem] font-bold tracking-[0.2em] uppercase mb-6 font-mono">
-              Products
+          {/* ============ COLUMN 3: PRODUCT RANGE ============ */}
+          <div>
+            <h4 className="text-white text-[0.8rem] font-bold tracking-[0.2em] uppercase mb-6 pb-3 border-b border-white/10">
+              Product Range
             </h4>
             <ul className="flex flex-col gap-3">
               {[
-                "Stainless Steel",
-                "Flanges",
-                "Butt Weld Fittings",
-                "Forged Fittings",
-                "Valves",
-                "Pipes & Tubes",
-              ].map((label, i) => (
+                { label: "Pipes & Tubes", slug: "pipes-tubes" },
+                { label: "Buttweld Fittings", slug: "buttweld-fittings" },
+                {
+                  label: "Forged Socketweld & Screwed Fittings",
+                  slug: "forged-fittings",
+                },
+                { label: "Flanges", slug: "flanges" },
+                { label: "Ferrule Fittings", slug: "ferrule-fittings" },
+                { label: "Sheet, Plate & Coil", slug: "sheets-plates" },
+                { label: "Round, Square & Hex Bars", slug: "round-bars" },
+                { label: "Fasteners & Nut Bolts", slug: "fasteners" },
+                { label: "Dairy Fittings & Valves", slug: "dairy-fittings" },
+              ].map((item, i) => (
                 <li key={i}>
                   <Link
-                    to="/products"
-                    className="text-[0.92rem] text-white/85 hover:text-[#c9a961] hover:pl-1 transition-all duration-300 font-medium"
+                    to={`/categories/${item.slug}`}
+                    className="group flex items-start gap-2 text-[0.85rem] text-white/80 hover:text-[#E63946] transition-colors font-medium leading-snug"
                   >
-                    {label}
+                    <span className="w-1 h-1 rounded-full bg-[#E63946] flex-shrink-0 mt-2 group-hover:scale-150 transition-transform" />
+                    <span>{item.label}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Quick Links */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[#c9a961] text-[0.75rem] font-bold tracking-[0.2em] uppercase mb-6 font-mono">
-              Quick Links
+          {/* ============ COLUMN 4: CONTACT DETAILS ============ */}
+          <div>
+            <h4 className="text-white text-[0.8rem] font-bold tracking-[0.2em] uppercase mb-6 pb-3 border-b border-white/10">
+              Contact Details
             </h4>
-            <ul className="flex flex-col gap-3">
-              <li>
-                <Link
-                  to="/"
-                  className="text-[0.92rem] text-white/85 hover:text-[#c9a961] hover:pl-1 transition-all duration-300 font-medium"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products"
-                  className="text-[0.92rem] text-white/85 hover:text-[#c9a961] hover:pl-1 transition-all duration-300 font-medium"
-                >
-                  Products
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-[0.92rem] text-white/85 hover:text-[#c9a961] hover:pl-1 transition-all duration-300 font-medium"
-                >
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/919876543210?text=Hello%20Shree%20Ganesh%20Steel%2C%20I%20would%20like%20to%20request%20a%20quote."
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[0.92rem] text-white/85 hover:text-[#c9a961] hover:pl-1 transition-all duration-300 font-medium"
-                >
-                  Request a Quote
-                </a>
-              </li>
-            </ul>
-          </div>
 
-          {/* ✅ Contact — actual SVG icons + proper alignment */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[#c9a961] text-[0.75rem] font-bold tracking-[0.2em] uppercase mb-6 font-mono">
-              Contact
-            </h4>
             <ul className="flex flex-col gap-4">
-              {/* Phone */}
-              <li>
-                <a
-                  href="tel:+919876543210"
-                  className="group flex items-start gap-3 text-[0.9rem] text-white/85 leading-relaxed hover:text-[#c9a961] transition-colors"
-                >
-                  <span className="w-8 h-8 rounded-md bg-[#c9a961]/10 border border-[#c9a961]/20 flex items-center justify-center text-[#c9a961] flex-shrink-0 group-hover:bg-[#c9a961] group-hover:text-[#0a1628] transition-all duration-300">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                  </span>
-                  <span className="font-medium pt-1">+91 98765 43210</span>
-                </a>
-              </li>
-
-              {/* Email */}
-              <li>
-                <a
-                  href="mailto:info@shreeganeshsteel.com"
-                  className="group flex items-start gap-3 text-[0.9rem] text-white/85 leading-relaxed hover:text-[#c9a961] transition-colors"
-                >
-                  <span className="w-8 h-8 rounded-md bg-[#c9a961]/10 border border-[#c9a961]/20 flex items-center justify-center text-[#c9a961] flex-shrink-0 group-hover:bg-[#c9a961] group-hover:text-[#0a1628] transition-all duration-300">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <rect x="2" y="4" width="20" height="16" rx="2" />
-                      <path d="M22 6l-10 7L2 6" />
-                    </svg>
-                  </span>
-                  <span className="font-medium pt-1 break-all">
-                    info@shreeganeshsteel.com
-                  </span>
-                </a>
-              </li>
-
               {/* Address */}
-              <li>
-                <div className="flex items-start gap-3 text-[0.9rem] text-white/85 leading-relaxed">
-                  <span className="w-9 h-9 rounded-md bg-[#c9a961]/10 border border-[#c9a961]/20 flex items-center justify-center text-[#c9a961] flex-shrink-0 mt-0.5">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                  </span>
-                  <span className="font-medium pt-1.5 flex-1 min-w-0 break-words">
-                    191, Ground Floor, 2'nd Khumbharwada, Near Gol Deval Temple,
-                    Mumbai-400004, Maharashtra, India
-                  </span>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-5 h-5 mt-0.5 text-[#E63946]">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
+                  </svg>
+                </span>
+                <span className="text-[0.82rem] text-white/80 leading-relaxed">
+                  Shop No. 1, Plot No. 191, GRD Floor, Nawsarwala Building, Sant
+                  Sena Maharaj Marg, 2nd Kumbhwarwada Street, Mumbai — 400004,
+                  Maharashtra, India
+                </span>
+              </li>
+
+              {/* Telephone */}
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-5 h-5 mt-0.5 text-[#E63946]">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                  </svg>
+                </span>
+                <div className="text-[0.82rem] text-white/80 leading-relaxed">
+                  <div className="text-[0.72rem] text-white/55 font-medium tracking-wider uppercase mb-1">
+                    Telephone:
+                  </div>
+                  <a
+                    href="tel:+912267437304"
+                    className="block hover:text-[#E63946] transition-colors font-semibold"
+                  >
+                    022-6743 7304
+                  </a>
+                  <a
+                    href="tel:+912266109359"
+                    className="block hover:text-[#E63946] transition-colors font-semibold"
+                  >
+                    022-6610 9359
+                  </a>
+                </div>
+              </li>
+
+              {/* Mobile */}
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-5 h-5 mt-0.5 text-[#E63946]">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17 1H7a3 3 0 00-3 3v16a3 3 0 003 3h10a3 3 0 003-3V4a3 3 0 00-3-3zm-5 20a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm6-4H6V5h12v12z" />
+                  </svg>
+                </span>
+                <div className="text-[0.82rem] text-white/80 leading-relaxed">
+                  <div className="text-[0.72rem] text-white/55 font-medium tracking-wider uppercase mb-1">
+                    Mobile:
+                  </div>
+                  <a
+                    href="tel:+919619435529"
+                    className="block hover:text-[#E63946] transition-colors font-semibold"
+                  >
+                    +91 96194 35529
+                  </a>
+                  <a
+                    href="tel:+917021519829"
+                    className="block hover:text-[#E63946] transition-colors font-semibold"
+                  >
+                    +91 70215 19829
+                  </a>
                 </div>
               </li>
 
               {/* WhatsApp */}
-              <li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-5 h-5 mt-0.5 text-[#25d366]">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                  </svg>
+                </span>
                 <a
-                  href="https://wa.me/917313726773"
+                  href="https://wa.me/919619435529"
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-start gap-3 text-[0.9rem] text-white/85 leading-relaxed hover:text-[#25d366] transition-colors"
+                  className="text-[0.82rem] text-white/80 hover:text-[#25d366] transition-colors font-semibold"
                 >
-                  <span className="w-8 h-8 rounded-md bg-[#25d366]/10 border border-[#25d366]/20 flex items-center justify-center text-[#25d366] flex-shrink-0 group-hover:bg-[#25d366] group-hover:text-white transition-all duration-300">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                    </svg>
-                  </span>
-                  <span className="font-medium pt-1">WhatsApp</span>
+                  +91 96194 35529 (WhatsApp)
+                </a>
+              </li>
+
+              {/* Email */}
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-5 h-5 mt-0.5 text-[#E63946]">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                  </svg>
+                </span>
+                <a
+                  href="mailto:info@shreeganeshsteel.com"
+                  className="text-[0.82rem] text-white/80 hover:text-[#E63946] transition-colors font-semibold break-all"
+                >
+                  info@shreeganeshsteel.com
+                </a>
+              </li>
+
+              {/* Website */}
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-5 h-5 mt-0.5 text-[#E63946]">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14A8.1 8.1 0 014 12c0-.69.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 015.08 16zm2.95-8H5.08a8.03 8.03 0 014.33-3.56A15.65 15.65 0 008.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2 0 .69-.1 1.36-.26 2h-3.38z" />
+                  </svg>
+                </span>
+                <a
+                  href="https://shreeganeshsteel.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[0.82rem] text-white/80 hover:text-[#E63946] transition-colors font-semibold"
+                >
+                  www.shreeganeshsteel.com
                 </a>
               </li>
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* ============ BOTTOM BAR ============ */}
-        <div className="py-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-          <span className="text-xs sm:text-sm text-white/70 font-mono tracking-wider">
-            © SHREE GANESH STEEL CORPORATION. All Rights Reserved.
+      {/* ==========================================
+          BOTTOM BAR
+         ========================================== */}
+      <div className="border-t border-white/10 bg-[#0a2340]">
+        <div className="max-w-[1320px] mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          {/* Copyright */}
+          <span className="text-xs sm:text-[0.8rem] text-white/60 font-mono tracking-wider">
+            © 2026{" "}
+            <span className="text-white/85 font-bold">SHREE GANESH STEEL</span>.
+            All rights reserved. | ISO 9001:2015 Certified Company
           </span>
-          <span className="text-xs sm:text-sm text-white/70 font-mono tracking-wider">
-            Designed with precision · Built for industry
-          </span>
+
+          {/* Bottom links */}
+          <div className="flex items-center gap-6">
+            <Link
+              to="/about"
+              className="text-xs sm:text-[0.8rem] text-white/70 hover:text-[#E63946] transition-colors font-medium"
+            >
+              About
+            </Link>
+            <Link
+              to="/products"
+              className="text-xs sm:text-[0.8rem] text-white/70 hover:text-[#E63946] transition-colors font-medium"
+            >
+              Products
+            </Link>
+            <Link
+              to="/contact"
+              className="text-xs sm:text-[0.8rem] text-white/70 hover:text-[#E63946] transition-colors font-medium"
+            >
+              Contact
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
