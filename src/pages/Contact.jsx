@@ -38,7 +38,7 @@ const CONTACT_INFO = {
   gst: "27AQWPV4546L1ZP",
   msme: "Registered MSME (Udyam)",
   whatsapp:
-    "https://wa.me/919619435529?text=Hello%20Shree%20Ganesh%20Steel%2C%20I%20would%20like%20to%20request%20a%20quote.",
+    "https://wa.me/917021519829?text=Hello%20Shree%20Ganesh%20Steel%2C%20I%20would%20like%20to%20request%20a%20quote.",
   products: [
     "Pipes",
     "Rod",
@@ -161,7 +161,7 @@ const Contact = () => {
     e.preventDefault();
     // Build WhatsApp message
     const message = `Hello Shree Ganesh Steel Corporation,%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Company:* ${formData.company}%0A*Subject:* ${formData.subject}%0A%0A*Message:*%0A${formData.message}`;
-    window.open(`https://wa.me/919619435529?text=${message}`, "_blank");
+    window.open(`https://wa.me/917021519829?text=${message}`, "_blank");
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
   };
@@ -613,7 +613,7 @@ const Contact = () => {
                   href={CONTACT_INFO.whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-[#0B3E8C] font-bold text-sm px-7 py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-[#25d366] to-[#1ebd5a] hover:bg-green-300 font-bold text-sm px-7 py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                   WhatsApp Us

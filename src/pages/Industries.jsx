@@ -292,7 +292,7 @@ const Industries = () => {
                     Product Categories
                   </div>
                   <ul className="space-y-1.5">
-                    {["Pipes", "Flanges", "Fittings", "Valves"].map((p, i) => (
+                    {["Pipes", "Flanges", "Fittings", "coils"].map((p, i) => (
                       <li
                         key={i}
                         className="flex items-center gap-2 text-sm text-white/75"

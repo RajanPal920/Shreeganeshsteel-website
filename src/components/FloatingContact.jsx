@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 // CONTACT CONFIG
 // ============================================
 const PHONE_NUMBER = "+917313726773";
-const WHATSAPP_NUMBER = "917313726773";
+const WHATSAPP_NUMBER = "917021519829";
 const WHATSAPP_MESSAGE = encodeURIComponent(
   "Hello Shree Ganesh Steel, I would like to request a quote.",
 );

@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 // ============================================
 // WHATSAPP CONFIG
 // ============================================
-const WHATSAPP_NUMBER = "917313726773";
+const WHATSAPP_NUMBER = "917021519829";
 const WHATSAPP_MESSAGE = encodeURIComponent(
   "Hello Shree Ganesh Steel, I would like to request a quote.",
 );
@@ -770,7 +770,7 @@ const Header = () => {
             <img
               src="/images/logo.png"
               alt="Shree Ganesh Steel Corporation"
-              className="h-14 sm:h-16 lg:h-18 w-auto object-contain"
+              className="h-14 sm:h-16 lg:h-22 w-auto object-contain"
             />
           </Link>
 

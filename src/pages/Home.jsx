@@ -305,7 +305,7 @@ export default function Home() {
                 backgroundSize: "50px 50px",
               }}
             />
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C8102E] to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ca1533] to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#1E6FD9]/50 to-transparent" />
           </div>
 

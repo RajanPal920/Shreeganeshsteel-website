@@ -315,7 +315,7 @@ export default function ProductDetail() {
               {/* CTA */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href={`https://wa.me/917313726773?text=${encodeURIComponent(
+                  href={`https://wa.me/917021519829?text=${encodeURIComponent(
                     `Hello Shree Ganesh Steel, I would like to inquire about: ${product.title}`,
                   )}`}
                   target="_blank"

@@ -14,7 +14,7 @@ export const industries = [
       "Pipes",
       "Flanges",
       "Butt Weld Fittings",
-      "Valves",
+      "Coils",
       "Bars",
     ],
     applications: [
