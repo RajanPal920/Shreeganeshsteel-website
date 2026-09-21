@@ -24,16 +24,20 @@ const getAllProducts = () => {
 // ============================================
 // MATERIAL → KEYWORDS MAP (strict)
 // ============================================
+// ============================================
+// MATERIAL SLUG → EXACT materialGroup MATCH
+// (strict — no partial matching)
+// ============================================
 const materialKeywords = {
-  "stainless-steel": ["stainless steel", "stainless"],
-  nickel: ["nickel", "inconel", "incoloy", "monel"],
-  "high-alloys": ["hastelloy", "alloy 20", "smo 254"],
-  duplex: ["duplex"],
-  "super-duplex": ["super duplex"],
-  titanium: ["titanium"],
-  alloys: ["zirconium", "tantalum", "cu-ni"],
-  carbon: ["carbon steel", "carbon"],
-  "alloy-steel": ["alloy steel"],
+  "stainless-steel": ["Stainless Steel"],
+  carbon: ["Carbon"],
+  "alloy-steel": ["Alloy Steel"],
+  duplex: ["Duplex"],
+  "super-duplex": ["Super Duplex"],
+  nickel: ["Nickel"],
+  "high-alloys": ["High Alloys"],
+  titanium: ["Titanium"],
+  alloys: ["Alloys"],
 };
 
 // ============================================
@@ -67,15 +71,12 @@ export default function MaterialDetail() {
   // ✅ Get all products
   const allProducts = getAllProducts();
 
-  // ✅ Get keywords
-  const keywords = materialKeywords[material.slug] || [
-    material.name.toLowerCase(),
-  ];
+  // ✅ EXACT MATCH — sirf wahi products jinka materialGroup exact match kare
+  const keywords = materialKeywords[material.slug] || [material.name];
 
-  // ✅ STRICT FILTER: Only match materialGroup field
   const displayProducts = allProducts.filter((p) => {
-    const materialGroup = (p.materialGroup || "").toLowerCase();
-    return keywords.some((kw) => materialGroup.includes(kw.toLowerCase()));
+    const materialGroup = (p.materialGroup || "").trim().toLowerCase();
+    return keywords.some((kw) => materialGroup === kw.trim().toLowerCase());
   });
 
   return (
