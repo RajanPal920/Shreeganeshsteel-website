@@ -266,10 +266,10 @@ export default function Materials() {
 
           {/* Content — centered glass card */}
           <div className="relative z-10 w-full max-w-[1320px] mx-auto px-5 sm:px-8 py-14 sm:py-16 flex items-center justify-center">
-            <div className="max-w-3xl w-full mx-auto backdrop-blur-s bg-[#0B3E8C]/40 border border-white/20 rounded-2xl sm:rounded-3xl px-6 sm:px-10 lg:px-14 py-10 sm:py-12 shadow-[0_25px_60px_rgba(0,0,0,0.3)] text-center">
+            <div className="max-w-3xl w-full mx-auto backdrop-blur-xl bg-[#0B3E8C]/20 border border-white/20 rounded-2xl sm:rounded-3xl px-6 sm:px-10 lg:px-14 py-10 sm:py-12 shadow-[0_25px_60px_rgba(0,0,0,0.3)] text-center">
               {/* Breadcrumb */}
-              <nav className="flex items-center justify-center gap-2 text-xs text-white/70 font-mono tracking-wider uppercase mb-5">
-                <Link to="/" className="hover:text-[#4A9EFF] transition-colors">
+              <nav className="flex items-center justify-center gap-2 text-xs text-white/70 font-bold tracking-wider uppercase mb-5">
+                <Link to="/" className="hover:text-[#f1f4f7] transition-colors">
                   Home
                 </Link>
                 <span>/</span>
@@ -277,7 +277,7 @@ export default function Materials() {
               </nav>
 
               {/* Eyebrow */}
-              <div className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#E63946] mb-4">
+              <div className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-white mb-4">
                 <span className="w-8 h-px bg-[#E63946]" />
                 Metallurgical Grades
                 <span className="w-8 h-px bg-[#E63946]" />
@@ -293,7 +293,7 @@ export default function Materials() {
               </h1>
 
               {/* Description */}
-              <p className="text-white/85 leading-relaxed max-w-2xl mx-auto text-base sm:text-lg mb-8">
+              <p className="text-white leading-relaxed max-w-2xl mx-auto text-base sm:text-lg mb-8 font-bold">
                 Aerospace, chemical, oil & gas, and industrial metallurgy —
                 sourced from prime mills with full EN 10204 3.1 & 3.2 mill test
                 certificates and PMI verification.
@@ -305,7 +305,7 @@ export default function Materials() {
                   <div className="text-3xl font-extrabold tracking-tight leading-none tabular-nums text-white">
                     {materials.length}
                   </div>
-                  <div className="text-[0.68rem] font-medium tracking-widest uppercase text-[#4A9EFF] mt-2">
+                  <div className="text-[0.68rem] font-bold tracking-widest uppercase text-white mt-2">
                     Material Groups
                   </div>
                 </div>
@@ -313,7 +313,7 @@ export default function Materials() {
                   <div className="text-3xl font-extrabold tracking-tight leading-none tabular-nums text-white">
                     100%
                   </div>
-                  <div className="text-[0.68rem] font-medium tracking-widest uppercase text-[#E63946] mt-2">
+                  <div className="text-[0.68rem] font-bold tracking-widest uppercase text-white mt-2">
                     Mill Certified
                   </div>
                 </div>
@@ -321,7 +321,7 @@ export default function Materials() {
                   <div className="text-3xl font-extrabold tracking-tight leading-none tabular-nums text-white">
                     EN 10204
                   </div>
-                  <div className="text-[0.68rem] font-medium tracking-widest uppercase text-[#4A9EFF] mt-2">
+                  <div className="text-[0.68rem] font-bold tracking-widest uppercase text-white mt-2">
                     3.1 & 3.2
                   </div>
                 </div>
@@ -345,7 +345,7 @@ export default function Materials() {
               Browse Our Material
               <span className="text-[#C8102E]"> Portfolio.</span>
             </h2>
-            <p className="text-[#5a6b7d] leading-relaxed">
+            <p className="text-[#5a6b7d] leading-relaxed font-bold">
               Click any material to explore products available in that grade
               family, with full technical specifications and certifications.
             </p>
@@ -399,7 +399,7 @@ export default function Materials() {
                 <h3 className="text-base font-bold text-[#0B3E8C] mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-[#5a6b7d]">{item.desc}</p>
+                <p className="text-sm text-[#5a6b7d] font-medium">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -416,7 +416,7 @@ export default function Materials() {
             <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white/80 mb-4">
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white mb-4">
                 <span className="w-6 h-px bg-white/60" />
                 Direct Inquiry
                 <span className="w-6 h-px bg-white/60" />
@@ -426,9 +426,9 @@ export default function Materials() {
                 <br />
                 <span className="text-white/80">Grade or Specification?</span>
               </h2>
-              <p className="text-white/85 leading-relaxed mb-8 text-base sm:text-lg max-w-2xl mx-auto">
+              <p className="text-white font-bold leading-relaxed mb-8 text-base sm:text-lg max-w-2xl mx-auto">
                 Share your material grade, dimensions, quantity, and
-                certification requirements — our team responds within 2 hours.
+                certification requirements our team responds within 2 hours.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a

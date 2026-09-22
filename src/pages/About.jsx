@@ -127,7 +127,7 @@ const StatItem = ({ value, suffix = "", label, delay = 0 }) => {
         {count}
         {suffix}
       </div>
-      <div className="text-[0.62rem] sm:text-[0.68rem] font-medium tracking-widest uppercase text-[#4A9EFF] mt-1.5 leading-snug">
+      <div className="text-[0.62rem] sm:text-[0.68rem] font-medium tracking-widest uppercase text-white mt-1.5 leading-snug">
         {label}
       </div>
     </div>
@@ -154,10 +154,10 @@ export default function About() {
           <div className="relative z-20 h-full flex items-center justify-center">
             <div className="max-w-[1320px] w-full mx-auto px-5 sm:px-8 flex items-center justify-center">
               {/* ✅ GLASS MORPHISM CONTAINER — reduced height */}
-              <div className="max-w-2xl w-full mx-auto backdrop-blur-s bg-[#0B3E8C]/30 border border-white/90 rounded-2xl sm:rounded-3xl px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 shadow-[0_25px_60px_rgba(0,0,0,0.25)] text-center">
+              <div className="max-w-2xl w-full mx-auto backdrop-blur-xl bg-[#0B3E8C]/40 border border-white/90 rounded-2xl sm:rounded-3xl px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 shadow-[0_25px_60px_rgba(0,0,0,0.25)] text-center">
                 {/* Eyebrow */}
                 <div
-                  className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#4A9EFF] mb-4"
+                  className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-white mb-4"
                   style={{ animation: "heroFadeUp 0.8s ease-out 0.1s both" }}
                 >
                   <span className="w-6 sm:w-8 h-px bg-[#E63946]" />
@@ -183,7 +183,7 @@ export default function About() {
 
                 {/* Description */}
                 <p
-                  className="text-[0.9rem] sm:text-base text-white/95 leading-relaxed max-w-xl mx-auto mb-6"
+                  className="text-[1rem] sm:text-base text-white font-bold leading-relaxed max-w-xl mx-auto mb-6"
                   style={{ animation: "heroFadeUp 0.9s ease-out 0.65s both" }}
                 >
                   Since 2013, Shree Ganesh Steel Corporation has been a trusted
@@ -298,7 +298,7 @@ export default function About() {
                     Industrial Excellence.
                   </span>
                 </h2>
-                <div className="space-y-4 text-[#5a6b7d] leading-relaxed">
+                <div className="space-y-4 text-[#5a6b7d] font-medium leading-relaxed">
                   <p>
                     At Shree Ganesh Steel Corporation, we have an in-depth
                     understanding of evolving market trends and customer
@@ -331,7 +331,7 @@ export default function About() {
                     <div className="text-sm font-bold text-[#0B3E8C]">
                       Premium Quality
                     </div>
-                    <div className="text-xs text-[#8896a6] mt-1">
+                    <div className="text-xs text-[#8896a6] font-medium mt-1">
                       Guaranteed materials
                     </div>
                   </div>
@@ -348,7 +348,7 @@ export default function About() {
                     <div className="text-sm font-bold text-[#0B3E8C]">
                       On-Time Delivery
                     </div>
-                    <div className="text-xs text-[#8896a6] mt-1">
+                    <div className="text-xs text-[#8896a6] font-medium mt-1">
                       Committed timelines
                     </div>
                   </div>
@@ -374,9 +374,9 @@ export default function About() {
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B3E8C] tracking-tight mb-4">
                 Milestones That Define Us
               </h2>
-              <p className="text-[#5a6b7d] max-w-2xl mx-auto">
+              <p className="text-[#5a6b7d] max-w-2xl font-medium mx-auto">
                 From a modest beginning in Mumbai to serving clients across 40+
-                countries — our journey reflects consistency, quality and trust.
+                countries our journey reflects consistency, quality and trust.
               </p>
             </div>
           </Reveal>
@@ -441,7 +441,7 @@ export default function About() {
                         <h3 className="text-lg font-bold text-[#0B3E8C] mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-[#5a6b7d] leading-relaxed">
+                        <p className="text-sm text-[#5a6b7d] font-medium leading-relaxed">
                           {item.desc}
                         </p>
                       </div>
@@ -483,9 +483,9 @@ export default function About() {
                 Comprehensive Steel Solutions for
                 <span className="text-[#C8102E]"> Critical Industries.</span>
               </h2>
-              <p className="text-[#5a6b7d] leading-relaxed">
+              <p className="text-[#5a6b7d] font-medium leading-relaxed">
                 We manufacture, supply and export a wide spectrum of industrial
-                steel products — each engineered to meet stringent international
+                steel products each engineered to meet stringent international
                 standards and deliver performance in the most demanding
                 environments.
               </p>
@@ -571,7 +571,7 @@ export default function About() {
                   <h3 className="text-base font-bold text-[#0B3E8C] mb-2 group-hover:text-[#C8102E] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[#5a6b7d] leading-relaxed">
+                  <p className="text-sm text-[#5a6b7d] font-medium leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -592,7 +592,7 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             <Reveal>
               <div>
-                <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#4A9EFF] mb-4">
+                <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-white mb-4">
                   <span className="w-6 h-px bg-[#E63946]" />
                   Why Choose Us
                 </div>
@@ -600,7 +600,7 @@ export default function About() {
                   Why Shree Ganesh
                   <span className="text-[#E63946]"> Steel Stands Apart.</span>
                 </h2>
-                <p className="text-white/70 leading-relaxed mb-8">
+                <p className="text-white font-bold leading-relaxed mb-8">
                   Our core values — honest business practices and ethical
                   operations — set us apart in a competitive market. Every
                   commitment made to our customers is fulfilled with integrity
@@ -653,7 +653,7 @@ export default function About() {
                         <div className="font-bold text-white text-sm mb-1">
                           {item.title}
                         </div>
-                        <div className="text-xs text-white/60 leading-relaxed">
+                        <div className="text-xs text-white font-medium leading-relaxed">
                           {item.desc}
                         </div>
                       </div>
@@ -685,7 +685,7 @@ export default function About() {
                       key={i}
                       className="flex justify-between gap-4 py-3 border-b border-white/10 last:border-0"
                     >
-                      <span className="text-xs text-white/50 font-medium tracking-wider uppercase">
+                      <span className="text-xs text-white font-medium tracking-wider uppercase">
                         {item.label}
                       </span>
                       <span className="text-sm font-bold text-white text-right">
@@ -706,10 +706,11 @@ export default function About() {
                       "Steel Pipe Fittings",
                       "Carbon Steel Fittings",
                       "Copper Pipe Fittings",
+                      "Stainless Steel Fittings",
                     ].map((tag) => (
                       <span
                         key={tag}
-                        className="text-[0.65rem] font-mono tracking-wider uppercase bg-white/5 text-white/70 px-2.5 py-1 rounded border border-white/10 hover:border-[#4A9EFF]/40 hover:text-[#4A9EFF] transition-colors cursor-default"
+                        className="text-[0.70rem] tracking-wider uppercase bg-white/5 text-white font-medium px-2.5 py-1 rounded border border-white/10 hover:border-[#4A9EFF]/40 hover:text-[#4A9EFF] transition-colors cursor-default"
                       >
                         {tag}
                       </span>
@@ -737,7 +738,7 @@ export default function About() {
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B3E8C] tracking-tight mb-4">
                 Powering Critical Sectors
               </h2>
-              <p className="text-[#5a6b7d] max-w-2xl mx-auto">
+              <p className="text-[#5a6b7d] font-medium max-w-2xl mx-auto">
                 Our products are trusted across diverse industries where
                 precision, durability and reliability are non-negotiable.
               </p>
@@ -779,6 +780,7 @@ export default function About() {
             ].map((industry, i) => (
               <Reveal key={i} delay={i * 60}>
                 <div className="group relative rounded-2xl overflow-hidden border border-gray-200 hover:border-[#C8102E]/50 hover:shadow-[0_20px_50px_rgba(200,16,46,0.15)] transition-all duration-500 h-full">
+                  {/* Image */}
                   <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                     <img
                       src={industry.image}
@@ -788,37 +790,85 @@ export default function About() {
                         e.target.style.display = "none";
                       }}
                     />
-                  </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="w-6 h-px bg-[#E63946]" />
-                      <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-[#E63946]">
-                        Industry
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-[#4A9EFF] transition-colors">
-                      {industry.name}
-                    </h3>
-                    <p className="text-xs text-white font-bold leading-relaxed max-h-0 group-hover:max-h-20 overflow-hidden transition-all duration-500">
-                      {industry.desc}
-                    </p>
-                  </div>
+                    {/* Dark + Glass Overlay */}
+                    <div
+                      className="
+        absolute inset-0
+        bg-black/10
+        group-hover:bg-black/30
+        transition-all duration-500
+      "
+                    />
 
-                  <span className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#C8102E]/0 group-hover:bg-[#C8102E] flex items-center justify-center transition-all duration-500">
-                    <svg
-                      className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                    {/* Glass Content */}
+                    <div
+                      className="
+        absolute inset-x-4 bottom-4
+        p-5
+        rounded-xl
+        bg-white/10
+        backdrop-blur-md
+        border border-white/20
+        shadow-[0_8px_32px_rgba(0,0,0,0.18)]
+        opacity-0
+        translate-y-6
+        group-hover:opacity-100
+        group-hover:translate-y-0
+        transition-all duration-500 ease-out
+      "
                     >
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  </span>
+                      {/* Label */}
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="w-6 h-px bg-[#E63946]" />
+
+                        <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-[#E63946]">
+                          Industry
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-lg font-bold text-white mb-2">
+                        {industry.name}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-xs text-white/90 font-medium leading-relaxed">
+                        {industry.desc}
+                      </p>
+                    </div>
+
+                    {/* Arrow */}
+                    <span
+                      className="
+        absolute top-4 right-4
+        w-9 h-9
+        rounded-full
+        bg-white/10
+        backdrop-blur-md
+        border border-white/20
+        flex items-center justify-center
+        opacity-0
+        scale-75
+        group-hover:opacity-100
+        group-hover:scale-100
+        transition-all duration-500
+      "
+                    >
+                      <svg
+                        className="w-4 h-4 text-white"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -842,9 +892,9 @@ export default function About() {
                   Uncompromising Quality at
                   <span className="text-[#C8102E]"> Every Stage.</span>
                 </h2>
-                <p className="text-[#5a6b7d] leading-relaxed mb-8">
+                <p className="text-[#5a6b7d] font-medium leading-relaxed mb-8">
                   At Shree Ganesh Steel Corporation, quality is not just a
-                  promise — it is a process. From raw material sourcing to final
+                  promise it is a process. From raw material sourcing to final
                   dispatch, every product passes through rigorous quality checks
                   to ensure it meets international standards and customer
                   expectations.
@@ -886,7 +936,7 @@ export default function About() {
                         <div className="font-bold text-[#0B3E8C] text-sm mb-1">
                           {item.title}
                         </div>
-                        <div className="text-xs text-[#5a6b7d] leading-relaxed">
+                        <div className="text-xs text-[#5a6b7d] font-medium leading-relaxed">
                           {item.desc}
                         </div>
                       </div>
@@ -934,7 +984,7 @@ export default function About() {
                 Built for Scale,
                 <span className="text-[#C8102E]"> Precision & Speed.</span>
               </h2>
-              <p className="text-[#5a6b7d] leading-relaxed">
+              <p className="text-[#5a6b7d] font-medium leading-relaxed">
                 Located in a well-connected industrial area of Mumbai, our
                 facility is equipped with advanced machinery and cutting-edge
                 technology that enable us to produce a wide range of stainless
@@ -974,7 +1024,7 @@ export default function About() {
                   <h3 className="text-sm font-bold text-[#0B3E8C] mb-2 uppercase tracking-wide group-hover:text-[#C8102E] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-[#5a6b7d] leading-relaxed">
+                  <p className="text-xs font-medium text-[#5a6b7d] leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -996,7 +1046,7 @@ export default function About() {
         <div className="relative max-w-[1320px] mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#4A9EFF] mb-4">
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-white mb-4">
                 <span className="w-6 h-px bg-[#E63946]" />
                 Global Presence
                 <span className="w-6 h-px bg-[#E63946]" />
@@ -1005,7 +1055,7 @@ export default function About() {
                 Delivering Across
                 <span className="text-[#E63946]"> Continents.</span>
               </h2>
-              <p className="text-white/70 max-w-2xl mx-auto">
+              <p className="text-white font-bold max-w-2xl mx-auto">
                 Our products are trusted by clients across 40+ countries,
                 powering critical industrial operations worldwide.
               </p>
@@ -1034,7 +1084,7 @@ export default function About() {
                   >
                     {item.count}
                   </div>
-                  <div className="text-xs font-bold tracking-widest uppercase text-white/70">
+                  <div className="text-xs font-bold tracking-widest uppercase text-white">
                     {item.region}
                   </div>
                 </div>
@@ -1073,7 +1123,7 @@ export default function About() {
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B3E8C] tracking-tight mb-4">
                 Principles That Guide Us
               </h2>
-              <p className="text-[#5a6b7d] max-w-2xl mx-auto">
+              <p className="text-[#5a6b7d] font-medium max-w-2xl mx-auto">
                 Our motto is to maximize customer satisfaction by delivering
                 high-quality products as per agreed specifications, within the
                 committed time frame and at the designated location.
@@ -1147,7 +1197,7 @@ export default function About() {
                   >
                     {value.title}
                   </h3>
-                  <p className="text-sm text-[#5a6b7d] leading-relaxed">
+                  <p className="text-sm text-[#5a6b7d] font-medium leading-relaxed">
                     {value.desc}
                   </p>
                 </div>
@@ -1169,7 +1219,7 @@ export default function About() {
 
               <div className="relative grid lg:grid-cols-2 gap-10 items-center">
                 <div>
-                  <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#E63946] mb-4">
+                  <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white mb-4">
                     <span className="w-8 h-px bg-[#E63946]" />
                     Get In Touch
                   </div>
@@ -1180,7 +1230,7 @@ export default function About() {
                       Premium Steel Products?
                     </span>
                   </h2>
-                  <p className="text-white/75 leading-relaxed mb-8 text-base sm:text-lg">
+                  <p className="text-white font-bold leading-relaxed mb-8 text-base sm:text-lg">
                     Share your specifications with our team and receive a
                     competitive quote within 24 hours. We handle custom orders,
                     bulk requirements and export inquiries.
@@ -1280,7 +1330,7 @@ export default function About() {
                       <div className="text-[0.7rem] font-bold tracking-widest uppercase text-[#4A9EFF] mb-1">
                         Address
                       </div>
-                      <p className="text-white/75 text-xs leading-relaxed">
+                      <p className="text-white font-bold text-xs leading-relaxed">
                         191, Ground Floor, 2nd Khumbharwada,
                         <br />
                         Near Gol Deval Temple, Mumbai,

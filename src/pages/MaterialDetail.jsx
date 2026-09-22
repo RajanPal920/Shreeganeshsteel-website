@@ -103,7 +103,7 @@ export default function MaterialDetail() {
           {/* Content — centered */}
           <div className="relative z-10 w-full max-w-[1320px] mx-auto px-5 sm:px-8 py-16 sm:py-20">
             {/* ✅ GLASS CARD */}
-            <div className="max-w-2xl mx-auto text-center backdrop-blur-s bg-[#0B3E8C]/40 border border-white/20 rounded-2xl sm:rounded-3xl px-5 sm:px-8 lg:px-10 py-7 sm:py-8 shadow-[0_25px_60px_rgba(0,0,0,0.35)]">
+            <div className="max-w-2xl mx-auto text-center backdrop-blur-xl bg-[#0B3E8C]/40 border border-white/20 rounded-2xl sm:rounded-3xl px-5 sm:px-8 lg:px-10 py-7 sm:py-8 ">
               {/* Breadcrumb */}
               <nav className="flex items-center justify-center gap-2 text-xs text-white/80 font-mono tracking-wider uppercase mb-6 flex-wrap">
                 <Link to="/" className="hover:text-[#E63946] transition-colors">

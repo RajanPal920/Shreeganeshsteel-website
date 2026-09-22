@@ -278,7 +278,7 @@ const Contact = () => {
 
           <div className="relative z-20 h-full min-h-[500px] sm:min-h-[550px] lg:min-h-[660px] flex items-center justify-center py-16 sm:py-20">
             <div className="max-w-[1320px] w-full mx-auto px-5 sm:px-8 flex items-center justify-center">
-              <div className="max-w-2xl w-full mx-auto backdrop-blur-s bg-[#0B3E8C]/40 border border-white/90 rounded-2xl sm:rounded-3xl px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 shadow-[0_25px_60px_rgba(0,0,0,0.25)] text-center">
+              <div className="max-w-2xl w-full mx-auto backdrop-blur-s bg-[#0B3E8C]/40 border border-white/90 rounded-2xl sm:rounded-3xl px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 text-center">
                 <nav className="flex items-center justify-center gap-2 text-xs text-white/70 font-mono tracking-wider uppercase mb-5">
                   <Link
                     to="/"
@@ -294,17 +294,17 @@ const Contact = () => {
                   Get In Touch
                   <span className="w-6 sm:w-8 h-px bg-[#E63946]" />
                 </div>
-                <h1 className="text-[1.7rem] leading-[1.1] sm:text-[2.3rem] lg:text-[2.9rem] xl:text-[3.2rem] font-medium sm:font-extrabold tracking-tight text-white mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
+                <h1 className="text-[1.7rem] leading-[1.1] sm:text-[2.3rem] lg:text-[2.9rem] xl:text-[3.2rem] font-medium sm:font-extrabold tracking-tight text-white mb-4 ">
                   Let's Discuss Your
                   <br />
                   <em className="not-italic text-[#E63946]">
                     Steel Requirements.
                   </em>
                 </h1>
-                <p className="text-[0.9rem] sm:text-base text-white leading-relaxed max-w-xl mx-auto">
+                <p className="text-[1rem] sm:text-base text-white leading-relaxed max-w-xl font-bold mx-auto">
                   Whether you need a quote, technical information or custom
-                  specifications — our team is here to help. Reach out via
-                  phone, email or WhatsApp.
+                  specifications our team is here to help. Reach out via phone,
+                  email or WhatsApp.
                 </p>
               </div>
             </div>
@@ -313,91 +313,17 @@ const Contact = () => {
       </section>
 
       {/* ==========================================
-          QUICK CONTACT CARDS
-         ========================================== */}
-      <section className="py-14 sm:py-16 bg-white relative -mt-8 sm:-mt-12">
-        <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {/* Phone */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-[0_10px_30px_rgba(11,62,140,0.06)] hover:shadow-[0_20px_50px_rgba(11,62,140,0.12)] hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0B3E8C] to-[#1E6FD9] text-white flex items-center justify-center mb-4">
-                <PhoneIcon />
-              </div>
-              <h3 className="text-base font-bold text-[#0B3E8C] mb-3">
-                Call Us
-              </h3>
-              <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
-                {CONTACT_INFO.phones.map((p) => (
-                  <a
-                    key={p.label}
-                    href={p.href}
-                    className="flex items-center justify-between gap-2 text-sm text-[#68758A] hover:text-[#C8102E] transition-colors group"
-                  >
-                    <span className="font-semibold">{p.label}</span>
-                    <span className="text-[0.6rem] font-bold tracking-widest uppercase text-[#C8102E] bg-[#C8102E]/10 px-2 py-0.5 rounded">
-                      {p.type}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Email */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-[0_10px_30px_rgba(11,62,140,0.06)] hover:shadow-[0_20px_50px_rgba(11,62,140,0.12)] hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#C8102E] to-[#E63946] text-white flex items-center justify-center mb-4">
-                <MailIcon />
-              </div>
-              <h3 className="text-base font-bold text-[#0B3E8C] mb-3">
-                Email Us
-              </h3>
-              <div className="space-y-2">
-                {CONTACT_INFO.emails.map((e) => (
-                  <a
-                    key={e.label}
-                    href={e.href}
-                    className="block text-xs sm:text-sm text-[#68758A] hover:text-[#C8102E] transition-colors font-semibold break-all"
-                  >
-                    {e.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* WhatsApp */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-[0_10px_30px_rgba(11,62,140,0.06)] hover:shadow-[0_20px_50px_rgba(11,62,140,0.12)] hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#25d366] to-[#1eb757] text-white flex items-center justify-center mb-4">
-                <WhatsAppIcon />
-              </div>
-              <h3 className="text-base font-bold text-[#0B3E8C] mb-3">
-                WhatsApp
-              </h3>
-              <p className="text-sm text-[#68758A] leading-relaxed mb-4">
-                Quick response for quotes, inquiries and product info.
-              </p>
-              <a
-                href={CONTACT_INFO.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25d366] hover:bg-[#1eb757] text-white font-bold text-xs tracking-widest uppercase px-4 py-2.5 rounded-lg transition-all"
-              >
-                Chat Now <span>→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
-          OFFICES & FACTORY — NEW SECTION (Aligned Grid)
-         ========================================== */}
+    OFFICES & FACTORY — REFERENCE-STYLE CARDS
+   ========================================== */}
       <section className="py-14 sm:py-16 lg:py-20 bg-[#f7f8fa]">
         <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
-          <div className="max-w-3xl mb-10">
+          {/* ===== SECTION HEADER ===== */}
+          <div className="max-w-3xl mb-12">
             <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#C8102E] mb-4">
               <span className="w-6 h-px bg-[#C8102E]" />
               Our Presence
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-4">
               Head Office, Branch &
               <span className="text-[#C8102E]"> Factory.</span>
             </h2>
@@ -407,11 +333,435 @@ const Contact = () => {
             </p>
           </div>
 
-          {/* 3 Aligned Address Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <AddressCard office={CONTACT_INFO.headOffice} icon={MapPinIcon} />
-            <AddressCard office={CONTACT_INFO.branchOffice} icon={MapPinIcon} />
-            <AddressCard office={CONTACT_INFO.factory} icon={MapPinIcon} />
+          {/* ===== 3 CARDS GRID ===== */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* ---------- CARD 1 — REGISTERED OFFICE (MUMBAI) ---------- */}
+            <div className="relative bg-white rounded-2xl border border-gray-200 shadow-[0_10px_40px_-20px_rgba(11,62,140,0.15)] hover:shadow-[0_25px_60px_-25px_rgba(200,16,46,0.2)] hover:-translate-y-1 transition-all duration-500 overflow-hidden flex flex-col">
+              {/* Top bar */}
+              <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-gray-100">
+                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#C8102E]">
+                  [CONTACT-01]
+                </span>
+                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                  Single Headquarters
+                </span>
+              </div>
+
+              {/* Icon + Title */}
+              <div className="px-6 pt-6 pb-5">
+                <div className="flex items-center gap-4 mb-1">
+                  <span className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#FEF3C7] border border-[#F4B400]/40 flex items-center justify-center text-[#C8102E]">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-[1.05rem] sm:text-[1.15rem] font-extrabold tracking-tight text-[#0B3E8C] leading-tight uppercase">
+                      Registered Office
+                    </h3>
+                    <p className="text-[0.78rem] text-[#8896a6] mt-1 font-medium">
+                      Mumbai Central Hub
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Body */}
+              <div className="px-6 pb-6 flex-1 flex flex-col gap-4">
+                {/* Address panel */}
+                <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
+                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-2.5">
+                    Corporate Location:
+                  </div>
+                  <p className="text-[0.88rem] text-[#0B3E8C] font-semibold leading-relaxed">
+                    Shop No. 1, Plot No. 191, GRD Floor, Nawsarwala Building,
+                    Sant Sena Maharaj Marg, 2nd Kumbharwada Street, Mumbai — 400
+                    004, Maharashtra, India
+                  </p>
+                </div>
+
+                {/* Contacts panel */}
+                <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
+                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-3">
+                    Landline / Office:
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    {[
+                      "022-6743 7304",
+                      "022-6610 9359",
+                      "+91 96194 35529",
+                      "+91 70215 19829",
+                    ].map((num, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center justify-between gap-3"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span className="flex-shrink-0 w-4 h-4 text-[#C8102E]">
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                            </svg>
+                          </span>
+                          <a
+                            href={`tel:${num.replace(/\s/g, "")}`}
+                            className="text-[0.85rem] font-bold text-[#0B3E8C] hover:text-[#C8102E] transition-colors truncate"
+                          >
+                            {num}
+                          </a>
+                        </div>
+                        <span className="flex-shrink-0 w-4 h-4 text-[#8896a6]/60">
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <rect
+                              x="9"
+                              y="9"
+                              width="13"
+                              height="13"
+                              rx="2"
+                              ry="2"
+                            />
+                            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                          </svg>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* View map */}
+                <a
+                  href="https://maps.google.com/?q=Mumbai+400004"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-[0.78rem] font-bold tracking-wider text-[#C8102E] hover:text-[#0B3E8C] transition-colors group mt-auto pt-1"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="group-hover:rotate-12 transition-transform"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+                  </svg>
+                  View Map &amp; Coordinates
+                  <span className="group-hover:translate-y-0.5 transition-transform">
+                    ↓
+                  </span>
+                </a>
+              </div>
+
+              {/* Bottom verified bar */}
+              <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-white">
+                <span className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                  Verified Catalogue Detail
+                </span>
+                <span className="text-[#C8102E] text-xs font-bold">→</span>
+              </div>
+            </div>
+
+            {/* ---------- CARD 2 — BRANCH OFFICE (HYDERABAD) ---------- */}
+            <div className="relative bg-white rounded-2xl border border-gray-200 shadow-[0_10px_40px_-20px_rgba(11,62,140,0.15)] hover:shadow-[0_25px_60px_-25px_rgba(200,16,46,0.2)] hover:-translate-y-1 transition-all duration-500 overflow-hidden flex flex-col">
+              <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-gray-100">
+                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#C8102E]">
+                  [CONTACT-02]
+                </span>
+                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                  Direct Voice Desk
+                </span>
+              </div>
+
+              <div className="px-6 pt-6 pb-5">
+                <div className="flex items-center gap-4 mb-1">
+                  <span className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#FEF3C7] border border-[#F4B400]/40 flex items-center justify-center text-[#C8102E]">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                    </svg>
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-[1.05rem] sm:text-[1.15rem] font-extrabold tracking-tight text-[#0B3E8C] leading-tight uppercase">
+                      Branch Office
+                    </h3>
+                    <p className="text-[0.78rem] text-[#8896a6] mt-1 font-medium">
+                      Hyderabad Regional Hub
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-6 pb-6 flex-1 flex flex-col gap-4">
+                <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
+                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-2.5">
+                    Branch Location:
+                  </div>
+                  <p className="text-[0.88rem] text-[#0B3E8C] font-semibold leading-relaxed">
+                    Plot No. 84/A, Phase-1, Shubhas Nagar, IDA Jeedimetla,
+                    Hyderabad — 500 055, India
+                  </p>
+                </div>
+
+                <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
+                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-1.5">
+                    Contact Person:
+                  </div>
+                  <div className="text-[0.85rem] font-bold text-[#0B3E8C] mb-2.5">
+                    Branch Manager
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <span className="flex-shrink-0 w-4 h-4 text-[#C8102E]">
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                        </svg>
+                      </span>
+                      <a
+                        href="tel:+918828715529"
+                        className="text-[0.85rem] font-bold text-[#0B3E8C] hover:text-[#C8102E] transition-colors truncate"
+                      >
+                        +91 88287 15529
+                      </a>
+                    </div>
+                    <span className="flex-shrink-0 w-4 h-4 text-[#8896a6]/60">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <rect
+                          x="9"
+                          y="9"
+                          width="13"
+                          height="13"
+                          rx="2"
+                          ry="2"
+                        />
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <a
+                  href="https://maps.google.com/?q=IDA+Jeedimetla+Hyderabad"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-[0.78rem] font-bold tracking-wider text-[#C8102E] hover:text-[#0B3E8C] transition-colors group mt-auto pt-1"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="group-hover:rotate-12 transition-transform"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+                  </svg>
+                  View Map &amp; Coordinates
+                  <span className="group-hover:translate-y-0.5 transition-transform">
+                    ↓
+                  </span>
+                </a>
+              </div>
+
+              <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-white">
+                <span className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                  Verified Catalogue Detail
+                </span>
+                <span className="text-[#C8102E] text-xs font-bold">→</span>
+              </div>
+            </div>
+
+            {/* ---------- CARD 3 — FACTORY (VASAI E) ---------- */}
+            <div className="relative bg-white rounded-2xl border border-gray-200 shadow-[0_10px_40px_-20px_rgba(11,62,140,0.15)] hover:shadow-[0_25px_60px_-25px_rgba(200,16,46,0.2)] hover:-translate-y-1 transition-all duration-500 overflow-hidden flex flex-col">
+              <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-gray-100">
+                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#C8102E]">
+                  [CONTACT-03]
+                </span>
+                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                  Production Unit
+                </span>
+              </div>
+
+              <div className="px-6 pt-6 pb-5">
+                <div className="flex items-center gap-4 mb-1">
+                  <span className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#FEF3C7] border border-[#F4B400]/40 flex items-center justify-center text-[#C8102E]">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M2 20h20V8l-5 4V8l-5 4V8l-5 4V4H2z" />
+                      <path d="M6 20v-6M12 20v-6M18 20v-6" />
+                    </svg>
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-[1.05rem] sm:text-[1.15rem] font-extrabold tracking-tight text-[#0B3E8C] leading-tight uppercase">
+                      Factory
+                    </h3>
+                    <p className="text-[0.78rem] text-[#8896a6] mt-1 font-medium">
+                      Vasai (E) — Manufacturing
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-6 pb-6 flex-1 flex flex-col gap-4">
+                <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
+                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-2.5">
+                    Factory Location:
+                  </div>
+                  <p className="text-[0.88rem] text-[#0B3E8C] font-semibold leading-relaxed">
+                    Sr. No. 02, Bhagat Singh Industrial Estate B, Bapa Sitaram
+                    Ind. Estate - 1, Dhumal Nagar, Vasai (E), Maharashtra, India
+                  </p>
+                </div>
+
+                <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
+                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-3">
+                    Factory Contact:
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    {["+91 96194 35529", "+91 70215 19829"].map((num, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center justify-between gap-3"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span className="flex-shrink-0 w-4 h-4 text-[#C8102E]">
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                            </svg>
+                          </span>
+                          <a
+                            href={`tel:${num.replace(/\s/g, "")}`}
+                            className="text-[0.85rem] font-bold text-[#0B3E8C] hover:text-[#C8102E] transition-colors truncate"
+                          >
+                            {num}
+                          </a>
+                        </div>
+                        <span className="flex-shrink-0 w-4 h-4 text-[#8896a6]/60">
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <rect
+                              x="9"
+                              y="9"
+                              width="13"
+                              height="13"
+                              rx="2"
+                              ry="2"
+                            />
+                            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                          </svg>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <a
+                  href="https://maps.google.com/?q=Vasai+East+Maharashtra"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-[0.78rem] font-bold tracking-wider text-[#C8102E] hover:text-[#0B3E8C] transition-colors group mt-auto pt-1"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="group-hover:rotate-12 transition-transform"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+                  </svg>
+                  View Map &amp; Coordinates
+                  <span className="group-hover:translate-y-0.5 transition-transform">
+                    ↓
+                  </span>
+                </a>
+              </div>
+
+              <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-white">
+                <span className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                  Verified Catalogue Detail
+                </span>
+                <span className="text-[#C8102E] text-xs font-bold">→</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -706,7 +1056,7 @@ const Contact = () => {
             <div className="absolute -top-32 -right-32 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
             <div className="relative max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white/80 mb-4">
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white mb-4">
                 <span className="w-6 h-px bg-white/60" />
                 Ready When You Are
                 <span className="w-6 h-px bg-white/60" />
@@ -716,7 +1066,7 @@ const Contact = () => {
                 <br />
                 <span className="text-white/80">Reliable Together.</span>
               </h2>
-              <p className="text-white/85 leading-relaxed mb-8 text-base sm:text-lg max-w-2xl mx-auto">
+              <p className="text-white font-bold  leading-relaxed mb-8 text-base sm:text-lg max-w-2xl mx-auto">
                 From single-piece orders to bulk industrial supply — we're here
                 to support your steel requirements.
               </p>

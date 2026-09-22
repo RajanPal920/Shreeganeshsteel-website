@@ -102,9 +102,9 @@ const Industries = () => {
           {/* Content wrapper */}
           <div className="relative z-10 w-full max-w-[1320px] mx-auto px-5 sm:px-8 py-16 sm:py-20 flex items-center justify-center">
             {/* ✅ GLASS MORPHISM CONTAINER */}
-            <div className="max-w-3xl w-full mx-auto backdrop-blur-s bg-[#0B3E8C]/40 border border-white/90 rounded-2xl sm:rounded-3xl px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-14 shadow-[0_25px_60px_rgba(0,0,0,0.35)] text-center">
+            <div className="max-w-3xl w-full mx-auto backdrop-blur-xl bg-[#0B3E8C]/40 border border-white/90 rounded-2xl sm:rounded-3xl px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-14 shadow-[0_25px_60px_rgba(0,0,0,0.35)] text-center">
               {/* Eyebrow */}
-              <div className="inline-flex items-center justify-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#E63946] mb-5">
+              <div className="inline-flex items-center justify-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-white mb-5">
                 <span className="w-8 h-px bg-[#E63946]" />
                 Industries
                 <span className="w-8 h-px bg-[#E63946]" />
@@ -121,7 +121,7 @@ const Industries = () => {
               </h1>
 
               {/* Description */}
-              <p className="text-white/90 leading-relaxed max-w-2xl mx-auto text-base sm:text-lg mb-8">
+              <p className="text-white leading-relaxed max-w-2xl mx-auto text-base sm:text-lg mb-8 font-bold">
                 Precision-engineered steel products supporting demanding
                 industrial applications across diverse sectors.
               </p>
@@ -132,7 +132,7 @@ const Industries = () => {
                   <div className="text-3xl font-extrabold tracking-tight leading-none tabular-nums text-white">
                     26+
                   </div>
-                  <div className="text-[0.68rem] font-medium tracking-widest uppercase text-[#4A9EFF] mt-2">
+                  <div className="text-[1rem] font-bold tracking-widest uppercase text-white mt-2">
                     Products
                   </div>
                 </div>
@@ -140,7 +140,7 @@ const Industries = () => {
                   <div className="text-3xl font-extrabold tracking-tight leading-none tabular-nums text-white">
                     14
                   </div>
-                  <div className="text-[0.68rem] font-medium tracking-widest uppercase text-[#E63946] mt-2">
+                  <div className="text-[1em] font-bold tracking-widest uppercase text-white mt-2">
                     Categories
                   </div>
                 </div>
@@ -148,7 +148,7 @@ const Industries = () => {
                   <div className="text-3xl font-extrabold tracking-tight leading-none tabular-nums text-white">
                     40+
                   </div>
-                  <div className="text-[0.68rem] font-medium tracking-widest uppercase text-[#4A9EFF] mt-2">
+                  <div className="text-[1rem] font-bold tracking-widest uppercase text-white mt-2">
                     Countries
                   </div>
                 </div>
@@ -174,13 +174,13 @@ const Industries = () => {
                 <br />
                 <span className="text-[#C8102E]">Your Industry.</span>
               </h2>
-              <p className="text-[#68758A] leading-relaxed mb-6">
+              <p className="text-[#68758A] font-medium leading-relaxed mb-6">
                 At Shree Ganesh Steel Corporation, we understand that every
                 industry has unique material, dimensional and performance
                 requirements. Our product range is engineered to support
                 critical applications across diverse sectors.
               </p>
-              <p className="text-[#68758A] leading-relaxed">
+              <p className="text-[#68758A] font-medium leading-relaxed">
                 From high-pressure pipelines to precision pharmaceutical
                 systems, our stainless, duplex and alloy steel products are
                 trusted where quality and reliability are non-negotiable.
@@ -234,7 +234,7 @@ const Industries = () => {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-4">
               Engineered Material Solutions.
             </h2>
-            <p className="text-[#68758A] leading-relaxed">
+            <p className="text-[#68758A] font-medium leading-relaxed">
               Steel products for demanding environments across diverse global
               industries.
             </p>
@@ -270,7 +270,7 @@ const Industries = () => {
             </div>
 
             <div className="order-1 lg:order-2">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#4A9EFF] mb-4">
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-white mb-4">
                 <span className="w-6 h-px bg-[#E63946]" />
                 Industry Spotlight
               </div>
@@ -279,7 +279,7 @@ const Industries = () => {
                 <br />
                 <span className="text-[#E63946]">Demanding Environments.</span>
               </h2>
-              <p className="text-white/70 leading-relaxed mb-8">
+              <p className="text-white font-bold leading-relaxed mb-8">
                 Our Oil & Gas range is engineered for high-pressure,
                 high-temperature and corrosive environments — trusted across
                 pipeline systems, process equipment and industrial
@@ -288,14 +288,14 @@ const Industries = () => {
 
               <div className="grid sm:grid-cols-2 gap-6 mb-8">
                 <div>
-                  <div className="text-[0.65rem] font-bold tracking-[0.22em] uppercase text-[#4A9EFF] mb-3">
+                  <div className="text-[0.75rem] font-bold tracking-[0.2em] uppercase text-[#4A9EFF] mb-3">
                     Product Categories
                   </div>
                   <ul className="space-y-1.5">
                     {["Pipes", "Flanges", "Fittings", "coils"].map((p, i) => (
                       <li
                         key={i}
-                        className="flex items-center gap-2 text-sm text-white/75"
+                        className="flex items-center gap-2 text-sm text-white font-bold"
                       >
                         <span
                           className={`w-1 h-1 rounded-full ${
@@ -308,7 +308,7 @@ const Industries = () => {
                   </ul>
                 </div>
                 <div>
-                  <div className="text-[0.65rem] font-bold tracking-[0.22em] uppercase text-[#E63946] mb-3">
+                  <div className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-[#E63946] mb-3">
                     Applications
                   </div>
                   <ul className="space-y-1.5">
@@ -319,7 +319,7 @@ const Industries = () => {
                     ].map((a, i) => (
                       <li
                         key={i}
-                        className="flex items-center gap-2 text-sm text-white/75"
+                        className="flex items-center gap-2 text-sm text-white font-bold"
                       >
                         <span
                           className={`w-1 h-1 rounded-full ${
@@ -360,7 +360,7 @@ const Industries = () => {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-4">
               For Your Application.
             </h2>
-            <p className="text-[#68758A] leading-relaxed">
+            <p className="text-[#68758A] font-bold leading-relaxed">
               Select your industry to see the product categories we supply for
               its specific requirements.
             </p>
@@ -393,7 +393,7 @@ const Industries = () => {
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0B3E8C] tracking-tight mb-4">
                   {active.name}
                 </h3>
-                <p className="text-[#68758A] leading-relaxed mb-6">
+                <p className="text-[#68758A] font-bold leading-relaxed mb-6">
                   {active.longDesc}
                 </p>
 
@@ -405,7 +405,7 @@ const Industries = () => {
                     {active.applications.map((app, i) => (
                       <li
                         key={i}
-                        className="flex items-center gap-2 text-sm text-[#68758A]"
+                        className="flex items-center gap-2 text-sm text-[#68758A] font-medium"
                       >
                         <span className="w-1 h-1 rounded-full bg-[#E63946]" />
                         {app}
@@ -426,7 +426,7 @@ const Industries = () => {
                         to={`/products?category=${encodeURIComponent(prod)}`}
                         className="group flex items-center justify-between p-3 rounded-lg border border-[#E8EBEF] hover:border-[#1E6FD9]/40 hover:bg-[#1E6FD9]/[0.04] transition-all duration-300"
                       >
-                        <span className="text-sm font-semibold text-[#0B3E8C] group-hover:text-[#C8102E] transition-colors">
+                        <span className="text-sm font-bold text-[#0B3E8C] group-hover:text-[#C8102E] transition-colors">
                           {prod}
                         </span>
                         <span className="text-[#68758A] group-hover:text-[#C8102E] group-hover:translate-x-1 transition-all">
@@ -450,7 +450,7 @@ const Industries = () => {
 
         <div className="relative max-w-[1320px] mx-auto px-5 sm:px-8">
           <div className="max-w-3xl mb-14">
-            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#4A9EFF] mb-4">
+            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-white mb-4">
               <span className="w-6 h-px bg-[#E63946]" />
               Why Choose Us
             </div>
@@ -517,7 +517,7 @@ const Industries = () => {
                 >
                   {item.t}
                 </h3>
-                <p className="text-sm text-white/60 leading-relaxed">
+                <p className="text-sm text-white/50 font-medium leading-relaxed">
                   {item.d}
                 </p>
               </div>
@@ -542,9 +542,9 @@ const Industries = () => {
                 <br />
                 <span className="text-[#C8102E]">Critical Applications.</span>
               </h2>
-              <p className="text-[#68758A] leading-relaxed">
+              <p className="text-[#68758A] font-medium leading-relaxed">
                 Every product we supply is backed by our commitment to quality
-                verification, material traceability and technical support —
+                verification, material traceability and technical support
                 ensuring it meets the demands of your application.
               </p>
             </div>
@@ -591,7 +591,7 @@ const Industries = () => {
             <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-[#C8102E]/25 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#E63946] mb-4">
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white mb-4">
                 <span className="w-6 h-px bg-[#E63946]" />
                 Get In Touch
                 <span className="w-6 h-px bg-[#E63946]" />
@@ -601,7 +601,7 @@ const Industries = () => {
                 <br />
                 <span className="text-[#E63946]">Requirement?</span>
               </h2>
-              <p className="text-white/75 leading-relaxed mb-8 text-base sm:text-lg max-w-2xl mx-auto">
+              <p className="text-white font-bold leading-relaxed mb-8 text-base sm:text-lg max-w-2xl mx-auto">
                 Tell us your application, material grade, dimensions and
                 quantity. Our team will get back to you with the right solution.
               </p>

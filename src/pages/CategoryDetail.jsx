@@ -180,9 +180,9 @@ const CategoryDetail = () => {
         />
 
         <div className="relative z-10 w-full max-w-[1320px] mx-auto px-5 sm:px-8 py-14 sm:py-20 lg:py-24">
-          <div className="max-w-3xl backdrop-blur-s bg-[#0B3E8C]/40 border border-white/55 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 shadow-[0_25px_60px_rgba(11,62,140,0.35)]">
+          <div className="max-w-3xl backdrop-blur-xl bg-[#0B3E8C]/40 border border-white/55 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 ">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-xs text-white/70 font-mono tracking-wider uppercase mb-6 flex-wrap">
+            <nav className="flex items-center gap-2 text-xs text-white font-bold tracking-wider uppercase mb-6 flex-wrap">
               <Link to="/" className="hover:text-[#C8102E] transition-colors">
                 Home
               </Link>
@@ -198,20 +198,20 @@ const CategoryDetail = () => {
             </nav>
 
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#E63946] mb-4">
+            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white mb-4">
               <span className="w-8 h-px bg-[#E63946]" />
               {meta.division} Division
             </div>
 
             {/* Heading */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight leading-[1.05] mb-5 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight leading-[1.05] mb-5 text-white">
               {meta.name}
               <br />
               <em className="not-italic text-[#E63946]">Products.</em>
             </h1>
 
             {/* Description */}
-            <p className="text-white/90 leading-relaxed mb-8 text-base sm:text-lg">
+            <p className="text-white font-bold leading-relaxed mb-8 text-base sm:text-lg">
               {meta.desc}
             </p>
 
@@ -221,7 +221,7 @@ const CategoryDetail = () => {
                 <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-none">
                   {subProducts.length}
                 </div>
-                <div className="text-[0.68rem] font-medium tracking-widest uppercase text-[#E63946] mt-1.5">
+                <div className="text-[0.70rem] font-medium tracking-widest uppercase text-white mt-1.5">
                   Products
                 </div>
               </div>
@@ -229,7 +229,7 @@ const CategoryDetail = () => {
                 <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-none capitalize">
                   {meta.division}
                 </div>
-                <div className="text-[0.68rem] font-medium tracking-widest uppercase text-[#E63946] mt-1.5">
+                <div className="text-[0.70rem] font-medium tracking-widest uppercase text-white mt-1.5">
                   Division
                 </div>
               </div>

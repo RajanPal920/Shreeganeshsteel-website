@@ -133,7 +133,7 @@ export default function Home() {
       <main>
         {/* ==================== HERO ==================== */}
         <section id="home" className="relative w-full bg-white">
-          <div className="relative w-full h-[calc(85vh-100px)] sm:h-[calc(100vh-100px)] lg:h-[calc(94vh-90px)] min-h-[550px] sm:min-h-[650px] lg:min-h-[600px] overflow-hidden">
+          <div className="relative w-full h-[calc(85vh-100px)] sm:h-[calc(100vh-100px)] lg:h-[calc(95vh-90px)] min-h-[550px] sm:min-h-[650px] lg:min-h-[600px] overflow-hidden">
             {heroSlides.map((s, i) => (
               <div
                 key={s.id}
@@ -149,11 +149,11 @@ export default function Home() {
               <div className="max-w-[1320px] w-full mx-auto px-5 sm:px-8">
                 <div
                   key={currentSlide}
-                  className="max-w-3xl backdrop-blur-s bg-[#0B3E8C]/40 border border-white/90 rounded-2xl p-5 sm:p-6 lg:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+                  className="max-w-3xl backdrop-blur-xl bg-[#0B3E8C]/40 border border-white/90 rounded-2xl p-5 sm:p-6 lg:p-7"
                 >
                   {/* Eyebrow — animation delay 0.1s */}
                   <div
-                    className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#fba9b0] mb-3"
+                    className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-white mb-3"
                     style={{ animation: "heroFadeUp 0.8s ease-out 0.1s both" }}
                   >
                     <span className="w-6 sm:w-8 h-px bg-[#E63946]" />
@@ -182,7 +182,7 @@ export default function Home() {
 
                   {/* Description — delay 0.65s */}
                   <p
-                    className="text-[0.9rem] sm:text-[0.95rem] lg:text-base text-white/90 leading-relaxed max-w-2xl mb-5 sm:mb-6"
+                    className="text-[0.9rem] sm:text-[0.95rem] lg:text-base text-white font-extrabold leading-relaxed max-w-2xl mb-5 sm:mb-6"
                     style={{ animation: "heroFadeUp 0.9s ease-out 0.65s both" }}
                   >
                     {slide.desc}
@@ -402,13 +402,13 @@ export default function Home() {
               ].map((stat, i) => (
                 <div
                   key={i}
-                  className="group relative p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 hover:border-[#4A9EFF]/50 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(30,111,217,0.2)] transition-all duration-500 overflow-hidden"
+                  className="group relative p-6 sm:p-7 rounded-2xl bg-[#093a7b] hover:bg-[#2b69ba] border border-white/10 hover:border-[#4A9EFF]/20 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(30,111,217,0.2)] transition-all duration-500 overflow-hidden"
                   style={{
                     animation: `statFadeUp 0.7s ease ${i * 0.12}s both`,
                   }}
                 >
                   <span className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#E63946] via-[#4A9EFF] to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700" />
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1E6FD9]/8 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms] pointer-events-none" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms] pointer-events-none" />
                   <span className="absolute -top-16 -right-16 w-40 h-40 bg-[#E63946]/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                   <div className="relative">
@@ -421,14 +421,11 @@ export default function Home() {
                             borderColor: `${stat.accent}50`,
                           }}
                         />
-                        <div
-                          className="relative w-full h-full p-3 flex items-center justify-center group-hover:text-white group-hover:rotate-6 transition-all duration-500"
-                          style={{ color: stat.accent }}
-                        >
+                        <div className="relative w-full h-full text-white p-3 flex items-center justify-center group-hover:text-white group-hover:rotate-6 transition-all duration-500">
                           {stat.icon}
                         </div>
                       </div>
-                      <div className="text-[0.65rem] sm:text-xs font-mono font-bold tracking-widest text-[#4A9EFF]/70 group-hover:text-[#4A9EFF] transition-colors">
+                      <div className="text-[0.65rem] sm:text-xs font-mono font-bold tracking-widest text-white group-hover:text-white transition-colors">
                         {String(i + 1).padStart(2, "0")}
                       </div>
                     </div>
@@ -446,10 +443,7 @@ export default function Home() {
                     <h4 className="text-sm sm:text-base font-bold text-white/95 mb-1 leading-snug">
                       {stat.label}
                     </h4>
-                    <p
-                      className="text-xs font-mono tracking-widest uppercase transition-colors duration-300"
-                      style={{ color: `${stat.accent}99` }}
-                    >
+                    <p className="text-xs font-bold tracking-widest  text-white/95 uppercase transition-colors duration-300">
                       {stat.sub}
                     </p>
                   </div>
@@ -498,7 +492,7 @@ export default function Home() {
                     Delivering Confidence.
                   </em>
                 </h2>
-                <p className="text-[#5a6b7d] text-base leading-relaxed mb-6">
+                <p className="text-[#5a6b7d] text-base font-medium leading-relaxed mb-6">
                   Shree Ganesh Steel Corporation is a trusted manufacturer and
                   supplier of industrial steel products, fittings and components
                   serving critical industries across India and worldwide.
@@ -527,7 +521,9 @@ export default function Home() {
                         <b className="block text-sm font-bold text-[#0B3E8C] mb-1">
                           {p.t}
                         </b>
-                        <p className="text-sm text-[#5a6b7d]">{p.d}</p>
+                        <p className="text-sm font-medium text-[#5a6b7d]">
+                          {p.d}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -566,7 +562,7 @@ export default function Home() {
                   Built for Every Requirement.
                 </em>
               </h2>
-              <p className="text-[#5a6b7d] leading-relaxed max-w-2xl mx-auto">
+              <p className="text-[#5a6b7d] font-medium leading-relaxed max-w-2xl mx-auto">
                 Comprehensive range of stainless steel, carbon steel, and alloy
                 steel products for demanding industrial applications.
               </p>
@@ -680,7 +676,7 @@ export default function Home() {
                 Precision-Engineered{" "}
                 <em className="not-italic text-[#C8102E]">Specifications.</em>
               </h2>
-              <p className="text-[#5a6b7d] leading-relaxed max-w-2xl mx-auto">
+              <p className="text-[#5a6b7d] font-medium leading-relaxed max-w-2xl mx-auto">
                 Selected industrial products with full traceability and material
                 certification.
               </p>
@@ -820,7 +816,7 @@ export default function Home() {
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#4A9EFF] mb-4 justify-center">
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-white mb-4 justify-center">
                 <span className="w-6 h-px bg-[#E63946]" />
                 Why Choose Us
               </div>
@@ -831,7 +827,7 @@ export default function Home() {
                   Shree Ganesh Steel.
                 </em>
               </h2>
-              <p className="text-white/75 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-white font-bold leading-relaxed max-w-2xl mx-auto">
                 Six pillars that define our commitment to industrial excellence.
               </p>
             </div>
@@ -982,18 +978,17 @@ export default function Home() {
 
                   <div className="relative flex items-start justify-between mb-6">
                     <div
-                      className="w-12 h-12 sm:w-14 sm:h-14 p-2.5 rounded-lg border transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                      className="w-12 h-12 sm:w-14 sm:h-14 p-2.5 rounded-lg border text-white transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
                       style={{
                         backgroundColor: `${x.accent}20`,
                         borderColor: `${x.accent}50`,
-                        color: x.accent,
                       }}
                     >
                       {x.icon}
                     </div>
                     <span
-                      className="font-mono text-xs font-bold tracking-widest transition-colors duration-300 pt-2"
-                      style={{ color: `${x.accent}99` }}
+                      className="font-mono text-xs text-white font-bold tracking-widest transition-colors duration-300 pt-2"
+                      // style={{ color: `${x.accent}99` }}
                     >
                       {x.n}
                     </span>
@@ -1042,7 +1037,7 @@ export default function Home() {
                   Critical Industries.
                 </em>
               </h2>
-              <p className="text-[#5a6b7d] leading-relaxed">
+              <p className="text-[#5a6b7d] font-medium leading-relaxed">
                 Reliable steel supply across industries that demand precision,
                 durability and compliance.
               </p>
@@ -1098,7 +1093,7 @@ export default function Home() {
                     Measure. Trust You Can Build.
                   </em>
                 </h2>
-                <p className="text-[#5a6b7d] leading-relaxed mb-8">
+                <p className="text-[#5a6b7d] font-medium leading-relaxed mb-8">
                   Every product passes through stringent inspection protocols
                   ensuring dimensional accuracy, material integrity and full
                   documentation.
@@ -1147,7 +1142,7 @@ export default function Home() {
                 </div>
 
                 <Link
-                  to="/quality"
+                  to="/"
                   className="inline-flex items-center gap-2 bg-[#0B3E8C] hover:bg-[#C8102E] text-white font-bold text-sm px-7 py-3.5 rounded-md transition-all duration-300"
                 >
                   View Quality Standards <span>→</span>
@@ -1163,29 +1158,44 @@ export default function Home() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: 'url("/images/infrastructure.jpg")' }}
           />
-          <div className="absolute inset-0 bg-[#0B3E8C]/15" />
+          <div className="absolute inset-0 bg-[#0B3E8C]/5" />
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10 text-white">
-            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#4A9EFF] mb-5">
-              <span className="w-8 h-px bg-[#E63946]" />
-              Infrastructure
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight mb-6 max-w-2xl">
-              Built for Scale.
-              <br />
-              <em className="not-italic text-[#E63946]">Ready for Industry.</em>
-            </h2>
-            <p className="text-white leading-relaxed max-w-2xl mb-10 text-base font-extrabold sm:text-lg">
-              Our warehouse and dispatch infrastructure is designed to handle
-              bulk industrial orders with efficiency — from inventory management
-              and material handling to export-grade packaging.
-            </p>
-            <Link
-              to="/infra"
-              className="inline-flex items-center gap-2 bg-[#C8102E] hover:bg-[#1E6FD9] text-white font-bold text-sm px-7 py-3.5 rounded-md shadow-md transition-all"
+            {/* GLASS CONTAINER */}
+            <div
+              className="max-w-3xl rounded-2xl p-7 sm:p-9 lg:p-11 border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.35)]"
+              style={{
+                background: "rgba(255, 255, 225, 0.02)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+              }}
             >
-              Explore Our Infrastructure <span>→</span>
-            </Link>
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white mb-5">
+                <span className="w-8 h-px bg-[#E63946]" />
+                Infrastructure
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                Built for Scale.
+                <br />
+                <em className="not-italic text-[#E63946]">
+                  Ready for Industry.
+                </em>
+              </h2>
+
+              <p className="text-white leading-relaxed mb-10 text-base font-bold sm:text-lg">
+                Our warehouse and dispatch infrastructure is designed to handle
+                bulk industrial orders with efficiency from inventory management
+                and material handling to export-grade packaging.
+              </p>
+
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 bg-[#C8102E] hover:bg-[#1E6FD9] text-white font-bold text-sm px-7 py-3.5 rounded-md shadow-md transition-all"
+              >
+                Explore Our Infrastructure <span>→</span>
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -1202,7 +1212,7 @@ export default function Home() {
                 Countries We{" "}
                 <em className="not-italic text-[#C8102E]">Export To.</em>
               </h2>
-              <p className="text-[#5a6b7d] leading-relaxed">
+              <p className="text-[#5a6b7d] font-medium leading-relaxed">
                 We proudly serve clients across 50+ countries worldwide with our
                 premium metal products.
               </p>
@@ -1288,7 +1298,7 @@ export default function Home() {
 
           <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center text-white">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#E63946] mb-6 justify-center">
+              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white mb-6 justify-center">
                 <span className="w-8 h-px bg-[#E63946]" />
                 Get Started Today
                 <span className="w-8 h-px bg-[#E63946]" />
@@ -1301,7 +1311,7 @@ export default function Home() {
                 </em>
               </h2>
 
-              <p className="text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+              <p className="text-white font-bold text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
                 Tell us what you need. Our team will help you find the right
                 product and specification —{" "}
                 <span className="text-[#E63946] font-semibold">
@@ -1438,7 +1448,7 @@ export default function Home() {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="group inline-flex items-center gap-2 text-xs sm:text-sm text-white/70 hover:text-[#E63946] transition-colors duration-300"
+                    className="group inline-flex items-center gap-2 text-xs sm:text-sm text-white hover:text-[#E63946] transition-colors duration-300"
                   >
                     <span className="text-[#E63946] group-hover:scale-110 transition-transform duration-300">
                       {item.icon}
@@ -1479,7 +1489,7 @@ export default function Home() {
                   Your Requirements.
                 </em>
               </h2>
-              <p className="text-[#5a6b7d] leading-relaxed max-w-2xl mx-auto">
+              <p className="text-[#5a6b7d]/60 font-bold leading-relaxed max-w-2xl mx-auto">
                 Reach out to us for product inquiries, bulk orders or technical
                 consultation.
               </p>
@@ -1593,7 +1603,7 @@ export default function Home() {
                 <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[#C8102E]/20 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="relative">
-                  <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#E63946] mb-4">
+                  <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-white mb-4">
                     <span className="w-4 h-px bg-[#E63946]" />
                     Quick Enquiry
                   </div>
@@ -1653,11 +1663,11 @@ export default function Home() {
                         →
                       </span>
                     </button>
-                    <p className="text-[0.7rem] text-center text-white/50 pt-2">
+                    <p className="text-[1rem] text-center text-white  pt-2">
                       Or email us directly at{" "}
                       <a
                         href="mailto:info@shreeganeshsteel.com"
-                        className="text-[#E63946] hover:underline"
+                        className="text-[#E63946] font-bold hover:underline"
                       >
                         info@shreeganeshsteel.com
                       </a>

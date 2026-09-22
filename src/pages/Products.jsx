@@ -144,34 +144,34 @@ const Products = () => {
         />
 
         <div className="relative z-10 w-full max-w-[1320px] mx-auto px-5 sm:px-8 py-14 sm:py-20">
-          <div className="max-w-3xl backdrop-blur-s bg-[#0B3E8C]/40 border border-white/70 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 shadow-[0_25px_60px_rgba(11,62,140,0.35)]">
+          <div className="max-w-3xl backdrop-blur-xl bg-[#0B3E8C]/40 border border-white/70 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 ">
             <nav className="flex items-center gap-2 text-xs text-white/70 font-mono tracking-wider uppercase mb-6">
-              <Link to="/" className="hover:text-[#4A9EFF] transition-colors">
+              <Link to="/" className="hover:text-[#f8f8f8] font-bold transition-colors">
                 Home
               </Link>
               <span>/</span>
-              <span className="text-[#E63946] font-bold">Products</span>
+              <span className="text-white font-bold">Products</span>
             </nav>
 
-            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-[#E63946] mb-4">
+            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white mb-4">
               <span className="w-8 h-px bg-[#E63946]" />
               Our Product Range
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight leading-[1.05] mb-5 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight leading-[1.05] mb-5 text-white ">
               Complete Industrial
               <br />
               <em className="not-italic text-[#E63946]">Steel Catalogue.</em>
             </h1>
 
-            <p className="text-white leading-relaxed mb-8 text-base sm:text-lg">
+            <p className="text-white leading-relaxed mb-8 font-bold text-base sm:text-lg">
               Explore our {allCategories.length} categories across manufacturer
               & supplier divisions. Click any category to explore its products.
             </p>
 
             <div className="flex flex-wrap gap-x-10 gap-y-4 pt-6 border-t border-white/20">
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-none">
+                <div className="text-2xl  sm:text-3xl font-extrabold text-white tracking-tight leading-none ">
                   {allCategories.length}
                 </div>
                 <div className="text-[0.68rem] font-bold tracking-widest uppercase text-[#f7f7f7] mt-1.5">
@@ -182,7 +182,7 @@ const Products = () => {
                 <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-none">
                   {manufacturerCategories.length}
                 </div>
-                <div className="text-[0.68rem] font-bold tracking-widest uppercase text-[#E63946] mt-1.5">
+                <div className="text-[0.68rem] font-bold tracking-widest uppercase text-white mt-1.5">
                   Manufactured
                 </div>
               </div>

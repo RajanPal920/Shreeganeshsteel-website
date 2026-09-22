@@ -353,7 +353,7 @@ export default function ProductDetail() {
                   <span className="text-[#C8102E]">Scope.</span>
                 </h2>
               </div>
-              <p className="text-[#5a6b7d] leading-relaxed text-base sm:text-lg">
+              <p className="text-[#5a6b7d] font-medium leading-relaxed text-base sm:text-lg">
                 {product.overview}
               </p>
             </div>
@@ -381,7 +381,7 @@ export default function ProductDetail() {
                 {product.grades.map((grade, i) => (
                   <span
                     key={i}
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider uppercase px-3.5 py-2 rounded-full border-2 bg-[#C8102E]/5 text-[#C8102E] border-[#C8102E]/20 hover:bg-[#C8102E]/10 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider uppercase px-3.5 py-2 rounded-lg border-2 bg-[#C8102E]/5 text-[#C8102E] border-[#C8102E]/20 hover:bg-[#C8102E]/10 transition-colors"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
                     {grade}
@@ -803,8 +803,6 @@ export default function ProductDetail() {
           </div>
         </section>
       )}
-
-     
 
       <style>{`
         @keyframes fadeUp {
