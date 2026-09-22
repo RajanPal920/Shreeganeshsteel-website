@@ -754,7 +754,7 @@ export default function Home() {
                         </Link>
 
                         <a
-                          href={`https://wa.me/917313726773?text=${encodeURIComponent(
+                          href={`https://wa.me/917021519829?text=${encodeURIComponent(
                             `Hello Shree Ganesh Steel, I would like to inquire about: ${p.name}\n\nPlease share pricing and availability.`,
                           )}`}
                           target="_blank"
