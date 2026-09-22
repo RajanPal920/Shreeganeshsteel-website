@@ -279,7 +279,7 @@ const Contact = () => {
           <div className="relative z-20 h-full min-h-[500px] sm:min-h-[550px] lg:min-h-[660px] flex items-center justify-center py-16 sm:py-20">
             <div className="max-w-[1320px] w-full mx-auto px-5 sm:px-8 flex items-center justify-center">
               <div className="max-w-2xl w-full mx-auto backdrop-blur-s bg-[#0B3E8C]/40 border border-white/90 rounded-2xl sm:rounded-3xl px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 text-center">
-                <nav className="flex items-center justify-center gap-2 text-xs text-white/70 font-mono tracking-wider uppercase mb-5">
+                <nav className="flex items-center justify-center gap-2 text-xs text-white font-bold tracking-wider uppercase mb-5">
                   <Link
                     to="/"
                     className="hover:text-[#E63946] transition-colors"

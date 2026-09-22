@@ -108,10 +108,7 @@ const allCategories = Object.entries(productMaterials).map(
       division: "manufacturer",
     };
 
-    // Count sub-products
     const count = Array.isArray(items) ? items.length : 1;
-
-    // Use first sub-product's image as category image
     const image = Array.isArray(items) && items[0]?.image ? items[0].image : "";
 
     return {
@@ -144,9 +141,12 @@ const Products = () => {
         />
 
         <div className="relative z-10 w-full max-w-[1320px] mx-auto px-5 sm:px-8 py-14 sm:py-20">
-          <div className="max-w-3xl backdrop-blur-xl bg-[#0B3E8C]/40 border border-white/70 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 ">
-            <nav className="flex items-center gap-2 text-xs text-white/70 font-mono tracking-wider uppercase mb-6">
-              <Link to="/" className="hover:text-[#f8f8f8] font-bold transition-colors">
+          <div className="max-w-3xl backdrop-blur-xl bg-[#0B3E8C]/40 border border-white/70 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10">
+            <nav className="flex items-center gap-2 text-xs text-white font-bold tracking-wider uppercase mb-6">
+              <Link
+                to="/"
+                className="hover:text-[#f8f8f8] font-bold transition-colors"
+              >
                 Home
               </Link>
               <span>/</span>
@@ -158,7 +158,7 @@ const Products = () => {
               Our Product Range
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight leading-[1.05] mb-5 text-white ">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight leading-[1.05] mb-5 text-white">
               Complete Industrial
               <br />
               <em className="not-italic text-[#E63946]">Steel Catalogue.</em>
@@ -171,7 +171,7 @@ const Products = () => {
 
             <div className="flex flex-wrap gap-x-10 gap-y-4 pt-6 border-t border-white/20">
               <div>
-                <div className="text-2xl  sm:text-3xl font-extrabold text-white tracking-tight leading-none ">
+                <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-none">
                   {allCategories.length}
                 </div>
                 <div className="text-[0.68rem] font-bold tracking-widest uppercase text-[#f7f7f7] mt-1.5">
@@ -200,60 +200,34 @@ const Products = () => {
       </section>
 
       {/* ==========================================
-          MANUFACTURER DIVISION
+          ALL CATEGORIES — SINGLE GRID
          ========================================== */}
-      {manufacturerCategories.length > 0 && (
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#f7f8fa]">
-          <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
-            <div className="mb-10">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#C8102E] mb-3">
-                <span className="w-6 h-px bg-[#C8102E]" />
-                Our Products Range
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight">
-                Manufactured
-                <span className="text-[#C8102E]"> In-House.</span>
-              </h2>
+      <section className="py-16 sm:py-20 lg:py-24 bg-[#f7f8fa]">
+        <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
+          {/* Single heading */}
+          <div className="mb-12 max-w-3xl">
+            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#C8102E] mb-3">
+              <span className="w-6 h-px bg-[#C8102E]" />
+              Our Product Range
             </div>
-
-            {/* ✅ FIXED GRID — items-stretch for equal heights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 items-stretch">
-              {manufacturerCategories.map((cat, i) => (
-                <CategoryCard key={cat.id} cat={cat} index={i} />
-              ))}
-            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-4">
+              Explore Our{" "}
+              <span className="text-[#C8102E]">Complete Catalogue.</span>
+            </h2>
+            <p className="text-[#68758A] leading-relaxed text-base">
+              From in-house manufactured fittings to sourced industrial
+              materials — browse our full product range across every division.
+            </p>
           </div>
-        </section>
-      )}
 
-      {/* ==========================================
-          SUPPLIER DIVISION
-         ========================================== */}
-      {supplierCategories.length > 0 && (
-        <section className="py-16 sm:py-20 lg:py-24 bg-white">
-          <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
-            <div className="mb-10">
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#1E6FD9] mb-3">
-                <span className="w-6 h-px bg-[#1E6FD9]" />
-                Our Products Range
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight">
-                Sourced From
-                <span className="text-[#1E6FD9]"> Trusted Partners.</span>
-              </h2>
-            </div>
-
-            {/* ✅ FIXED GRID — items-stretch for equal heights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 items-stretch">
-              {supplierCategories.map((cat, i) => (
-                <CategoryCard key={cat.id} cat={cat} index={i} />
-              ))}
-            </div>
+          {/* All cards in one grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 items-stretch">
+            {allCategories.map((cat, i) => (
+              <CategoryCard key={cat.id} cat={cat} index={i} />
+            ))}
           </div>
-        </section>
-      )}
-
-     
+        </div>
+      </section>
 
       <style>{`
         @keyframes fadeUp {
@@ -272,7 +246,7 @@ const Products = () => {
 };
 
 // ============================================
-// CATEGORY CARD — HOVER OVERLAY REMOVED
+// CATEGORY CARD — UNCHANGED
 // ============================================
 const CategoryCard = ({ cat, index }) => {
   const isManufacturer = cat.division === "manufacturer";
@@ -283,7 +257,6 @@ const CategoryCard = ({ cat, index }) => {
       className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(11,62,140,0.15)] transition-all duration-500 flex flex-col h-full"
       style={{ animation: `fadeUp 0.5s ease ${index * 0.04}s both` }}
     >
-      {/* Image — fixed aspect ratio */}
       <div className="relative aspect-[5/4] overflow-hidden bg-gray-100 flex-shrink-0">
         <span
           className={`absolute top-3 left-3 z-20 px-3 py-1 rounded-full text-white text-[0.6rem] font-bold tracking-widest uppercase shadow-lg ${
@@ -301,12 +274,8 @@ const CategoryCard = ({ cat, index }) => {
             e.target.style.display = "none";
           }}
         />
-
-        {/* ❌ Hover gradient overlay — REMOVED */}
-        {/* ❌ Bottom accent line — REMOVED */}
       </div>
 
-      {/* Content — flex-1 to fill remaining space */}
       <div className="p-5 flex flex-col flex-1">
         <h3
           className={`text-lg font-bold mb-2 leading-snug transition-colors duration-300 text-[#0B3E8C] ${
@@ -321,7 +290,6 @@ const CategoryCard = ({ cat, index }) => {
           {cat.desc}
         </p>
 
-        {/* CTA — stuck to bottom */}
         <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
           <span
             className={`text-[0.7rem] font-bold tracking-widest uppercase text-[#0B3E8C] ${

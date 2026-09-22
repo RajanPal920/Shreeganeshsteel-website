@@ -1004,12 +1004,23 @@ const Header = () => {
           z-index: 50;
           overflow: hidden;
         }
-        .sgs-nav-group:hover .sgs-mega,
-        .sgs-nav-group:focus-within .sgs-mega {
+        .sgs-nav-group:hover .sgs-mega {
           opacity: 1;
           pointer-events: auto;
           transform: translate(-50%, 0);
         }
+
+        /* Invisible hover bridge — cursor link se dropdown pe jaate waqt flicker na ho */
+        .sgs-nav-group:hover .sgs-mega::before {
+          content: "";
+          position: absolute;
+          top: -12px;
+          left: 0;
+          right: 0;
+          height: 12px;
+          background: transparent;
+        }
+
         .sgs-mega-topline {
           height: 2px;
           background: linear-gradient(90deg, ${BRAND.navy} 0%, ${BRAND.gold} 100%);
