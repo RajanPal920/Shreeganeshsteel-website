@@ -2,26 +2,67 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // ============================================
-// CONTACT DATA — From Visiting Card
+// CONTACT DATA — From Visiting Card (SGSI)
 // ============================================
 const CONTACT_INFO = {
-  proprietor: "Birbal Vishnoi",
-  company: "Shree Ganesh Steel Corporation",
+  company: "Shree Ganesh Steel India",
+  shortName: "SGSI",
   tagline: "S.S. & M.S. Pipe Fitting & Manufacturers",
-  address: {
-    line1: "Head Office: Shop No. 1, Plot No. 191,",
-    line2: "GRD Floor, Nawsarwala Building,",
-    line3: "Sant Sena Maharaj Marg,",
-    line4: "2nd Kumbharwada Street, Mumbai,",
-    line5: "Maharashtra — 400 004, India",
+
+  // Head Office (Mumbai)
+  headOffice: {
+    label: "Head Office",
+    lines: [
+      "Shop No. 1, Plot No. 191, GRD Floor,",
+      "Nawsarwala Building, Sant Sena Maharaj Marg,",
+      "2nd Kumbharwada Street, Mumbai,",
+      "Maharashtra — 400 004, India",
+    ],
   },
+
+  // Branch Office (Hyderabad)
+  branchOffice: {
+    label: "Branch Office",
+    lines: [
+      "Plot No. 84/A, Phase-1,",
+      "Shubhas Nagar, IDA Jeedimetla,",
+      "Hyderabad — 500 055, India",
+    ],
+  },
+
+  // Factory (Vasai)
+  factory: {
+    label: "Factory",
+    lines: [
+      "Sr. No. 02, Bhagat Singh Industrial Estate B,",
+      "Bapa Sitaram Ind. Estate - 1,",
+      "Dhumal Nagar, Vasai (E),",
+      "Maharashtra, India",
+    ],
+  },
+
+  // Key Personnel
+  personnel: [
+    { name: "Birbal Vishnoi", role: "Proprietor" },
+    { name: "Raju", role: "Marketing Manager", phone: "+91 70453 75529" },
+  ],
+
+  // Phones
   phones: [
     { label: "+91 96194 35529", href: "tel:+919619435529", type: "Mobile" },
     { label: "+91 70215 19829", href: "tel:+917021519829", type: "Mobile" },
+    { label: "+91 70453 75529", href: "tel:+917045375529", type: "Mobile" },
+    { label: "+91 88287 15529", href: "tel:+918828715529", type: "Mobile" },
     { label: "022 6743 7304", href: "tel:+912267437304", type: "Office" },
     { label: "022 6610 9359", href: "tel:+912266109359", type: "Office" },
   ],
+
+  // Emails
   emails: [
+    {
+      label: "shreeganeshsteel25@gmail.com",
+      href: "mailto:shreeganeshsteel25@gmail.com",
+    },
     {
       label: "info@shreeganeshsteel.com",
       href: "mailto:info@shreeganeshsteel.com",
@@ -35,10 +76,20 @@ const CONTACT_INFO = {
       href: "mailto:shreeganeshsteel29@gmail.com",
     },
   ],
-  gst: "27AQWPV4546L1ZP",
+
+  // Business Details
+  gst: [
+    { label: "Head Office (Mumbai)", value: "27AQWPV4546L1ZP" },
+    { label: "Branch (Hyderabad)", value: "36AQWPV4546L1ZQ" },
+  ],
   msme: "Registered MSME (Udyam)",
+
+  // Web
+  website: "www.shreeganeshsteel.com",
   whatsapp:
     "https://wa.me/917021519829?text=Hello%20Shree%20Ganesh%20Steel%2C%20I%20would%20like%20to%20request%20a%20quote.",
+
+  // Products
   products: [
     "Pipes",
     "Rod",
@@ -139,6 +190,22 @@ const ShieldIcon = ({ className = "w-5 h-5" }) => (
   </svg>
 );
 
+const GlobeIcon = ({ className = "w-5 h-5" }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <line x1="2" y1="12" x2="22" y2="12" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
 // ============================================
 // CONTACT PAGE
 // ============================================
@@ -159,34 +226,47 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Build WhatsApp message
-    const message = `Hello Shree Ganesh Steel Corporation,%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Company:* ${formData.company}%0A*Subject:* ${formData.subject}%0A%0A*Message:*%0A${formData.message}`;
+    const message = `Hello Shree Ganesh Steel India,%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Company:* ${formData.company}%0A*Subject:* ${formData.subject}%0A%0A*Message:*%0A${formData.message}`;
     window.open(`https://wa.me/917021519829?text=${message}`, "_blank");
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
   };
 
+  // ============================================
+  // REUSABLE ADDRESS CARD
+  // ============================================
+  const AddressCard = ({ office, icon: Icon }) => (
+    <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-6 flex flex-col h-full">
+      <div className="flex items-start gap-3 mb-3">
+        <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-[#0B3E8C]/10 text-[#0B3E8C] flex items-center justify-center">
+          <Icon className="w-4 h-4" />
+        </div>
+        <div className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#C8102E] pt-2">
+          {office.label}
+        </div>
+      </div>
+      <div className="text-sm text-[#0B3E8C] leading-relaxed font-medium pl-12">
+        {office.lines.map((line, i) => (
+          <div key={i}>{line}</div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className="w-full bg-white overflow-x-hidden">
       {/* ==========================================
-    HERO — Contact Page
-   ========================================== */}
+          HERO
+         ========================================== */}
       <section className="relative text-white overflow-hidden">
         <div className="relative w-full min-h-[500px] sm:min-h-[550px] lg:min-h-[660px] overflow-hidden">
-          {/* Background image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: 'url("/images/contact-hero.jpg")' }}
           />
-
-          {/* Very subtle tint (almost no overlay) */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#0B3E8C]/10 via-transparent to-[#C8102E]/10 pointer-events-none" />
-
-          {/* Decorative blurs */}
           <div className="absolute -top-40 -right-40 w-[500px] h-[600px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-40 -left-40 w-[500px] h-[600px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
-
-          {/* Subtle grid */}
           <div
             className="absolute inset-0 opacity-[0.04] pointer-events-none"
             style={{
@@ -196,12 +276,9 @@ const Contact = () => {
             }}
           />
 
-          {/* Content — centered */}
           <div className="relative z-20 h-full min-h-[500px] sm:min-h-[550px] lg:min-h-[660px] flex items-center justify-center py-16 sm:py-20">
             <div className="max-w-[1320px] w-full mx-auto px-5 sm:px-8 flex items-center justify-center">
-              {/* ✅ GLASS MORPHISM CONTAINER */}
               <div className="max-w-2xl w-full mx-auto backdrop-blur-s bg-[#0B3E8C]/40 border border-white/90 rounded-2xl sm:rounded-3xl px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 shadow-[0_25px_60px_rgba(0,0,0,0.25)] text-center">
-                {/* Breadcrumb */}
                 <nav className="flex items-center justify-center gap-2 text-xs text-white/70 font-mono tracking-wider uppercase mb-5">
                   <Link
                     to="/"
@@ -212,15 +289,11 @@ const Contact = () => {
                   <span>/</span>
                   <span className="text-white font-bold">Contact</span>
                 </nav>
-
-                {/* Eyebrow */}
                 <div className="inline-flex items-center gap-3 text-[0.7rem] sm:text-xs font-bold tracking-[0.25em] uppercase text-white mb-4">
                   <span className="w-6 sm:w-8 h-px bg-[#E63946]" />
                   Get In Touch
                   <span className="w-6 sm:w-8 h-px bg-[#E63946]" />
                 </div>
-
-                {/* Heading */}
                 <h1 className="text-[1.7rem] leading-[1.1] sm:text-[2.3rem] lg:text-[2.9rem] xl:text-[3.2rem] font-medium sm:font-extrabold tracking-tight text-white mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
                   Let's Discuss Your
                   <br />
@@ -228,8 +301,6 @@ const Contact = () => {
                     Steel Requirements.
                   </em>
                 </h1>
-
-                {/* Description */}
                 <p className="text-[0.9rem] sm:text-base text-white leading-relaxed max-w-xl mx-auto">
                   Whether you need a quote, technical information or custom
                   specifications — our team is here to help. Reach out via
@@ -255,7 +326,7 @@ const Contact = () => {
               <h3 className="text-base font-bold text-[#0B3E8C] mb-3">
                 Call Us
               </h3>
-              <div className="space-y-2">
+              <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
                 {CONTACT_INFO.phones.map((p) => (
                   <a
                     key={p.label}
@@ -284,7 +355,7 @@ const Contact = () => {
                   <a
                     key={e.label}
                     href={e.href}
-                    className="block text-sm text-[#68758A] hover:text-[#C8102E] transition-colors font-semibold break-all"
+                    className="block text-xs sm:text-sm text-[#68758A] hover:text-[#C8102E] transition-colors font-semibold break-all"
                   >
                     {e.label}
                   </a>
@@ -309,10 +380,38 @@ const Contact = () => {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 bg-[#25d366] hover:bg-[#1eb757] text-white font-bold text-xs tracking-widest uppercase px-4 py-2.5 rounded-lg transition-all"
               >
-                Chat Now
-                <span>→</span>
+                Chat Now <span>→</span>
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==========================================
+          OFFICES & FACTORY — NEW SECTION (Aligned Grid)
+         ========================================== */}
+      <section className="py-14 sm:py-16 lg:py-20 bg-[#f7f8fa]">
+        <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
+          <div className="max-w-3xl mb-10">
+            <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#C8102E] mb-4">
+              <span className="w-6 h-px bg-[#C8102E]" />
+              Our Presence
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-4">
+              Head Office, Branch &
+              <span className="text-[#C8102E]"> Factory.</span>
+            </h2>
+            <p className="text-[#68758A] leading-relaxed">
+              Strategically located across Mumbai, Hyderabad and Vasai to serve
+              your steel requirements PAN India.
+            </p>
+          </div>
+
+          {/* 3 Aligned Address Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <AddressCard office={CONTACT_INFO.headOffice} icon={MapPinIcon} />
+            <AddressCard office={CONTACT_INFO.branchOffice} icon={MapPinIcon} />
+            <AddressCard office={CONTACT_INFO.factory} icon={MapPinIcon} />
           </div>
         </div>
       </section>
@@ -325,46 +424,38 @@ const Contact = () => {
           <div className="grid lg:grid-cols-5 gap-8">
             {/* LEFT — Info (2 cols) */}
             <div className="lg:col-span-2 space-y-5">
-              {/* Address */}
-              <div className="bg-white border border-gray-200 rounded-2xl p-6">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#0B3E8C]/10 text-[#0B3E8C] flex items-center justify-center">
-                    <MapPinIcon />
-                  </div>
-                  <div>
-                    <div className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-2">
-                      Head Office
-                    </div>
-                    <div className="text-sm text-[#0B3E8C] leading-relaxed font-medium">
-                      {CONTACT_INFO.address.line1}
-                      <br />
-                      {CONTACT_INFO.address.line2}
-                      <br />
-                      {CONTACT_INFO.address.line3}
-                      <br />
-                      {CONTACT_INFO.address.line4}
-                      <br />
-                      {CONTACT_INFO.address.line5}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Key Person */}
+              {/* Key Personnel */}
               <div className="bg-white border border-gray-200 rounded-2xl p-6">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#0B3E8C]/10 text-[#0B3E8C] flex items-center justify-center">
                     <UserIcon />
                   </div>
-                  <div>
-                    <div className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-2">
+                  <div className="flex-1">
+                    <div className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-3">
                       Key Personnel
                     </div>
-                    <div className="text-base font-bold text-[#0B3E8C] mb-1">
-                      {CONTACT_INFO.proprietor}
-                    </div>
-                    <div className="text-xs text-[#68758A] font-medium">
-                      Proprietor
+                    <div className="space-y-3">
+                      {CONTACT_INFO.personnel.map((person, i) => (
+                        <div
+                          key={i}
+                          className="pb-3 border-b border-gray-100 last:border-0 last:pb-0"
+                        >
+                          <div className="text-base font-bold text-[#0B3E8C]">
+                            {person.name}
+                          </div>
+                          <div className="text-xs text-[#68758A] font-medium">
+                            {person.role}
+                          </div>
+                          {person.phone && (
+                            <a
+                              href={`tel:${person.phone.replace(/\s/g, "")}`}
+                              className="text-xs text-[#0B3E8C] hover:text-[#C8102E] font-semibold mt-1 inline-block"
+                            >
+                              {person.phone}
+                            </a>
+                          )}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -377,18 +468,20 @@ const Contact = () => {
                     <ShieldIcon />
                   </div>
                   <div className="flex-1">
-                    <div className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-2">
+                    <div className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-3">
                       Business Details
                     </div>
-                    <div className="space-y-2">
-                      <div>
-                        <div className="text-[0.62rem] font-bold tracking-widest uppercase text-[#68758A] mb-0.5">
-                          GST Number
+                    <div className="space-y-3">
+                      {CONTACT_INFO.gst.map((g, i) => (
+                        <div key={i}>
+                          <div className="text-[0.62rem] font-bold tracking-widest uppercase text-[#68758A] mb-0.5">
+                            GST — {g.label}
+                          </div>
+                          <div className="text-sm font-bold text-[#0B3E8C] font-mono">
+                            {g.value}
+                          </div>
                         </div>
-                        <div className="text-sm font-bold text-[#0B3E8C] font-mono">
-                          {CONTACT_INFO.gst}
-                        </div>
-                      </div>
+                      ))}
                       <div>
                         <div className="text-[0.62rem] font-bold tracking-widest uppercase text-[#68758A] mb-0.5">
                           Registration
@@ -398,6 +491,28 @@ const Contact = () => {
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Website */}
+              <div className="bg-white border border-gray-200 rounded-2xl p-6">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#0B3E8C]/10 text-[#0B3E8C] flex items-center justify-center">
+                    <GlobeIcon />
+                  </div>
+                  <div>
+                    <div className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-2">
+                      Website
+                    </div>
+                    <a
+                      href={`https://${CONTACT_INFO.website}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm font-bold text-[#0B3E8C] hover:text-[#C8102E] transition-colors"
+                    >
+                      {CONTACT_INFO.website}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -531,8 +646,7 @@ const Contact = () => {
                     type="submit"
                     className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-br from-[#0B3E8C] to-[#1E6FD9] hover:from-[#C8102E] hover:to-[#E63946] text-white font-bold text-sm tracking-widest uppercase px-6 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl"
                   >
-                    Send Inquiry via WhatsApp
-                    <span>→</span>
+                    Send Inquiry via WhatsApp <span>→</span>
                   </button>
 
                   {submitted && (
@@ -563,8 +677,7 @@ const Contact = () => {
               Our Location
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-4">
-              Visit Our
-              <span className="text-[#C8102E]"> Head Office.</span>
+              Visit Our<span className="text-[#C8102E]"> Head Office.</span>
             </h2>
             <p className="text-[#68758A] leading-relaxed">
               Located in the heart of Mumbai's steel trading hub — Kumbharwada,
@@ -574,7 +687,7 @@ const Contact = () => {
 
           <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-[0_15px_40px_rgba(11,62,140,0.08)]">
             <iframe
-              title="Shree Ganesh Steel Corporation Location"
+              title="Shree Ganesh Steel India Location"
               src="https://www.google.com/maps?q=Kumbharwada,Mumbai,Maharashtra&output=embed"
               className="w-full h-[400px] border-0"
               loading="lazy"
@@ -592,7 +705,6 @@ const Contact = () => {
           <div className="relative rounded-3xl bg-gradient-to-br from-[#0B3E8C] via-[#0d47a1] to-[#C8102E] p-8 sm:p-12 lg:p-16 text-white overflow-hidden">
             <div className="absolute -top-32 -right-32 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-
             <div className="relative max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.25em] uppercase text-white/80 mb-4">
                 <span className="w-6 h-px bg-white/60" />
@@ -615,8 +727,7 @@ const Contact = () => {
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-[#25d366] to-[#1ebd5a] hover:bg-green-300 font-bold text-sm px-7 py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  <WhatsAppIcon className="w-4 h-4" />
-                  WhatsApp Us
+                  <WhatsAppIcon className="w-4 h-4" /> WhatsApp Us
                 </a>
                 <Link
                   to="/products"
