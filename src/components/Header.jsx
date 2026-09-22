@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
 
 /* ============================================
    WHATSAPP CONFIG
    ============================================ */
 const WHATSAPP_NUMBER = "917021519829";
 const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hello Shree Ganesh Steel, I would like to request a quote.",
+  " Hello Shree Ganesh Steel, I am interested in your steel products. Please share your best quotation and product details.",
 );
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
@@ -1468,7 +1469,9 @@ const Header = () => {
                   className={`sgs-nav-link ${isActive("/products") || isActive("/categories") ? "is-active" : ""}`}
                 >
                   Products
-                  <span className="caret">▾</span>
+                  <span className="caret">
+                    <IoIosArrowDown />
+                  </span>
                 </Link>
                 <div className="sgs-mega" style={{ width: 960 }}>
                   <div className="sgs-mega-topline" />
@@ -1607,7 +1610,10 @@ const Header = () => {
                   className={`sgs-nav-link ${isActive("/materials") ? "is-active" : ""}`}
                 >
                   Materials
-                  <span className="caret">▾</span>
+                  <span className="caret">
+                    {" "}
+                    <IoIosArrowDown />
+                  </span>
                 </button>
                 <div className="sgs-mega" style={{ width: 720 }}>
                   <div className="sgs-mega-topline" />
@@ -1684,7 +1690,10 @@ const Header = () => {
                   className={`sgs-nav-link ${isActive("/certificates") ? "is-active" : ""}`}
                 >
                   Certificates
-                  <span className="caret">▾</span>
+                  <span className="caret">
+                    {" "}
+                    <IoIosArrowDown />
+                  </span>
                 </button>
                 <div className="sgs-mega" style={{ width: 440 }}>
                   <div className="sgs-mega-topline" />

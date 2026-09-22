@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import { products } from "../data/products";
 
 // ============================================
@@ -106,6 +106,7 @@ function CountUp({ end, suffix = "", duration = 2000 }) {
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const navigate = useNavigate();
 
   // ✅ Auto-play — pause on hover
   useEffect(() => {
@@ -1026,43 +1027,164 @@ export default function Home() {
         {/* ==================== INDUSTRIES ==================== */}
         <section id="industries" className="py-16 sm:py-20 lg:py-28 bg-white">
           <div className="max-w-[1300px] mx-auto px-5 sm:px-8">
+            {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#1E6FD9] mb-4">
                 <span className="w-6 h-px bg-[#E63946]" />
                 Industries We Serve
               </div>
+
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B3E8C] tracking-tight leading-tight mb-5">
                 Serving{" "}
                 <em className="not-italic text-[#C8102E]">
                   Critical Industries.
                 </em>
               </h2>
+
               <p className="text-[#5a6b7d] font-medium leading-relaxed">
                 Reliable steel supply across industries that demand precision,
                 durability and compliance.
               </p>
             </div>
 
+            {/* Industries Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
               {industries.map((ind, i) => (
                 <div
                   key={i}
-                  className="relative rounded-lg overflow-hidden cursor-pointer group"
+                  className="
+            group
+            relative
+            rounded-2xl
+            overflow-hidden
+            cursor-pointer
+            aspect-[4/3]
+            border border-gray-200
+            hover:border-[#C8102E]/50
+            hover:shadow-[0_20px_50px_rgba(200,16,46,0.15)]
+            transition-all duration-500
+          "
                 >
+                  {/* Image */}
                   <img
                     src={ind.image}
                     alt={ind.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="
+              absolute inset-0
+              w-full h-full
+              object-cover
+              group-hover:scale-110
+              transition-transform duration-700 ease-out
+            "
                   />
-                  <div className="absolute inset-0 transition-all duration-300" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-                    <h4 className="text-base font-bold group-hover:text-[#E63946] transition-colors">
+
+                  {/* Dark Overlay */}
+                  <div
+                    className="
+              absolute inset-0
+              bg-black/10
+              group-hover:bg-black/35
+              transition-all duration-500
+            "
+                  />
+
+                  {/* Glass Content */}
+                  <div
+                    className="
+              absolute
+              left-4 right-4 bottom-4
+              p-4 sm:p-5
+              rounded-xl
+              bg-white/10
+              backdrop-blur-md
+              border border-white/20
+              shadow-[0_8px_32px_rgba(0,0,0,0.18)]
+              opacity-0
+              translate-y-6
+              group-hover:opacity-100
+              group-hover:translate-y-0
+              transition-all duration-500 ease-out
+            "
+                  >
+                    {/* Industry Label */}
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="w-5 sm:w-6 h-px bg-[#E63946]" />
+
+                      <span className="text-[0.55rem] sm:text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
+                        Industry
+                      </span>
+                    </div>
+
+                    {/* Industry Name */}
+                    <h4 className="text-sm sm:text-base font-bold text-white">
                       {ind.name}
                     </h4>
-                    <span className="inline-block text-[#E63946] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mt-1">
-                      →
-                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() => navigate("/industries")}
+                      className="
+    mt-2
+    flex items-center gap-2
+    text-white/80
+    text-xs font-semibold
+    opacity-0
+    translate-x-[-8px]
+    group-hover:opacity-100
+    group-hover:translate-x-0
+    transition-all duration-500 delay-100
+    hover:text-white
+    cursor-pointer
+  "
+                    >
+                      <span>Explore</span>
+
+                      <svg
+                        className="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </button>
                   </div>
+
+                  {/* Top Right Glass Arrow */}
+                  <span
+                    className="
+              absolute
+              top-4 right-4
+              w-9 h-9
+              rounded-full
+              bg-white/10
+              backdrop-blur-md
+              border border-white/20
+              flex items-center justify-center
+              opacity-0
+              scale-75
+              group-hover:opacity-100
+              group-hover:scale-100
+              transition-all duration-500
+            "
+                  >
+                    <svg
+                      className="w-4 h-4 text-white"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </span>
                 </div>
               ))}
             </div>
