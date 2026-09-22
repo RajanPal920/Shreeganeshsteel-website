@@ -822,7 +822,7 @@ export default function About() {
                       <div className="flex items-center gap-2 mb-2">
                         <span className="w-6 h-px bg-[#E63946]" />
 
-                        <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-[#E63946]">
+                        <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
                           Industry
                         </span>
                       </div>
@@ -833,7 +833,7 @@ export default function About() {
                       </h3>
 
                       {/* Description */}
-                      <p className="text-xs text-white/90 font-medium leading-relaxed">
+                      <p className="text-xs text-white font-extrabold leading-relaxed">
                         {industry.desc}
                       </p>
                     </div>
@@ -924,7 +924,7 @@ export default function About() {
                       className="flex gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:border-[#1E6FD9]/40 transition-colors duration-300"
                     >
                       <div
-                        className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs font-mono ${
+                        className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs font-medium ${
                           i % 2 === 0
                             ? "bg-[#1E6FD9]/15 text-[#1E6FD9]"
                             : "bg-[#C8102E]/15 text-[#C8102E]"
@@ -1015,7 +1015,7 @@ export default function About() {
               <Reveal key={i} delay={i * 60}>
                 <div className="group bg-[#f7f8fa] border border-gray-200 rounded-2xl p-6 hover:bg-white hover:border-[#1E6FD9]/40 hover:shadow-[0_15px_40px_rgba(11,62,140,0.08)] transition-all duration-300 h-full">
                   <div
-                    className={`text-3xl font-extrabold mb-3 font-mono ${
+                    className={`text-3xl font-extrabold mb-3 font-medium ${
                       i % 2 === 0 ? "text-[#C8102E]" : "text-[#1E6FD9]"
                     }`}
                   >

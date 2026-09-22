@@ -339,10 +339,10 @@ const Contact = () => {
             <div className="relative bg-white rounded-2xl border border-gray-200 shadow-[0_10px_40px_-20px_rgba(11,62,140,0.15)] hover:shadow-[0_25px_60px_-25px_rgba(200,16,46,0.2)] hover:-translate-y-1 transition-all duration-500 overflow-hidden flex flex-col">
               {/* Top bar */}
               <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-gray-100">
-                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#C8102E]">
+                <span className="text-[0.68rem] font-medium font-bold tracking-[0.18em] uppercase text-[#C8102E]">
                   [CONTACT-01]
                 </span>
-                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                <span className="text-[0.68rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6]">
                   Single Headquarters
                 </span>
               </div>
@@ -380,7 +380,7 @@ const Contact = () => {
               <div className="px-6 pb-6 flex-1 flex flex-col gap-4">
                 {/* Address panel */}
                 <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
-                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-2.5">
+                  <div className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-2.5">
                     Corporate Location:
                   </div>
                   <p className="text-[0.88rem] text-[#0B3E8C] font-semibold leading-relaxed">
@@ -392,7 +392,7 @@ const Contact = () => {
 
                 {/* Contacts panel */}
                 <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
-                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-3">
+                  <div className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-3">
                     Landline / Office:
                   </div>
                   <div className="flex flex-col gap-3">
@@ -481,7 +481,7 @@ const Contact = () => {
 
               {/* Bottom verified bar */}
               <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-white">
-                <span className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                <span className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6]">
                   Verified Catalogue Detail
                 </span>
                 <span className="text-[#C8102E] text-xs font-bold">→</span>
@@ -491,10 +491,10 @@ const Contact = () => {
             {/* ---------- CARD 2 — BRANCH OFFICE (HYDERABAD) ---------- */}
             <div className="relative bg-white rounded-2xl border border-gray-200 shadow-[0_10px_40px_-20px_rgba(11,62,140,0.15)] hover:shadow-[0_25px_60px_-25px_rgba(200,16,46,0.2)] hover:-translate-y-1 transition-all duration-500 overflow-hidden flex flex-col">
               <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-gray-100">
-                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#C8102E]">
+                <span className="text-[0.68rem] font-medium font-bold tracking-[0.18em] uppercase text-[#C8102E]">
                   [CONTACT-02]
                 </span>
-                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                <span className="text-[0.68rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6]">
                   Direct Voice Desk
                 </span>
               </div>
@@ -528,7 +528,7 @@ const Contact = () => {
 
               <div className="px-6 pb-6 flex-1 flex flex-col gap-4">
                 <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
-                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-2.5">
+                  <div className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-2.5">
                     Branch Location:
                   </div>
                   <p className="text-[0.88rem] text-[#0B3E8C] font-semibold leading-relaxed">
@@ -538,7 +538,7 @@ const Contact = () => {
                 </div>
 
                 <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
-                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-1.5">
+                  <div className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-1.5">
                     Contact Person:
                   </div>
                   <div className="text-[0.85rem] font-bold text-[#0B3E8C] mb-2.5">
@@ -616,7 +616,7 @@ const Contact = () => {
               </div>
 
               <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-white">
-                <span className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                <span className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6]">
                   Verified Catalogue Detail
                 </span>
                 <span className="text-[#C8102E] text-xs font-bold">→</span>
@@ -626,10 +626,10 @@ const Contact = () => {
             {/* ---------- CARD 3 — FACTORY (VASAI E) ---------- */}
             <div className="relative bg-white rounded-2xl border border-gray-200 shadow-[0_10px_40px_-20px_rgba(11,62,140,0.15)] hover:shadow-[0_25px_60px_-25px_rgba(200,16,46,0.2)] hover:-translate-y-1 transition-all duration-500 overflow-hidden flex flex-col">
               <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-gray-100">
-                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#C8102E]">
+                <span className="text-[0.68rem] font-medium font-bold tracking-[0.18em] uppercase text-[#C8102E]">
                   [CONTACT-03]
                 </span>
-                <span className="text-[0.68rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                <span className="text-[0.68rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6]">
                   Production Unit
                 </span>
               </div>
@@ -664,7 +664,7 @@ const Contact = () => {
 
               <div className="px-6 pb-6 flex-1 flex flex-col gap-4">
                 <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
-                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-2.5">
+                  <div className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-2.5">
                     Factory Location:
                   </div>
                   <p className="text-[0.88rem] text-[#0B3E8C] font-semibold leading-relaxed">
@@ -674,7 +674,7 @@ const Contact = () => {
                 </div>
 
                 <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
-                  <div className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-3">
+                  <div className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6] mb-3">
                     Factory Contact:
                   </div>
                   <div className="flex flex-col gap-3">
@@ -756,7 +756,7 @@ const Contact = () => {
               </div>
 
               <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-white">
-                <span className="text-[0.62rem] font-mono font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                <span className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6]">
                   Verified Catalogue Detail
                 </span>
                 <span className="text-[#C8102E] text-xs font-bold">→</span>
@@ -827,7 +827,7 @@ const Contact = () => {
                           <div className="text-[0.62rem] font-bold tracking-widest uppercase text-[#68758A] mb-0.5">
                             GST — {g.label}
                           </div>
-                          <div className="text-sm font-bold text-[#0B3E8C] font-mono">
+                          <div className="text-sm font-bold text-[#0B3E8C] font-medium">
                             {g.value}
                           </div>
                         </div>
@@ -876,7 +876,7 @@ const Contact = () => {
                   {CONTACT_INFO.products.map((p) => (
                     <span
                       key={p}
-                      className="text-[0.65rem] font-mono tracking-wider uppercase bg-[#f7f8fa] text-[#0B3E8C] px-2.5 py-1 rounded border border-gray-200"
+                      className="text-[0.75rem] font-medium tracking-wider uppercase bg-[#f7f8fa] text-[#0B3E8C] px-2.5 py-1 rounded border border-gray-200"
                     >
                       {p}
                     </span>

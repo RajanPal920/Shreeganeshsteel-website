@@ -123,7 +123,7 @@ const Certificate = () => {
 
         <div className="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-8 py-16 sm:py-20 lg:py-24">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-white/70 font-mono tracking-wider uppercase mb-6">
+          <nav className="flex items-center gap-2 text-xs text-white/70 font-medium tracking-wider uppercase mb-6">
             <Link to="/" className="hover:text-white transition-colors">
               Home
             </Link>

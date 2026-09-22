@@ -425,7 +425,7 @@ export default function Home() {
                           {stat.icon}
                         </div>
                       </div>
-                      <div className="text-[0.65rem] sm:text-xs font-mono font-bold tracking-widest text-white group-hover:text-white transition-colors">
+                      <div className="text-[0.65rem] sm:text-xs font-medium font-bold tracking-widest text-white group-hover:text-white transition-colors">
                         {String(i + 1).padStart(2, "0")}
                       </div>
                     </div>
@@ -591,7 +591,7 @@ export default function Home() {
                     }}
                   >
                     <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                      <span className="absolute top-3 left-3 z-20 w-8 h-8 rounded-full bg-[#0B3E8C] text-white text-xs font-bold font-mono flex items-center justify-center shadow-lg border border-[#1E6FD9]/30">
+                      <span className="absolute top-3 left-3 z-20 w-8 h-8 rounded-full bg-[#0B3E8C] text-white text-xs font-bold font-medium flex items-center justify-center shadow-lg border border-[#1E6FD9]/30">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-[#C8102E] text-white flex items-center justify-center opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 shadow-lg">
@@ -987,7 +987,7 @@ export default function Home() {
                       {x.icon}
                     </div>
                     <span
-                      className="font-mono text-xs text-white font-bold tracking-widest transition-colors duration-300 pt-2"
+                      className="font-medium text-xs text-white font-bold tracking-widest transition-colors duration-300 pt-2"
                       // style={{ color: `${x.accent}99` }}
                     >
                       {x.n}
@@ -1134,7 +1134,7 @@ export default function Home() {
                   {["ISO 9001:2015", "MSME", "MTC"].map((c, i) => (
                     <div
                       key={i}
-                      className="px-4 py-2.5 bg-white border border-gray-200 rounded-md font-mono text-xs font-bold tracking-widest uppercase text-[#0B3E8C] hover:border-[#C8102E] hover:text-[#C8102E] transition-all"
+                      className="px-4 py-2.5 bg-white border border-gray-200 rounded-md font-medium text-xs font-bold tracking-widest uppercase text-[#0B3E8C] hover:border-[#C8102E] hover:text-[#C8102E] transition-all"
                     >
                       {c}
                     </div>

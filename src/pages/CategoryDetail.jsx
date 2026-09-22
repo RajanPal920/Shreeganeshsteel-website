@@ -280,7 +280,7 @@ const CategoryDetail = () => {
                 >
                   <div className="relative aspect-[5/4] overflow-hidden bg-gray-100">
                     {/* Number badge — red */}
-                    <span className="absolute top-2.5 left-2.5 z-20 w-7 h-7 rounded-full text-white text-[0.65rem] font-bold font-mono flex items-center justify-center shadow-lg border border-white/30 bg-[#C8102E]">
+                    <span className="absolute top-2.5 left-2.5 z-20 w-7 h-7 rounded-full text-white text-[0.65rem] font-bold font-medium flex items-center justify-center shadow-lg border border-white/30 bg-[#C8102E]">
                       {String(p.id || i + 1).padStart(2, "0")}
                     </span>
 

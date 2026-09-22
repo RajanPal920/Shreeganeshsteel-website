@@ -105,7 +105,7 @@ export default function MaterialDetail() {
             {/* ✅ GLASS CARD */}
             <div className="max-w-2xl mx-auto text-center backdrop-blur-xl bg-[#0B3E8C]/40 border border-white/20 rounded-2xl sm:rounded-3xl px-5 sm:px-8 lg:px-10 py-7 sm:py-8 ">
               {/* Breadcrumb */}
-              <nav className="flex items-center justify-center gap-2 text-xs text-white/80 font-mono tracking-wider uppercase mb-6 flex-wrap">
+              <nav className="flex items-center justify-center gap-2 text-xs text-white/80 font-medium tracking-wider uppercase mb-6 flex-wrap">
                 <Link to="/" className="hover:text-[#E63946] transition-colors">
                   Home
                 </Link>
@@ -144,7 +144,7 @@ export default function MaterialDetail() {
                 {material.grades.map((g, i) => (
                   <span
                     key={i}
-                    className="text-[0.7rem] font-mono tracking-wider uppercase bg-white/10 border border-white/20 px-3 py-1.5 rounded-full text-white font-bold"
+                    className="text-[0.7rem] font-medium tracking-wider uppercase bg-white/10 border border-white/20 px-3 py-1.5 rounded-full text-white font-bold"
                   >
                     {g}
                   </span>
@@ -244,7 +244,7 @@ export default function MaterialDetail() {
                   style={{ animation: `fadeUp 0.5s ease ${i * 0.04}s both` }}
                 >
                   <div className="relative aspect-[5/4] overflow-hidden bg-gray-100">
-                    <span className="absolute top-2.5 left-2.5 z-20 w-7 h-7 rounded-full bg-[#C8102E] text-white text-[0.65rem] font-bold font-mono flex items-center justify-center shadow-lg border border-white/30">
+                    <span className="absolute top-2.5 left-2.5 z-20 w-7 h-7 rounded-full bg-[#C8102E] text-white text-[0.65rem] font-bold font-medium flex items-center justify-center shadow-lg border border-white/30">
                       {String(i + 1).padStart(2, "0")}
                     </span>
 
@@ -276,7 +276,7 @@ export default function MaterialDetail() {
 
                     {p.standards && (
                       <div className="flex flex-wrap gap-1 mb-3">
-                        <span className="text-[0.6rem] font-mono tracking-wider uppercase bg-[#f7f8fa] text-[#0B3E8C] px-2 py-0.5 rounded border border-gray-200 line-clamp-1">
+                        <span className="text-[0.6rem] font-medium tracking-wider uppercase bg-[#f7f8fa] text-[#0B3E8C] px-2 py-0.5 rounded border border-gray-200 line-clamp-1">
                           {p.standards.split(",")[0]}
                         </span>
                       </div>

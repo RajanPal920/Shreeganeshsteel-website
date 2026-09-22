@@ -238,7 +238,7 @@ export default function ProductDetail() {
     <div className="w-full bg-white">
       {/* Breadcrumb */}
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 pt-8">
-        <nav className="flex items-center gap-2 text-xs text-[#8896a6] font-mono tracking-wider uppercase flex-wrap">
+        <nav className="flex items-center gap-2 text-xs text-[#8896a6] font-medium tracking-wider uppercase flex-wrap">
           <Link to="/" className="hover:text-[#C8102E] transition-colors">
             Home
           </Link>
@@ -289,7 +289,7 @@ export default function ProductDetail() {
                 }}
               />
               {/* Product Number Badge */}
-              <span className="absolute top-4 left-4 z-20 bg-[#C8102E] text-white text-xs font-bold font-mono tracking-widest uppercase px-3 py-1.5 rounded-lg shadow-lg">
+              <span className="absolute top-4 left-4 z-20 bg-[#C8102E] text-white text-xs font-bold font-medium tracking-widest uppercase px-3 py-1.5 rounded-lg shadow-lg">
                 {product.materialGroup}
               </span>
             </div>
@@ -732,7 +732,7 @@ export default function ProductDetail() {
                   }}
                 >
                   <div className="relative aspect-[5/4] overflow-hidden bg-gray-100">
-                    <span className="absolute top-2.5 left-2.5 z-20 w-7 h-7 rounded-full text-white text-[0.65rem] font-bold font-mono flex items-center justify-center shadow-lg border border-white/30 bg-[#C8102E]">
+                    <span className="absolute top-2.5 left-2.5 z-20 w-7 h-7 rounded-full text-white text-[0.65rem] font-bold font-medium flex items-center justify-center shadow-lg border border-white/30 bg-[#C8102E]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
 
@@ -770,7 +770,7 @@ export default function ProductDetail() {
 
                     <div className="flex flex-wrap gap-1 mb-3">
                       {p.standards && (
-                        <span className="text-[0.6rem] font-mono tracking-wider uppercase bg-[#C8102E]/5 text-[#C8102E] px-1.5 py-0.5 rounded border border-[#C8102E]/20 line-clamp-1">
+                        <span className="text-[0.6rem] font-medium tracking-wider uppercase bg-[#C8102E]/5 text-[#C8102E] px-1.5 py-0.5 rounded border border-[#C8102E]/20 line-clamp-1">
                           {p.standards.split(",")[0]}
                         </span>
                       )}

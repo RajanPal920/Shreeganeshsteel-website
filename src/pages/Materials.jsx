@@ -141,7 +141,7 @@ const MaterialCard = ({ material, index }) => (
     <div className="relative aspect-[10/9] overflow-hidden bg-gray-100">
       {/* Number badge */}
       <span
-        className="absolute top-3 left-3 z-20 w-9 h-9 rounded-lg text-white text-xs font-bold font-mono flex items-center justify-center shadow-lg border border-white/30"
+        className="absolute top-3 left-3 z-20 w-9 h-9 rounded-lg text-white text-xs font-bold font-medium flex items-center justify-center shadow-lg border border-white/30"
         style={{ backgroundColor: material.accent }}
       >
         {material.number}
@@ -199,13 +199,13 @@ const MaterialCard = ({ material, index }) => (
         {material.grades.slice(0, 3).map((g, i) => (
           <span
             key={i}
-            className="text-[0.62rem] font-mono tracking-wider uppercase bg-[#f7f8fa] text-[#0B3E8C] px-2 py-0.5 rounded border border-gray-200"
+            className="text-[0.62rem] font-medium tracking-wider uppercase bg-[#f7f8fa] text-[#0B3E8C] px-2 py-0.5 rounded border border-gray-200"
           >
             {g}
           </span>
         ))}
         {material.grades.length > 3 && (
-          <span className="text-[0.62rem] font-mono tracking-wider uppercase bg-[#f7f8fa] text-[#8896a6] px-2 py-0.5 rounded border border-gray-200">
+          <span className="text-[0.62rem] font-medium tracking-wider uppercase bg-[#f7f8fa] text-[#8896a6] px-2 py-0.5 rounded border border-gray-200">
             +{material.grades.length - 3}
           </span>
         )}
