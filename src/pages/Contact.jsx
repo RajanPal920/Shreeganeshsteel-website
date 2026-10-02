@@ -91,19 +91,18 @@ const CONTACT_INFO = {
 
   // Products
   products: [
-    "Pipes",
-    "Rod",
+    "Pipes & Tubes",
+    "Round & Bars",
     "Flanges",
-    "Stainless Steel Sheet",
-    "Plates",
-    "Pipes & Fittings",
-    "304",
-    "304L",
-    "316L",
-    "316TI",
-    "317L",
-    "321",
-    "310",
+    "Sheet ,Coils & Plates",
+    "Buttweld & Forged Fittings",
+    "Fastners",
+    "Wires",
+    "Rings",
+    "Patta Patti",
+    "Perforated Sheets",
+    "Dairy & Pharma Fittings",
+    "Valves",
   ],
 };
 
