@@ -25,7 +25,7 @@ const plates = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-plates-sheets",
+    slug: "stainless-steel-plates-sheets-manufacturer-in-mumbai",
     image: stain,
     title:
       "Stainless Steel Plates & Sheets Supplier – 304, 304L, 316, 316L, 310S, 904L & More",
@@ -109,7 +109,7 @@ const plates = [
   // ============================================
   {
     id: 2,
-    slug: "carbon-steel-plates-sheets",
+    slug: "carbon-steel-plates-sheets-manufacturer-in-mumbai",
     image: hot,
     title:
       "Carbon Steel Plates & Sheets Supplier – ASTM A36, A516, A283 & More",
@@ -187,7 +187,7 @@ const plates = [
   // ============================================
   {
     id: 3,
-    slug: "high-performance-alloy-plates-sheets",
+    slug: "high-performance-alloy-plates-sheets-manufacturer-in-mumbai",
     image: high,
     title:
       "High-Performance Alloy Plates & Sheets Supplier – Nimonic, Nichrome, Nitronic, Nilo & More",
@@ -269,7 +269,7 @@ const plates = [
   // ============================================
   {
     id: 4,
-    slug: "alloy-28-plates-sheets",
+    slug: "alloy-28-plates-sheets-manufacturer-in-mumbai",
     image: ally28,
     title: "Alloy 28 Plates & Sheets Supplier – UNS N08028",
     shortDescription:
@@ -334,7 +334,7 @@ const plates = [
   // ============================================
   {
     id: 5,
-    slug: "special-alloy-plates-sheets",
+    slug: "special-alloy-plates-sheets-manufacturer-in-mumbai",
     image: special,
     title: "Special Alloy Plates & Sheets Supplier – SMO 254 (F44) & Alloy 20",
     shortDescription:
@@ -407,7 +407,7 @@ const plates = [
   // ============================================
   {
     id: 6,
-    slug: "nickel-alloy-200-201-plates-sheets",
+    slug: "nickel-alloy-200-201-plates-sheets-manufacturer-in-mumbai",
     image: ally200,
     title: "Nickel Alloy 200 / 201 Plates & Sheets Supplier",
     shortDescription:
@@ -469,7 +469,7 @@ const plates = [
   // ============================================
   {
     id: 7,
-    slug: "monel-400-plates-sheets",
+    slug: "monel-400-plates-sheets-manufacturer-in-mumbai",
     image: mon,
     title: "Monel 400 Plates & Sheets Supplier",
     shortDescription:
@@ -531,7 +531,7 @@ const plates = [
   // ============================================
   {
     id: 8,
-    slug: "inconel-incoloy-plates-sheets",
+    slug: "inconel-incoloy-plates-sheets-manufacturer-in-mumbai",
     image: inc,
     title:
       "Inconel & Incoloy Plates & Sheets Supplier – 600, 601, 625, 690, 718, 800, 825 & More",
@@ -617,7 +617,7 @@ const plates = [
   // ============================================
   {
     id: 9,
-    slug: "copper-nickel-plates-sheets",
+    slug: "copper-nickel-plates-sheets-manufacturer-in-mumbai",
     image: cop,
     title: "Copper Nickel Plates & Sheets Supplier – 70/30 & 90/10",
     shortDescription:

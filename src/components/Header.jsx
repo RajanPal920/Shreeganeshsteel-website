@@ -39,8 +39,8 @@ const TOP_CONTACTS = [
   },
   {
     type: "email",
-    label: "info@shreeganeshsteel.com",
-    href: "mailto:info@shreeganeshsteel.com",
+    label: " shreeganeshsteel29@gmail.com",
+    href: "mailto: shreeganeshsteel29@gmail.com",
   },
   {
     type: "email",
@@ -165,21 +165,21 @@ const materials = [
 const certificates = [
   {
     id: 1,
-    name: "ISO 9001:2015 Quality Management System",
-    file: "/certificates/iso-9001-2015.pdf",
+    name: "ISO 9001 Certificate",
+    file: "/certificate/iso-9001.pdf",
     icon: "award",
   },
   {
     id: 2,
-    name: "Udyam Registration Certificate (MSME)",
-    file: "/certificates/udyam-msme.pdf",
+    name: "Udyam Registration Certificate",
+    file: "/certificate/Udyam.pdf",
     icon: "shield",
   },
   {
     id: 3,
-    name: "MASSMA Certificate of Membership",
-    file: "/certificates/massma-membership.pdf",
-    icon: "file",
+    name: "CORB ISO Certificate (PDF)",
+    file: "/certificate/CORP-ISO.pdf",
+    icon: "award",
   },
 ];
 
@@ -1745,6 +1745,17 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
+                  <div
+                    className="p-3 border-t text-center"
+                    style={{ borderColor: BRAND.cardBorder, background: "#fafbfc" }}
+                  >
+                    <Link
+                      to="/certificate"
+                      className="text-xs font-bold tracking-wider uppercase text-[#0B3E8C] hover:text-[#C8102E] transition-colors inline-flex items-center gap-1.5"
+                    >
+                      View All Certificates →
+                    </Link>
+                  </div>
                 </div>
               </li>
 
@@ -2010,6 +2021,13 @@ const Header = () => {
                   </span>
                 </a>
               ))}
+              <Link
+                to="/certificate"
+                onClick={closeMenu}
+                className="block text-center py-2.5 mt-1 text-xs font-bold uppercase tracking-wider text-[#0B3E8C] hover:text-[#C8102E] bg-blue-50/50 rounded-lg"
+              >
+                View All Certificates →
+              </Link>
             </div>
           </div>
 

@@ -22,7 +22,8 @@ const fasteners = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-fasteners",
+    slug: "stainless-steel-fasteners-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-fasteners",
     image: stainless,
     title: "Stainless Steel Fasteners",
     shortDescription:
@@ -101,7 +102,8 @@ const fasteners = [
   // ============================================
   {
     id: 2,
-    slug: "nickel-alloy-fasteners",
+    slug: "nickel-alloy-fasteners-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-fasteners",
     image: nickel,
     title: "Nickel Alloy Fasteners",
     shortDescription:
@@ -183,7 +185,8 @@ const fasteners = [
   // ============================================
   {
     id: 3,
-    slug: "high-alloy-fasteners",
+    slug: "high-alloy-fasteners-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-fasteners",
     image: highAlloys,
     title: "High Alloy Fasteners",
     shortDescription:
@@ -260,7 +263,8 @@ const fasteners = [
   // ============================================
   {
     id: 4,
-    slug: "duplex-steel-fasteners",
+    slug: "duplex-steel-fasteners-manufacturer-in-mumbai",
+    oldSlug: "duplex-steel-fasteners",
     image: duplex,
     title: "Duplex Steel Fasteners",
     shortDescription:
@@ -324,7 +328,8 @@ const fasteners = [
   // ============================================
   {
     id: 5,
-    slug: "super-duplex-fasteners",
+    slug: "super-duplex-fasteners-manufacturer-in-mumbai",
+    oldSlug: "super-duplex-fasteners",
     image: superDuplex,
     title: "Super Duplex Fasteners",
     shortDescription:
@@ -388,7 +393,8 @@ const fasteners = [
   // ============================================
   {
     id: 6,
-    slug: "titanium-fasteners",
+    slug: "titanium-fasteners-manufacturer-in-mumbai",
+    oldSlug: "titanium-fasteners",
     image: titanium,
     title: "Titanium Fasteners",
     shortDescription:
@@ -459,7 +465,8 @@ const fasteners = [
   // ============================================
   {
     id: 7,
-    slug: "alloy-fasteners",
+    slug: "alloy-fasteners-manufacturer-in-mumbai",
+    oldSlug: "alloy-fasteners",
     image: alloys,
     title: "Alloy Fasteners",
     shortDescription:
@@ -529,7 +536,8 @@ const fasteners = [
   // ============================================
   {
     id: 8,
-    slug: "carbon-steel-fasteners",
+    slug: "carbon-steel-fasteners-manufacturer-in-mumbai",
+    oldSlug: "carbon-steel-fasteners",
     image: carbon,
     title: "Carbon Steel Fasteners",
     shortDescription:
@@ -607,7 +615,8 @@ const fasteners = [
   // ============================================
   {
     id: 9,
-    slug: "alloy-steel-fasteners",
+    slug: "alloy-steel-fasteners-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-fasteners",
     image: alloySteel,
     title: "Alloy Steel Fasteners",
     shortDescription:

@@ -7,7 +7,8 @@ export const products = [
   // ============================================
   {
     id: 1,
-    slug: "buttweld-fittings",
+    slug: "buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "buttweld-fittings",
     name: "Butt Weld Fittings",
     desc: "Seamless & welded elbows, tees, reducers & caps",
     image: "/images/stock/buttweld-fitting.jpg",
@@ -23,7 +24,8 @@ export const products = [
   },
   {
     id: 2,
-    slug: "forged-fittings",
+    slug: "forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "forged-fittings",
     name: "Forged Fittings",
     desc: "Socketweld & threaded fittings (2000# to 9000#)",
     image: "/images/stock/incoloy-forged-fittings.jpg",
@@ -39,7 +41,8 @@ export const products = [
   },
   {
     id: 3,
-    slug: "flanges",
+    slug: "flanges-manufacturer-in-mumbai",
+    oldSlug: "flanges",
     name: "Flanges",
     desc: "ANSI, DIN & BS forged industrial flanges",
     image: "/images/stock/hastelloy-alloy-flanges.jpg",
@@ -55,7 +58,8 @@ export const products = [
   },
   {
     id: 4,
-    slug: "fasteners",
+    slug: "fasteners-manufacturer-in-mumbai",
+    oldSlug: "fasteners",
     name: "Fasteners",
     desc: "High-tensile stud bolts, nuts & heavy bolting",
     image: "/images/stock/stainless-duplex-steel-fasteners.jpg",
@@ -71,7 +75,8 @@ export const products = [
   },
   {
     id: 5,
-    slug: "dairy-fittings",
+    slug: "dairy-fittings-manufacturer-in-mumbai",
+    oldSlug: "dairy-fittings",
     name: "Dairy & Pharma Fittings",
     desc: "Hygienic electro-polished TC ferrules & sanitary bends",
     image: "/images/stock/hygienic-dairy-fittings.jpg",
@@ -87,7 +92,8 @@ export const products = [
   },
   {
     id: 6,
-    slug: "hose-pipe",
+    slug: "hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "hose-pipe",
     name: "Hose Pipes",
     desc: "SS corrugated flexible & wire braided hoses",
     image: "/images/stock/annular-corrugated-hose.jpg",
@@ -103,7 +109,8 @@ export const products = [
   },
   {
     id: 7,
-    slug: "wire-mesh",
+    slug: "wire-mesh-manufacturer-in-mumbai",
+    oldSlug: "wire-mesh",
     name: "Wire Mesh",
     desc: "Woven, welded & crimped filtration screens",
     image: "/images/stock/chain-link-mesh.jpg",
@@ -119,7 +126,8 @@ export const products = [
   },
   {
     id: 8,
-    slug: "perforated-sheet",
+    slug: "perforated-sheet-manufacturer-in-mumbai",
+    oldSlug: "perforated-sheet",
     name: "Perforated Sheets",
     desc: "Custom punched round, square & slotted sheets",
     image: "/images/stock/galvanized-perforated-sheets.jpg",
@@ -139,7 +147,8 @@ export const products = [
   // ============================================
   {
     id: 9,
-    slug: "pipes-tubes",
+    slug: "pipes-tubes-supplier-in-mumbai",
+    oldSlug: "pipes-tubes",
     name: "Pipes & Tubes",
     desc: "High-pressure seamless & welded pipes & tubes",
     image: "/images/stock/alloy-20-pipes.jpg",
@@ -155,7 +164,8 @@ export const products = [
   },
   {
     id: 10,
-    slug: "sheets-plates",
+    slug: "sheets-plates-supplier-in-mumbai",
+    oldSlug: "sheets-plates",
     name: "Sheets & Plates",
     desc: "Heavy engineering plates & cold rolled sheets",
     image: "/images/stock/alloy-28-sheets.jpg",
@@ -171,7 +181,8 @@ export const products = [
   },
   {
     id: 11,
-    slug: "round-bars",
+    slug: "round-bars-supplier-in-mumbai",
+    oldSlug: "round-bars",
     name: "Rods & Bars",
     desc: "Precision ground round, hex & square bars",
     image: "/images/stock/bright-bars.jpg",
@@ -187,7 +198,8 @@ export const products = [
   },
   {
     id: 12,
-    slug: "wires",
+    slug: "wires-supplier-in-mumbai",
+    oldSlug: "wires",
     name: "Wires",
     desc: "High-tensile industrial, spring & welding wires",
     image: "/images/stock/bright-wire.jpg",
@@ -203,7 +215,8 @@ export const products = [
   },
   {
     id: 13,
-    slug: "circles",
+    slug: "circles-supplier-in-mumbai",
+    oldSlug: "circles",
     name: "Circles",
     desc: "Rolled plate circles & forged heavy discs",
     image: "/images/stock/machined-forged-circles.jpg",
@@ -219,7 +232,8 @@ export const products = [
   },
   {
     id: 14,
-    slug: "patta-patti",
+    slug: "patta-patti-supplier-in-mumbai",
+    oldSlug: "patta-patti",
     name: "Patta Patti",
     desc: "Slit strips & narrow coiled strip stock",
     image: "/images/stock/carbon-steel-flat-bar.jpg",
@@ -235,7 +249,8 @@ export const products = [
   },
   {
     id: 15,
-    slug: "coils",
+    slug: "coils-supplier-in-mumbai",
+    oldSlug: "coils",
     name: "Coils",
     desc: "2B, BA & Mirror finish precision slit coils",
     image: "/images/stock/alloy-28-coils.jpg",
@@ -251,7 +266,8 @@ export const products = [
   },
   {
     id: 16,
-    slug: "rings",
+    slug: "rings-supplier-in-mumbai",
+    oldSlug: "rings",
     name: "Rings",
     desc: "Forged flange rings & lap-joint backing rings",
     image: "/images/stock/duplex-super-duplex-rings.jpg",
@@ -271,7 +287,13 @@ export const products = [
 // HELPERS
 // ============================================
 export const getCategoryBySlug = (slug) =>
-  products.find((c) => c.slug === slug);
+  products.find(
+    (c) =>
+      c.slug === slug ||
+      c.oldSlug === slug ||
+      c.slug.replace(/-(manufacturer|supplier)-in-mumbai$/, "") ===
+        (slug || "").replace(/-(manufacturer|supplier)-in-mumbai$/, ""),
+  );
 
 export const getManufacturerCategories = () =>
   products.filter((c) => c.division === "manufacturer");

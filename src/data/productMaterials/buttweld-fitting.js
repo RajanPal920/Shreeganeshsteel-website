@@ -22,7 +22,8 @@ const buttweldFitting = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-buttweld-fittings",
+    slug: "stainless-steel-buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-buttweld-fittings",
     image: duplex,
     title: "Stainless Steel Buttweld Fittings",
     shortDescription:
@@ -95,7 +96,8 @@ const buttweldFitting = [
   // ============================================
   {
     id: 2,
-    slug: "carbon-steel-buttweld-fittings",
+    slug: "carbon-steel-buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "carbon-steel-buttweld-fittings",
     image: carbon,
     title: "Carbon Steel Buttweld Fittings",
     shortDescription:
@@ -168,7 +170,8 @@ const buttweldFitting = [
   // ============================================
   {
     id: 3,
-    slug: "alloy-steel-buttweld-fittings",
+    slug: "alloy-steel-buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-buttweld-fittings",
     image: alloySteel,
     title: "Alloy Steel Buttweld Fittings",
     shortDescription:
@@ -237,7 +240,8 @@ const buttweldFitting = [
   // ============================================
   {
     id: 4,
-    slug: "duplex-steel-buttweld-fittings",
+    slug: "duplex-steel-buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "duplex-steel-buttweld-fittings",
     image: duplex,
     title: "Duplex Steel Buttweld Fittings",
     shortDescription:
@@ -298,7 +302,8 @@ const buttweldFitting = [
   // ============================================
   {
     id: 5,
-    slug: "super-duplex-buttweld-fittings",
+    slug: "super-duplex-buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "super-duplex-buttweld-fittings",
     image: duplex,
     title: "Super Duplex Buttweld Fittings",
     shortDescription:
@@ -358,7 +363,8 @@ const buttweldFitting = [
   // ============================================
   {
     id: 6,
-    slug: "nickel-alloy-buttweld-fittings",
+    slug: "nickel-alloy-buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-buttweld-fittings",
     image: nickelAlloy,
     title: "Nickel Alloy Buttweld Fittings",
     shortDescription:
@@ -433,7 +439,8 @@ const buttweldFitting = [
   // ============================================
   {
     id: 7,
-    slug: "high-alloys-buttweld-fittings",
+    slug: "high-alloys-buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "high-alloys-buttweld-fittings",
     image: hast,
     title: "High Alloys Buttweld Fittings",
     shortDescription:
@@ -502,7 +509,8 @@ const buttweldFitting = [
   // ============================================
   {
     id: 8,
-    slug: "titanium-buttweld-fittings",
+    slug: "titanium-buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "titanium-buttweld-fittings",
     image: titani,
     title: "Titanium Buttweld Fittings",
     shortDescription:
@@ -568,7 +576,8 @@ const buttweldFitting = [
   // ============================================
   {
     id: 9,
-    slug: "alloys-buttweld-fittings",
+    slug: "alloys-buttweld-fittings-manufacturer-in-mumbai",
+    oldSlug: "alloys-buttweld-fittings",
     image: nic,
     title: "Alloys Buttweld Fittings",
     shortDescription:

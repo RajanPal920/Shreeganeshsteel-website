@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
+import { EMAILJS_CONFIG } from "../config/emailjs";
 
 // ============================================
 // CONTACT DATA — From Visiting Card (SGSI)
@@ -205,6 +207,8 @@ const GlobeIcon = ({ className = "w-5 h-5" }) => (
   </svg>
 );
 
+
+
 // ============================================
 // CONTACT PAGE
 // ============================================
@@ -216,20 +220,213 @@ const Contact = () => {
     company: "",
     subject: "",
     message: "",
+    _gotcha: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState(null); // { type: 'success' | 'error', message: string }
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (fieldErrors[e.target.name]) {
+      setFieldErrors({ ...fieldErrors, [e.target.name]: null });
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const message = `Hello Shree Ganesh Steel India,%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Company:* ${formData.company}%0A*Subject:* ${formData.subject}%0A%0A*Message:*%0A${formData.message}`;
-    window.open(`https://wa.me/917021519829?text=${message}`, "_blank");
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    if (isSubmitting) return;
+
+    // Validate inputs
+    const errors = {};
+    const trimmedName = formData.name.trim();
+    const trimmedPhone = formData.phone.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMessage = formData.message.trim();
+
+    if (!trimmedName) {
+      errors.name = "Full Name is required.";
+    }
+
+    const phoneRegex = /^[+]?[\d\s\-()]{7,20}$/;
+    if (!trimmedPhone) {
+      errors.phone = "Phone Number is required.";
+    } else if (!phoneRegex.test(trimmedPhone)) {
+      errors.phone = "Please enter a valid phone number.";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!trimmedEmail) {
+      errors.email = "Email is required.";
+    } else if (!emailRegex.test(trimmedEmail)) {
+      errors.email = "Please enter a valid email address.";
+    }
+
+    if (!trimmedMessage) {
+      errors.message = "Message is required.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setStatus({
+        type: "error",
+        message: "Please fill in all required fields with valid details.",
+      });
+      return;
+    }
+
+    setFieldErrors({});
+    setIsSubmitting(true);
+    setStatus(null);
+
+    // Honeypot spam check
+    if (formData._gotcha) {
+      setIsSubmitting(false);
+      setStatus({
+        type: "success",
+        message: "Thank you! Your inquiry has been submitted successfully.",
+      });
+      return;
+    }
+
+    const targetEmail =
+      EMAILJS_CONFIG?.recipientEmail || "shreeganeshsteel29@gmail.com";
+    const formattedTime = new Date().toLocaleString("en-IN", {
+      timeZone: "Asia/Kolkata",
+      dateStyle: "full",
+      timeStyle: "medium",
+    });
+
+    // Template parameters for EmailJS
+    const templateParams = {
+      to_email: targetEmail,
+      recipient_email: targetEmail,
+      from_name: trimmedName,
+      user_name: trimmedName,
+      name: trimmedName,
+      phone: trimmedPhone,
+      user_phone: trimmedPhone,
+      email: trimmedEmail,
+      user_email: trimmedEmail,
+      reply_to: trimmedEmail,
+      company: formData.company.trim() || "Not specified",
+      subject: formData.subject.trim() || "New Website Inquiry",
+      message: trimmedMessage,
+      submission_time: formattedTime,
+    };
+
+    let sent = false;
+
+    try {
+      // 1. Try EmailJS if credentials are provided in .env
+      const hasEmailJS =
+        Boolean(EMAILJS_CONFIG?.serviceId) &&
+        Boolean(EMAILJS_CONFIG?.templateId) &&
+        Boolean(EMAILJS_CONFIG?.publicKey);
+
+      if (hasEmailJS) {
+        try {
+          const res = await emailjs.send(
+            EMAILJS_CONFIG.serviceId,
+            EMAILJS_CONFIG.templateId,
+            templateParams,
+            EMAILJS_CONFIG.publicKey
+          );
+
+          if (res.status === 200 || res.text === "OK") {
+            sent = true;
+            if (EMAILJS_CONFIG.confirmationTemplateId) {
+              try {
+                await emailjs.send(
+                  EMAILJS_CONFIG.serviceId,
+                  EMAILJS_CONFIG.confirmationTemplateId,
+                  templateParams,
+                  EMAILJS_CONFIG.publicKey
+                );
+              } catch (confErr) {
+                console.warn("Customer confirmation email failed:", confErr);
+              }
+            }
+          }
+        } catch (emailJsErr) {
+          console.warn("EmailJS failed, falling back to direct service:", emailJsErr);
+        }
+      }
+
+      // 2. Direct inquiry delivery to shreeganeshsteel29@gmail.com
+      if (!sent) {
+        const response = await fetch(
+          `https://formsubmit.co/ajax/${targetEmail}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              name: trimmedName,
+              phone: trimmedPhone,
+              email: trimmedEmail,
+              company: formData.company.trim() || "Not specified",
+              subject: formData.subject.trim() || "New Website Inquiry",
+              message: trimmedMessage,
+              submission_time: formattedTime,
+              _subject: `New Inquiry: ${trimmedName} (${trimmedPhone}) - Shree Ganesh Steel Corporation`,
+              _template: "table",
+              _captcha: "false",
+            }),
+          }
+        );
+
+        const data = await response.json();
+        if (
+          response.ok &&
+          (data.success === "true" ||
+            data.success === true ||
+            (data.message && data.message.toLowerCase().includes("activation")))
+        ) {
+          sent = true;
+        } else {
+          console.warn("FormSubmit response:", data);
+        }
+      }
+
+      if (sent) {
+        setStatus({
+          type: "success",
+          message:
+            "Thank you! Your inquiry has been submitted successfully to shreeganeshsteel29@gmail.com.",
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          subject: "",
+          message: "",
+          _gotcha: "",
+        });
+      } else {
+        setStatus({
+          type: "error",
+          message:
+            "Sorry, your inquiry could not be submitted automatically. Please contact us directly at shreeganeshsteel29@gmail.com or call +91 73137 26773.",
+        });
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      setStatus({
+        type: "error",
+        message:
+          "Sorry, your inquiry could not be submitted automatically. Please contact us directly at shreeganeshsteel29@gmail.com or call +91 73137 26773.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+
 
   // ============================================
   // REUSABLE ADDRESS CARD
@@ -451,7 +648,7 @@ const Contact = () => {
                 </div>
 
                 {/* View map */}
-                <a
+                {/* <a
                   href="https://maps.google.com/?q=Mumbai+400004"
                   target="_blank"
                   rel="noreferrer"
@@ -475,7 +672,7 @@ const Contact = () => {
                   <span className="group-hover:translate-y-0.5 transition-transform">
                     ↓
                   </span>
-                </a>
+                </a> */}
               </div>
 
               {/* Bottom verified bar */}
@@ -586,7 +783,7 @@ const Contact = () => {
                     </span>
                   </div>
                 </div>
-
+                {/* 
                 <a
                   href="https://maps.google.com/?q=IDA+Jeedimetla+Hyderabad"
                   target="_blank"
@@ -611,7 +808,7 @@ const Contact = () => {
                   <span className="group-hover:translate-y-0.5 transition-transform">
                     ↓
                   </span>
-                </a>
+                </a> */}
               </div>
 
               <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-white">
@@ -727,7 +924,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <a
+                {/* <a
                   href="https://maps.google.com/?q=Vasai+East+Maharashtra"
                   target="_blank"
                   rel="noreferrer"
@@ -751,7 +948,7 @@ const Contact = () => {
                   <span className="group-hover:translate-y-0.5 transition-transform">
                     ↓
                   </span>
-                </a>
+                </a> */}
               </div>
 
               <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-white">
@@ -897,11 +1094,23 @@ const Contact = () => {
                   </h2>
                   <p className="text-sm text-[#68758A] leading-relaxed">
                     Fill in the form and we'll get back to you within 24 hours
-                    via WhatsApp or email.
+                    via email or phone.
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Spam honeypot field hidden from users */}
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    value={formData._gotcha}
+                    onChange={handleChange}
+                    style={{ display: "none" }}
+                    tabIndex="-1"
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-[0.68rem] font-bold tracking-widest uppercase text-[#68758A] mb-2">
@@ -914,8 +1123,15 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your name"
-                        className="w-full px-4 py-3 bg-[#f7f8fa] border border-gray-200 rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all"
+                        className={`w-full px-4 py-3 bg-[#f7f8fa] border ${
+                          fieldErrors.name ? "border-red-500" : "border-gray-200"
+                        } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all`}
                       />
+                      {fieldErrors.name && (
+                        <p className="text-xs text-red-600 mt-1 font-medium">
+                          {fieldErrors.name}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label className="block text-[0.68rem] font-bold tracking-widest uppercase text-[#68758A] mb-2">
@@ -928,24 +1144,39 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+91 00000 00000"
-                        className="w-full px-4 py-3 bg-[#f7f8fa] border border-gray-200 rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all"
+                        className={`w-full px-4 py-3 bg-[#f7f8fa] border ${
+                          fieldErrors.phone ? "border-red-500" : "border-gray-200"
+                        } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all`}
                       />
+                      {fieldErrors.phone && (
+                        <p className="text-xs text-red-600 mt-1 font-medium">
+                          {fieldErrors.phone}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-[0.68rem] font-bold tracking-widest uppercase text-[#68758A] mb-2">
-                        Email
+                        Email *
                       </label>
                       <input
                         type="email"
                         name="email"
+                        required
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="you@company.com"
-                        className="w-full px-4 py-3 bg-[#f7f8fa] border border-gray-200 rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all"
+                        className={`w-full px-4 py-3 bg-[#f7f8fa] border ${
+                          fieldErrors.email ? "border-red-500" : "border-gray-200"
+                        } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all`}
                       />
+                      {fieldErrors.email && (
+                        <p className="text-xs text-red-600 mt-1 font-medium">
+                          {fieldErrors.email}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label className="block text-[0.68rem] font-bold tracking-widest uppercase text-[#68758A] mb-2">
@@ -964,7 +1195,7 @@ const Contact = () => {
 
                   <div>
                     <label className="block text-[0.68rem] font-bold tracking-widest uppercase text-[#68758A] mb-2">
-                      Subject / Requirement
+                      Subject
                     </label>
                     <input
                       type="text"
@@ -987,26 +1218,69 @@ const Contact = () => {
                       onChange={handleChange}
                       rows={5}
                       placeholder="Tell us about your requirement — material grade, size, quantity, delivery location, etc."
-                      className="w-full px-4 py-3 bg-[#f7f8fa] border border-gray-200 rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all resize-none"
+                      className={`w-full px-4 py-3 bg-[#f7f8fa] border ${
+                        fieldErrors.message ? "border-red-500" : "border-gray-200"
+                      } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all resize-none`}
                     />
+                    {fieldErrors.message && (
+                      <p className="text-xs text-red-600 mt-1 font-medium">
+                        {fieldErrors.message}
+                      </p>
+                    )}
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-br from-[#0B3E8C] to-[#1E6FD9] hover:from-[#C8102E] hover:to-[#E63946] text-white font-bold text-sm tracking-widest uppercase px-6 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-br from-[#0B3E8C] to-[#1E6FD9] hover:from-[#C8102E] hover:to-[#E63946] text-white font-bold text-sm tracking-widest uppercase px-6 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl disabled:opacity-75 disabled:cursor-not-allowed"
                   >
-                    Send Inquiry via WhatsApp <span>→</span>
+                    {isSubmitting ? (
+                      <>
+                        <svg
+                          className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v8H4z"
+                          ></path>
+                        </svg>
+                        Sending Inquiry...
+                      </>
+                    ) : (
+                      <>
+                        Send Inquiry <span>→</span>
+                      </>
+                    )}
                   </button>
 
-                  {submitted && (
-                    <div className="p-4 bg-[#25d366]/10 border border-[#25d366]/30 rounded-lg text-sm text-[#0B3E8C] font-medium text-center">
-                      ✅ Redirecting to WhatsApp...
+                  {status && status.type === "success" && (
+                    <div className="p-4 bg-emerald-50 border border-emerald-300 rounded-lg text-sm text-emerald-800 font-medium text-center">
+                      {status.message}
                     </div>
                   )}
 
+                  {status && status.type === "error" && (
+                    <div className="p-4 bg-red-50 border border-red-300 rounded-lg text-sm text-red-800 font-medium text-center">
+                      {status.message}
+                    </div>
+                  )}
+
+
                   <p className="text-[0.7rem] text-[#68758A] text-center leading-relaxed">
                     By submitting this form, you agree to be contacted via
-                    WhatsApp, phone or email.
+                    phone or email.
                   </p>
                 </form>
               </div>

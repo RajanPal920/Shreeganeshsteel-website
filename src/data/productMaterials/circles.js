@@ -13,7 +13,8 @@ import titanium from "../../../public/images/stock/titanium-circles.jpg";
 const circles = [
   {
     id: 1,
-    slug: "stainless-steel-circles",
+    slug: "stainless-steel-circles-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-circles",
     image: stain,
     title: "Stainless Steel Circles",
     shortDescription:
@@ -27,7 +28,8 @@ const circles = [
   },
   {
     id: 2,
-    slug: "carbon-steel-circles",
+    slug: "carbon-steel-circles-manufacturer-in-mumbai",
+    oldSlug: "carbon-steel-circles",
     image: carbon,
     title: "Carbon Steel Circles",
     shortDescription:
@@ -39,7 +41,8 @@ const circles = [
   },
   {
     id: 3,
-    slug: "alloy-steel-circles",
+    slug: "alloy-steel-circles-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-circles",
     image: alloy,
     title: "Alloy Steel Circles",
     shortDescription:
@@ -51,7 +54,8 @@ const circles = [
   },
   {
     id: 4,
-    slug: "duplex-steel-circles",
+    slug: "duplex-steel-circles-manufacturer-in-mumbai",
+    oldSlug: "duplex-steel-circles",
     image: duplex,
     title: "Duplex Steel Circles",
     shortDescription:
@@ -63,7 +67,8 @@ const circles = [
   },
   {
     id: 5,
-    slug: "super-duplex-circles",
+    slug: "super-duplex-circles-manufacturer-in-mumbai",
+    oldSlug: "super-duplex-circles",
     image: superDuplex,
     title: "Super Duplex Circles",
     shortDescription:
@@ -75,7 +80,8 @@ const circles = [
   },
   {
     id: 6,
-    slug: "nickel-alloy-circles",
+    slug: "nickel-alloy-circles-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-circles",
     image: nickel,
     title: "Nickel Alloy Circles",
     shortDescription:
@@ -88,7 +94,8 @@ const circles = [
   },
   {
     id: 7,
-    slug: "titanium-circles",
+    slug: "titanium-circles-manufacturer-in-mumbai",
+    oldSlug: "titanium-circles",
     image: titanium,
     title: "Titanium Circles",
     shortDescription:
@@ -100,7 +107,8 @@ const circles = [
   },
   {
     id: 8,
-    slug: "machined-forged-circles",
+    slug: "machined-forged-circles-manufacturer-in-mumbai",
+    oldSlug: "machined-forged-circles",
     image: mach,
     title: "Machined & Forged Circles",
     shortDescription:
@@ -113,7 +121,8 @@ const circles = [
   },
   {
     id: 9,
-    slug: "specialty-industrial-circles",
+    slug: "specialty-industrial-circles-manufacturer-in-mumbai",
+    oldSlug: "specialty-industrial-circles",
     image: ind,
     title: "Specialty Industrial Circles",
     shortDescription:

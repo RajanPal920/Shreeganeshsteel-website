@@ -22,7 +22,8 @@ const sheets = [
   // ============================================
   {
     id: 1,
-    slug: "titanium-sheets",
+    slug: "titanium-sheets-manufacturer-in-mumbai",
+    oldSlug: "titanium-sheets",
     image: tita,
     title: "Titanium Sheets Supplier – Grade 2 & Grade 5",
     shortDescription:
@@ -96,7 +97,8 @@ const sheets = [
   // ============================================
   {
     id: 2,
-    slug: "stainless-steel-sheets",
+    slug: "stainless-steel-sheets-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-sheets",
     image: stain,
     title:
       "Stainless Steel Sheets Supplier – 304, 304L, 316, 316L, 310S, 904L & More",
@@ -178,7 +180,8 @@ const sheets = [
   // ============================================
   {
     id: 3,
-    slug: "high-performance-alloy-sheets",
+    slug: "high-performance-alloy-sheets-manufacturer-in-mumbai",
+    oldSlug: "high-performance-alloy-sheets",
     image: high,
     title:
       "High-Performance Alloy Sheets Supplier – Nimonic, Nichrome, Nitronic, Nilo & Alloy",
@@ -261,7 +264,8 @@ const sheets = [
   // ============================================
   {
     id: 4,
-    slug: "alloy-28-sheets",
+    slug: "alloy-28-sheets-manufacturer-in-mumbai",
+    oldSlug: "alloy-28-sheets",
     image: ally28,
     title: "Alloy 28 Sheets Supplier – UNS N08028",
     shortDescription:
@@ -326,7 +330,8 @@ const sheets = [
   // ============================================
   {
     id: 5,
-    slug: "special-alloy-sheets",
+    slug: "special-alloy-sheets-manufacturer-in-mumbai",
+    oldSlug: "special-alloy-sheets",
     image: special,
     title: "Special Alloy Sheets Supplier – SMO 254 (F44) & Alloy 20",
     shortDescription:
@@ -399,7 +404,8 @@ const sheets = [
   // ============================================
   {
     id: 6,
-    slug: "nickel-alloy-200-201-sheets",
+    slug: "nickel-alloy-200-201-sheets-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-200-201-sheets",
     image: ally200,
     title: "Nickel Alloy 200 / 201 Sheets Supplier",
     shortDescription:
@@ -461,7 +467,8 @@ const sheets = [
   // ============================================
   {
     id: 7,
-    slug: "monel-400-sheets",
+    slug: "monel-400-sheets-manufacturer-in-mumbai",
+    oldSlug: "monel-400-sheets",
     image: mon,
     title: "Monel 400 Sheets Supplier",
     shortDescription:
@@ -523,7 +530,8 @@ const sheets = [
   // ============================================
   {
     id: 8,
-    slug: "inconel-incoloy-sheets",
+    slug: "inconel-incoloy-sheets-manufacturer-in-mumbai",
+    oldSlug: "inconel-incoloy-sheets",
     image: inc,
     title:
       "Inconel & Incoloy Sheets Supplier – 600, 601, 625, 690, 718, 725, X-750, 800, 800H, 800HT, 825, 925 & 330",
@@ -610,7 +618,8 @@ const sheets = [
   // ============================================
   {
     id: 9,
-    slug: "copper-nickel-sheets",
+    slug: "copper-nickel-sheets-manufacturer-in-mumbai",
+    oldSlug: "copper-nickel-sheets",
     image: cop,
     title: "Copper Nickel Sheets Supplier – 70/30 & 90/10",
     shortDescription:

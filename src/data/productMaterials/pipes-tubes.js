@@ -26,7 +26,8 @@ const pipes = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-pipes",
+    slug: "stainless-steel-pipes-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-pipes",
     image: stain,
     title: "Stainless Steel Pipes Supplier",
     shortDescription:
@@ -109,7 +110,8 @@ const pipes = [
   // ============================================
   {
     id: 2,
-    slug: "nickel-alloy-pipes",
+    slug: "nickel-alloy-pipes-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-pipes",
     image: nic,
     title: "Nickel Alloy Pipes Supplier",
     shortDescription:
@@ -188,7 +190,8 @@ const pipes = [
   // ============================================
   {
     id: 3,
-    slug: "high-alloy-pipes",
+    slug: "high-alloy-pipes-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-pipes",
     image: high,
     title: "High Alloy Pipes Supplier",
     shortDescription:
@@ -259,7 +262,8 @@ const pipes = [
   // ============================================
   {
     id: 4,
-    slug: "duplex-steel-pipes",
+    slug: "duplex-steel-pipes-manufacturer-in-mumbai",
+    oldSlug: "duplex-steel-pipes",
     image: dup,
     title: "Duplex Steel Pipes Supplier",
     shortDescription:
@@ -315,7 +319,8 @@ const pipes = [
   // ============================================
   {
     id: 5,
-    slug: "super-duplex-pipes",
+    slug: "super-duplex-pipes-manufacturer-in-mumbai",
+    oldSlug: "super-duplex-pipes",
     image: dup,
     title: "Super Duplex Pipes Supplier",
     shortDescription:
@@ -370,7 +375,8 @@ const pipes = [
   // ============================================
   {
     id: 6,
-    slug: "titanium-pipes",
+    slug: "titanium-pipes-manufacturer-in-mumbai",
+    oldSlug: "titanium-pipes",
     image: tita,
     title: "Titanium Pipes Supplier",
     shortDescription:
@@ -436,7 +442,8 @@ const pipes = [
   // ============================================
   {
     id: 7,
-    slug: "alloy-pipes",
+    slug: "alloy-pipes-manufacturer-in-mumbai",
+    oldSlug: "alloy-pipes",
     image: ally20,
     title: "Alloy Pipes Supplier",
     shortDescription:
@@ -500,7 +507,8 @@ const pipes = [
   // ============================================
   {
     id: 8,
-    slug: "carbon-steel-pipes",
+    slug: "carbon-steel-pipes-manufacturer-in-mumbai",
+    oldSlug: "carbon-steel-pipes",
     image: ally28,
     title: "Carbon Steel Pipes Supplier",
     shortDescription:
@@ -567,7 +575,8 @@ const pipes = [
   // ============================================
   {
     id: 9,
-    slug: "alloy-steel-pipes",
+    slug: "alloy-steel-pipes-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-pipes",
     image: ally28,
     title: "Alloy Steel Pipes Supplier",
     shortDescription:

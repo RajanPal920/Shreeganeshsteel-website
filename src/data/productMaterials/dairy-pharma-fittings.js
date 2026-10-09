@@ -14,7 +14,7 @@ import zero from "../../assets/images/stock/ss-zero-dead-leg-valves.jpg";
 const dairypharmaValves = [
   {
     id: 1,
-    slug: "hygienic-valve-systems",
+    slug: "hygienic-valve-systems-manufacturer-in-mumbai",
     image: hygies,
     title: "Hygienic Valve Systems",
     shortDescription:
@@ -27,7 +27,7 @@ const dairypharmaValves = [
   },
   {
     id: 2,
-    slug: "ss-butterfly-valves",
+    slug: "ss-butterfly-valves-manufacturer-in-mumbai",
     image: butter,
     title: "SS Butterfly Valve",
     shortDescription: "Widely used for flow regulation in dairy pipelines.",
@@ -38,7 +38,7 @@ const dairypharmaValves = [
   },
   {
     id: 3,
-    slug: "ss-diaphragm-valves",
+    slug: "ss-diaphragm-valves-manufacturer-in-mumbai",
     image: dia,
     title: "SS Diaphragm Valve",
     shortDescription: "Ideal for hygienic shut-off applications.",
@@ -49,7 +49,7 @@ const dairypharmaValves = [
   },
   {
     id: 4,
-    slug: "ss-ball-valves",
+    slug: "ss-ball-valves-manufacturer-in-mumbai",
     image: ball,
     title: "SS Ball Valve",
     shortDescription: "Precision flow control with leak-proof sealing.",
@@ -60,7 +60,7 @@ const dairypharmaValves = [
   },
   {
     id: 5,
-    slug: "ss-non-return-valves",
+    slug: "ss-non-return-valves-manufacturer-in-mumbai",
     image: non,
     title: "SS Non Return Valve",
     shortDescription: "Prevents backflow and ensures one-way flow.",
@@ -71,7 +71,7 @@ const dairypharmaValves = [
   },
   {
     id: 6,
-    slug: "ss-pressure-reducing-valves",
+    slug: "ss-pressure-reducing-valves-manufacturer-in-mumbai",
     image: press,
     title: "SS Pressure Reducing Valve",
     shortDescription: "Maintains consistent pressure in pipeline systems.",
@@ -82,7 +82,7 @@ const dairypharmaValves = [
   },
   {
     id: 7,
-    slug: "pharma-grade-diaphragm-valves",
+    slug: "pharma-grade-diaphragm-valves-manufacturer-in-mumbai",
     image: grade,
     title: "SS Diaphragm Valve (Pharma Grade)",
     shortDescription: "Designed for sterile and contamination-free operations.",
@@ -93,7 +93,7 @@ const dairypharmaValves = [
   },
   {
     id: 8,
-    slug: "sanitary-pharma-butterfly-valves",
+    slug: "sanitary-pharma-butterfly-valves-manufacturer-in-mumbai",
     image: fly,
     title: "SS Butterfly Valve (Sanitary Pharma)",
     shortDescription: "Hygienic flow control with easy cleaning access.",
@@ -104,7 +104,7 @@ const dairypharmaValves = [
   },
   {
     id: 9,
-    slug: "high-purity-ball-valves",
+    slug: "high-purity-ball-valves-manufacturer-in-mumbai",
     image: high,
     title: "SS Ball Valve (High Purity)",
     shortDescription: "High precision control for cleanroom environments.",
@@ -116,7 +116,7 @@ const dairypharmaValves = [
   },
   {
     id: 10,
-    slug: "ss-sampling-valves",
+    slug: "ss-sampling-valves-manufacturer-in-mumbai",
     image: sample,
     title: "SS Sampling Valve",
     shortDescription: "Used for extracting samples without contamination.",

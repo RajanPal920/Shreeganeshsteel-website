@@ -20,7 +20,8 @@ const hosepipe = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-hose-pipe",
+    slug: "stainless-steel-hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-hose-pipe",
     image: cor,
     title: "Stainless Steel Hose Pipe",
     shortDescription:
@@ -85,7 +86,8 @@ const hosepipe = [
   // ============================================
   {
     id: 2,
-    slug: "nickel-alloy-hose-pipe",
+    slug: "nickel-alloy-hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-hose-pipe",
     image: braid,
     title: "Nickel Alloy Hose Pipe",
     shortDescription:
@@ -160,7 +162,8 @@ const hosepipe = [
   // ============================================
   {
     id: 3,
-    slug: "high-alloy-hose-pipe",
+    slug: "high-alloy-hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-hose-pipe",
     image: high,
     title: "High Alloy Hose Pipe",
     shortDescription:
@@ -232,7 +235,8 @@ const hosepipe = [
   // ============================================
   {
     id: 4,
-    slug: "duplex-steel-hose-pipe",
+    slug: "duplex-steel-hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "duplex-steel-hose-pipe",
     image: annul,
     title: "Duplex Steel Hose Pipe",
     shortDescription:
@@ -295,7 +299,8 @@ const hosepipe = [
   // ============================================
   {
     id: 5,
-    slug: "super-duplex-hose-pipe",
+    slug: "super-duplex-hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "super-duplex-hose-pipe",
     image: end,
     title: "Super Duplex Hose Pipe",
     shortDescription:
@@ -358,7 +363,8 @@ const hosepipe = [
   // ============================================
   {
     id: 6,
-    slug: "titanium-hose-pipe",
+    slug: "titanium-hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "titanium-hose-pipe",
     image: strip,
     title: "Titanium Hose Pipe",
     shortDescription:
@@ -427,7 +433,8 @@ const hosepipe = [
   // ============================================
   {
     id: 7,
-    slug: "alloy-hose-pipe",
+    slug: "alloy-hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "alloy-hose-pipe",
     image: ptfe,
     title: "Alloy Hose Pipe",
     shortDescription:
@@ -496,7 +503,8 @@ const hosepipe = [
   // ============================================
   {
     id: 8,
-    slug: "carbon-steel-hose-pipe",
+    slug: "carbon-steel-hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "carbon-steel-hose-pipe",
     image: annul,
     title: "Carbon Steel Hose Pipe",
     shortDescription:
@@ -558,7 +566,8 @@ const hosepipe = [
   // ============================================
   {
     id: 9,
-    slug: "alloy-steel-hose-pipe",
+    slug: "alloy-steel-hose-pipe-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-hose-pipe",
     image: high,
     title: "Alloy Steel Hose Pipe",
     shortDescription:

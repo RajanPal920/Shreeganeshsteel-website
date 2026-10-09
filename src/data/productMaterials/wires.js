@@ -20,7 +20,8 @@ const wires = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-wires",
+    slug: "stainless-steel-wires-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-wires",
     image: coil,
     title:
       "Stainless Steel Wires Supplier – 304, 304L, 316, 316L, 310S, 904L & More",
@@ -102,7 +103,8 @@ const wires = [
   // ============================================
   {
     id: 2,
-    slug: "carbon-steel-wires",
+    slug: "carbon-steel-wires-manufacturer-in-mumbai",
+    oldSlug: "carbon-steel-wires",
     image: bright,
     title: "Carbon Steel Wires Supplier – Low, Medium & High Carbon",
     shortDescription:
@@ -184,7 +186,8 @@ const wires = [
   // ============================================
   {
     id: 3,
-    slug: "titanium-wires",
+    slug: "titanium-wires-manufacturer-in-mumbai",
+    oldSlug: "titanium-wires",
     image: bright,
     title: "Titanium Wires Supplier – Grade 2 & Grade 5",
     shortDescription:
@@ -261,7 +264,8 @@ const wires = [
   // ============================================
   {
     id: 4,
-    slug: "alloy-steel-wires",
+    slug: "alloy-steel-wires-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-wires",
     image: filler,
     title: "Alloy Steel Wires Supplier – 4140, 4340, EN24, EN19",
     shortDescription:
@@ -344,7 +348,8 @@ const wires = [
   // ============================================
   {
     id: 5,
-    slug: "high-performance-alloy-wires",
+    slug: "high-performance-alloy-wires-manufacturer-in-mumbai",
+    oldSlug: "high-performance-alloy-wires",
     image: spool,
     title:
       "High-Performance Alloy Wires Supplier – Nimonic, Nichrome, Nitronic, Nilo & More",
@@ -428,7 +433,8 @@ const wires = [
   // ============================================
   {
     id: 6,
-    slug: "nickel-alloy-wires",
+    slug: "nickel-alloy-wires-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-wires",
     image: rope,
     title:
       "Nickel Alloy Wires Supplier – 200, 201, Monel 400, Inconel 600/625/718, Incoloy 800/825",
@@ -516,7 +522,8 @@ const wires = [
   // ============================================
   {
     id: 7,
-    slug: "duplex-super-duplex-steel-wires",
+    slug: "duplex-super-duplex-steel-wires-manufacturer-in-mumbai",
+    oldSlug: "duplex-super-duplex-steel-wires",
     image: filler,
     title:
       "Duplex & Super Duplex Steel Wires Supplier – S31803, S32205, S32750 & S32760",
@@ -594,7 +601,8 @@ const wires = [
   // ============================================
   {
     id: 8,
-    slug: "high-alloy-wires",
+    slug: "high-alloy-wires-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-wires",
     image: spool,
     title:
       "High Alloy Wires Supplier – Hastelloy C22, C276, Alloy 20, SMO 254 & Alloy 28",
@@ -677,7 +685,8 @@ const wires = [
   // ============================================
   {
     id: 9,
-    slug: "copper-nickel-wires",
+    slug: "copper-nickel-wires-manufacturer-in-mumbai",
+    oldSlug: "copper-nickel-wires",
     image: rope,
     title: "Copper Nickel Wires Supplier – 70/30 & 90/10",
     shortDescription:

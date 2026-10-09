@@ -17,7 +17,8 @@ const rings = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-forged-rings",
+    slug: "stainless-steel-forged-rings-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-forged-rings",
     image: stain,
     title: "Stainless Steel Forged Rings",
     shortDescription:
@@ -95,7 +96,8 @@ const rings = [
   // ============================================
   {
     id: 2,
-    slug: "carbon-mild-steel-rings",
+    slug: "carbon-mild-steel-rings-manufacturer-in-mumbai",
+    oldSlug: "carbon-mild-steel-rings",
     image: car,
     title: "Carbon & Mild Steel Forged Rings",
     shortDescription:
@@ -174,7 +176,8 @@ const rings = [
   // ============================================
   {
     id: 3,
-    slug: "alloy-steel-forged-rings",
+    slug: "alloy-steel-forged-rings-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-forged-rings",
     image: car,
     title: "Alloy Steel Forged Rings",
     shortDescription:
@@ -258,7 +261,8 @@ const rings = [
   // ============================================
   {
     id: 4,
-    slug: "duplex-super-duplex-rings",
+    slug: "duplex-super-duplex-rings-manufacturer-in-mumbai",
+    oldSlug: "duplex-super-duplex-rings",
     image: duplex,
     title: "Duplex & Super Duplex Rings",
     shortDescription:
@@ -336,7 +340,8 @@ const rings = [
   // ============================================
   {
     id: 5,
-    slug: "nickel-alloy-rings",
+    slug: "nickel-alloy-rings-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-rings",
     image: nik,
     title: "Nickel & Alloy Steel Rings",
     shortDescription:
@@ -421,7 +426,8 @@ const rings = [
   // ============================================
   {
     id: 6,
-    slug: "high-alloy-rings",
+    slug: "high-alloy-rings-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-rings",
     image: nik,
     title: "High Alloy Forged Rings",
     shortDescription:
@@ -499,7 +505,8 @@ const rings = [
   // ============================================
   {
     id: 7,
-    slug: "titanium-forged-rings",
+    slug: "titanium-forged-rings-manufacturer-in-mumbai",
+    oldSlug: "titanium-forged-rings",
     image: stain,
     title: "Titanium Forged Rings",
     shortDescription:
@@ -573,7 +580,8 @@ const rings = [
   // ============================================
   {
     id: 8,
-    slug: "alloy-rings",
+    slug: "alloy-rings-manufacturer-in-mumbai",
+    oldSlug: "alloy-rings",
     image: nik,
     title: "Alloy Forged Rings",
     shortDescription:
@@ -650,7 +658,8 @@ const rings = [
   // ============================================
   {
     id: 9,
-    slug: "copper-nickel-rings",
+    slug: "copper-nickel-rings-manufacturer-in-mumbai",
+    oldSlug: "copper-nickel-rings",
     image: duplex,
     title: "Copper Nickel Forged Rings",
     shortDescription:

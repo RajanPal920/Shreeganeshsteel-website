@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, Link, Navigate, useLocation } from "react-router-dom";
 
 import productMaterials from "../data/productMaterials";
 
@@ -7,11 +7,32 @@ import productMaterials from "../data/productMaterials";
 // FIND SUB-PRODUCT ACROSS ALL CATEGORIES
 // ============================================
 const findProductBySlug = (slug) => {
+  if (!slug) return null;
   for (const [categorySlug, items] of Object.entries(productMaterials)) {
     if (Array.isArray(items)) {
-      const found = items.find((p) => p.slug === slug);
+      // 1. Direct match with new slug
+      let found = items.find((p) => p.slug === slug);
       if (found) {
-        return { product: found, categorySlug };
+        return { product: found, categorySlug, isRedirect: false };
+      }
+      // 2. Direct match with oldSlug
+      found = items.find((p) => p.oldSlug === slug);
+      if (found) {
+        return { product: found, categorySlug, isRedirect: true };
+      }
+      // 3. Fallback: match without -manufacturer-in-mumbai
+      const baseSlug = slug.replace(/-manufacturer-in-mumbai$/, "");
+      found = items.find(
+        (p) =>
+          p.oldSlug === baseSlug ||
+          p.slug.replace(/-manufacturer-in-mumbai$/, "") === baseSlug,
+      );
+      if (found) {
+        return {
+          product: found,
+          categorySlug,
+          isRedirect: found.slug !== slug,
+        };
       }
     }
   }
@@ -162,8 +183,18 @@ const SpecRow = ({ label, value }) => {
 // ============================================
 export default function ProductDetail() {
   const { slug } = useParams();
+  const location = useLocation();
 
   const result = findProductBySlug(slug);
+
+  // 301 Redirect: if matched via oldSlug or accessed via alternative path (e.g. without /products/), redirect to canonical new URL
+  if (
+    result &&
+    (result.isRedirect ||
+      location.pathname !== `/products/${result.product.slug}`)
+  ) {
+    return <Navigate to={`/products/${result.product.slug}`} replace={true} />;
+  }
 
   // Not found
   if (!result) {
@@ -185,12 +216,72 @@ export default function ProductDetail() {
             </Link>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
 
   const { product, categorySlug } = result;
+
+  // SEO metadata effect
+  useEffect(() => {
+    if (!product) return;
+
+    // 1. Dynamic SEO Title
+    const pageTitle = `${product.title} Manufacturer in Mumbai | Shree Ganesh Steel Corporation`;
+    document.title = pageTitle;
+
+    // 2. Dynamic SEO Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement("meta");
+      metaDesc.name = "description";
+      document.head.appendChild(metaDesc);
+    }
+    const descriptionText = product.shortDescription
+      ? `${product.title} Manufacturer in Mumbai, Maharashtra. ${product.shortDescription} High grade materials with mill test certificates by Shree Ganesh Steel Corporation.`
+      : `Leading ${product.title} Manufacturer in Mumbai, India. Certified industrial steel products, competitive prices and fast global delivery by Shree Ganesh Steel Corporation.`;
+    metaDesc.setAttribute("content", descriptionText);
+
+    // 3. Dynamic Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute(
+      "href",
+      `${window.location.origin}/products/${product.slug}`,
+    );
+
+    // 4. OpenGraph tags
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      ogTitle = document.createElement("meta");
+      ogTitle.setAttribute("property", "og:title");
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.setAttribute("content", pageTitle);
+
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (!ogDesc) {
+      ogDesc = document.createElement("meta");
+      ogDesc.setAttribute("property", "og:description");
+      document.head.appendChild(ogDesc);
+    }
+    ogDesc.setAttribute("content", descriptionText);
+
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (!ogUrl) {
+      ogUrl = document.createElement("meta");
+      ogUrl.setAttribute("property", "og:url");
+      document.head.appendChild(ogUrl);
+    }
+    ogUrl.setAttribute(
+      "content",
+      `${window.location.origin}/products/${product.slug}`,
+    );
+  }, [product]);
   const categoryInfo = categoryMeta[categorySlug] || {
     name: categorySlug.replace(/-/g, " "),
     division: "manufacturer",

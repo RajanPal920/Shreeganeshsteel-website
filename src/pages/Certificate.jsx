@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // ============================================
@@ -7,50 +7,53 @@ import { Link } from "react-router-dom";
 const certificates = [
   {
     id: 1,
-    name: "ISO 9001:2015 Quality Management System",
-    shortName: "ISO 9001:2015",
+    name: "ISO 9001 Certificate",
+    shortName: "ISO 9001 Certificate",
     issuer: "International Organization for Standardization",
-    year: "2015",
-    desc: "Certified Quality Management System demonstrating our commitment to consistent quality, customer satisfaction and continuous improvement across all operations.",
-    file: "/certificates/iso-9001-2015.pdf",
+    year: "ISO 9001:2015",
+    desc: "Certified Quality Management System demonstrating our commitment to consistent quality, customer satisfaction, and rigorous process standards across all manufacturing operations.",
+    file: "/certificate/iso-9001.pdf",
+    downloadName: "ISO-9001-Certificate-Shree-Ganesh-Steel.pdf",
     icon: "award",
     highlights: [
       "Quality Management System",
-      "Customer Focus",
-      "Continuous Improvement",
-      "Process Approach",
+      "Customer Focus & Reliability",
+      "Continuous Quality Improvement",
+      "Standardized Process Approach",
     ],
   },
   {
     id: 2,
-    name: "Udyam Registration Certificate (MSME)",
-    shortName: "Udyam Registration",
+    name: "Udyam Registration Certificate",
+    shortName: "Udyam Registration Certificate",
     issuer: "Ministry of Micro, Small & Medium Enterprises, Govt. of India",
-    year: "Registered",
-    desc: "Official MSME registration under the Udyam portal — recognizing Shree Ganesh Steel Corporation as a registered micro, small or medium enterprise in India.",
-    file: "/certificates/udyam-msme.pdf",
+    year: "Govt. of India (MSME)",
+    desc: "Official MSME registration under the Udyam portal — recognizing Shree Ganesh Steel Corporation as a formally verified and recognized manufacturing enterprise in India.",
+    file: "/certificate/Udyam.pdf",
+    downloadName: "Udyam-Registration-Certificate-Shree-Ganesh-Steel.pdf",
     icon: "shield",
     highlights: [
-      "Government Registered",
-      "MSME Recognition",
-      "Formal Business Entity",
-      "Priority Sector Benefits",
+      "Government of India Registered",
+      "Ministry of MSME Recognition",
+      "Formal Verified Business Entity",
+      "National Priority Sector Benefits",
     ],
   },
   {
     id: 3,
-    name: "MASSMA Certificate of Membership",
-    shortName: "MASSMA Membership",
-    issuer: "MASSMA — Metal & Steel Small Scale Manufacturers Association",
-    year: "Active Member",
-    desc: "Active membership with MASSMA — a recognized industry association representing metal and steel manufacturers across India.",
-    file: "/certificates/massma-membership.pdf",
-    icon: "file",
+    name: "CORB ISO Certificate (PDF)",
+    shortName: "CORB ISO Certificate",
+    issuer: "CORB Accreditation & Certification Body",
+    year: "ISO Certified",
+    desc: "Accredited ISO Quality Certification confirming strict compliance with international manufacturing, material tracing, and quality management benchmarks.",
+    file: "/certificate/CORP-ISO.pdf",
+    downloadName: "CORB-ISO-Certificate-Shree-Ganesh-Steel.pdf",
+    icon: "award",
     highlights: [
-      "Industry Association",
-      "Verified Membership",
-      "Networking Access",
-      "Industry Recognition",
+      "International Standard Compliance",
+      "Accredited ISO Certification",
+      "Strict Quality Benchmarks",
+      "Verified Material Quality",
     ],
   },
 ];
@@ -100,6 +103,21 @@ const CertificateIcon = ({ type, className = "w-6 h-6" }) => {
 // ============================================
 const Certificate = () => {
   const [activeId, setActiveId] = useState(null);
+
+  useEffect(() => {
+    document.title =
+      "Official Certificates & Registrations | Shree Ganesh Steel Corporation";
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement("meta");
+      metaDesc.name = "description";
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute(
+      "content",
+      "Official certificates of Shree Ganesh Steel Corporation: ISO 9001 Certificate, Udyam Registration Certificate, and CORB ISO Certificate. View and download authentic PDF documents.",
+    );
+  }, []);
 
   return (
     <div className="w-full bg-white overflow-x-hidden">
@@ -251,31 +269,55 @@ const Certificate = () => {
                     ))}
                   </ul>
 
-                  {/* CTA */}
-                  <a
-                    href={cert.file}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full bg-[#0B3E8C] hover:bg-[#C8102E] text-white font-bold text-[0.72rem] tracking-widest uppercase px-4 py-3 rounded-lg transition-all duration-300 group/btn"
-                  >
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                  {/* CTA: View & Download Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-2.5">
+                    <a
+                      href={cert.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#0B3E8C] hover:bg-[#C8102E] text-white font-bold text-[0.72rem] tracking-wider uppercase px-3.5 py-3 rounded-lg transition-all duration-300 group/btn shadow-sm"
                     >
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                    View Certificate
-                    <span className="group-hover/btn:translate-x-1 transition-transform">
-                      →
-                    </span>
-                  </a>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                      View Certificate
+                      <span className="group-hover/btn:translate-x-0.5 transition-transform">
+                        →
+                      </span>
+                    </a>
+
+                    <a
+                      href={cert.file}
+                      download={cert.downloadName || `${cert.shortName}.pdf`}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 bg-white hover:bg-gray-50 text-[#0B3E8C] hover:text-[#C8102E] border-2 border-[#0B3E8C]/25 hover:border-[#C8102E] font-bold text-[0.72rem] tracking-wider uppercase px-3 py-3 rounded-lg transition-all duration-300 shadow-sm"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                      Download PDF
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
@@ -315,19 +357,19 @@ const Certificate = () => {
             <div className="space-y-4">
               {[
                 {
-                  title: "Quality Assured",
-                  desc: "ISO 9001:2015 certified quality management system.",
+                  title: "ISO 9001 Certificate",
+                  desc: "ISO 9001:2015 certified quality management system ensuring consistent standards.",
                   icon: "award",
                 },
                 {
-                  title: "Government Registered",
-                  desc: "Official Udyam MSME registration with Govt. of India.",
+                  title: "Udyam Registration Certificate",
+                  desc: "Official Udyam MSME registration recognized by the Government of India.",
                   icon: "shield",
                 },
                 {
-                  title: "Industry Recognized",
-                  desc: "Active MASSMA membership for metal & steel manufacturers.",
-                  icon: "file",
+                  title: "CORB ISO Certificate",
+                  desc: "Accredited CORB ISO quality management and industrial compliance certification.",
+                  icon: "award",
                 },
               ].map((item, i) => (
                 <div

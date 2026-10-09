@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { products } from "../data/products";
+import { products, getCategoryBySlug } from "../data/products";
 
 // ============================================
 // HERO SLIDES DATA
@@ -579,7 +579,7 @@ export default function Home() {
                 "coils",
                 "wires",
               ]
-                .map((slug) => products.find((c) => c.slug === slug))
+                .map((slug) => getCategoryBySlug(slug))
                 .filter(Boolean)
                 .map((c, i) => (
                   <Link
@@ -691,7 +691,7 @@ export default function Home() {
                 "perforated-sheet",
                 "wire-mesh",
               ]
-                .map((slug) => products.find((c) => c.slug === slug))
+                .map((slug) => getCategoryBySlug(slug))
                 .filter(Boolean)
                 .map((p, i) => (
                   <div

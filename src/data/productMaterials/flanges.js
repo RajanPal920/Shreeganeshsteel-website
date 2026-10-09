@@ -22,7 +22,8 @@ const flanges = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-flanges",
+    slug: "stainless-steel-flanges-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-flanges",
     image: stainless,
     title: "Stainless Steel Flanges",
     shortDescription:
@@ -94,7 +95,8 @@ const flanges = [
   // ============================================
   {
     id: 2,
-    slug: "nickel-alloy-flanges",
+    slug: "nickel-alloy-flanges-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-flanges",
     image: nickel,
     title: "Nickel Alloy Flanges",
     shortDescription:
@@ -180,7 +182,8 @@ const flanges = [
   // ============================================
   {
     id: 3,
-    slug: "high-alloy-flanges",
+    slug: "high-alloy-flanges-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-flanges",
     image: highAlloys,
     title: "High Alloy Flanges",
     shortDescription:
@@ -257,7 +260,8 @@ const flanges = [
   // ============================================
   {
     id: 4,
-    slug: "duplex-steel-flanges",
+    slug: "duplex-steel-flanges-manufacturer-in-mumbai",
+    oldSlug: "duplex-steel-flanges",
     image: duplex,
     title: "Duplex Steel Flanges",
     shortDescription:
@@ -324,7 +328,8 @@ const flanges = [
   // ============================================
   {
     id: 5,
-    slug: "super-duplex-flanges",
+    slug: "super-duplex-flanges-manufacturer-in-mumbai",
+    oldSlug: "super-duplex-flanges",
     image: superDuplex,
     title: "Super Duplex Flanges",
     shortDescription:
@@ -392,7 +397,8 @@ const flanges = [
   // ============================================
   {
     id: 6,
-    slug: "titanium-flanges",
+    slug: "titanium-flanges-manufacturer-in-mumbai",
+    oldSlug: "titanium-flanges",
     image: titanium,
     title: "Titanium Flanges",
     shortDescription:
@@ -465,7 +471,8 @@ const flanges = [
   // ============================================
   {
     id: 7,
-    slug: "alloy-flanges",
+    slug: "alloy-flanges-manufacturer-in-mumbai",
+    oldSlug: "alloy-flanges",
     image: alloys,
     title: "Alloy Flanges",
     shortDescription:
@@ -541,7 +548,8 @@ const flanges = [
   // ============================================
   {
     id: 8,
-    slug: "carbon-steel-flanges",
+    slug: "carbon-steel-flanges-manufacturer-in-mumbai",
+    oldSlug: "carbon-steel-flanges",
     image: carbon,
     title: "Carbon Steel Flanges",
     shortDescription:
@@ -619,7 +627,8 @@ const flanges = [
   // ============================================
   {
     id: 9,
-    slug: "alloy-steel-flanges",
+    slug: "alloy-steel-flanges-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-flanges",
     image: alloySteel,
     title: "Alloy Steel Flanges",
     shortDescription:

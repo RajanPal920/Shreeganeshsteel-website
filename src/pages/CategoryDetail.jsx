@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-;
 import productMaterials from "../data/productMaterials";
 import heroImage from "../../public/images/products/hero-product.jpg";
 
@@ -119,22 +118,47 @@ const CategoryDetail = () => {
   const { slug } = useParams();
 
   // ✅ Normalize slug
+  const cleanSlug = slug
+    ? slug.replace(/-(manufacturer|supplier)-in-mumbai$/, "")
+    : "";
+
   let normalizedSlug = slug;
 
-  if (categoryMeta[slug] && productMaterials[slug]) {
+  if (categoryMeta[cleanSlug] && productMaterials[cleanSlug]) {
+    normalizedSlug = cleanSlug;
+  } else if (categoryMeta[slug] && productMaterials[slug]) {
     normalizedSlug = slug;
-  } else if (categoryMeta[`${slug}s`] && productMaterials[`${slug}s`]) {
-    normalizedSlug = `${slug}s`;
   } else if (
-    slug.endsWith("s") &&
-    categoryMeta[slug.slice(0, -1)] &&
-    productMaterials[slug.slice(0, -1)]
+    categoryMeta[`${cleanSlug}s`] &&
+    productMaterials[`${cleanSlug}s`]
   ) {
-    normalizedSlug = slug.slice(0, -1);
+    normalizedSlug = `${cleanSlug}s`;
+  } else if (
+    cleanSlug.endsWith("s") &&
+    categoryMeta[cleanSlug.slice(0, -1)] &&
+    productMaterials[cleanSlug.slice(0, -1)]
+  ) {
+    normalizedSlug = cleanSlug.slice(0, -1);
   }
 
   const meta = categoryMeta[normalizedSlug];
   const items = productMaterials[normalizedSlug];
+
+  useEffect(() => {
+    if (meta) {
+      document.title = `${meta.name} Manufacturer & Supplier in Mumbai | Shree Ganesh Steel Corporation`;
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) {
+        metaDesc = document.createElement("meta");
+        metaDesc.name = "description";
+        document.head.appendChild(metaDesc);
+      }
+      metaDesc.setAttribute(
+        "content",
+        `Leading ${meta.name} Manufacturer & Supplier in Mumbai, Maharashtra. ${meta.desc}. ISO 9001:2015 certified steel products by Shree Ganesh Steel Corporation.`,
+      );
+    }
+  }, [meta]);
 
   // Not found
   if (!meta || !items) {

@@ -26,7 +26,8 @@ const dairyfitting = [
   // ============================================
   {
     id: 1,
-    slug: "hygienic-dairy-fittings",
+    slug: "hygienic-dairy-fittings-manufacturer-in-mumbai",
+    oldSlug: "hygienic-dairy-fittings",
     image: hug,
     title: "Hygienic Dairy Fittings",
     shortDescription:
@@ -92,7 +93,8 @@ const dairyfitting = [
   // ============================================
   {
     id: 2,
-    slug: "conical-strainers",
+    slug: "conical-strainers-manufacturer-in-mumbai",
+    oldSlug: "conical-strainers",
     image: con,
     title: "Conical Strainers",
     shortDescription:
@@ -156,7 +158,8 @@ const dairyfitting = [
   // ============================================
   {
     id: 3,
-    slug: "ss-pipe-caps",
+    slug: "ss-pipe-caps-manufacturer-in-mumbai",
+    oldSlug: "ss-pipe-caps",
     image: cap,
     title: "SS Pipe Caps",
     shortDescription:
@@ -221,7 +224,8 @@ const dairyfitting = [
   // ============================================
   {
     id: 4,
-    slug: "plain-tees",
+    slug: "plain-tees-manufacturer-in-mumbai",
+    oldSlug: "plain-tees",
     image: tees,
     title: "Plain Tees",
     shortDescription:
@@ -286,7 +290,8 @@ const dairyfitting = [
   // ============================================
   {
     id: 5,
-    slug: "wye-loops",
+    slug: "wye-loops-manufacturer-in-mumbai",
+    oldSlug: "wye-loops",
     image: wye,
     title: "Wye Loops",
     shortDescription:
@@ -350,7 +355,8 @@ const dairyfitting = [
   // ============================================
   {
     id: 6,
-    slug: "tc-clamps",
+    slug: "tc-clamps-manufacturer-in-mumbai",
+    oldSlug: "tc-clamps",
     image: tc,
     title: "TC Clamps",
     shortDescription:
@@ -412,7 +418,8 @@ const dairyfitting = [
   // ============================================
   {
     id: 7,
-    slug: "reducers",
+    slug: "reducers-manufacturer-in-mumbai",
+    oldSlug: "reducers",
     image: red,
     title: "Reducers",
     shortDescription:
@@ -477,7 +484,8 @@ const dairyfitting = [
   // ============================================
   {
     id: 8,
-    slug: "pipe-holders",
+    slug: "pipe-holders-manufacturer-in-mumbai",
+    oldSlug: "pipe-holders",
     image: pipe,
     title: "Pipe Holders",
     shortDescription:
@@ -535,7 +543,8 @@ const dairyfitting = [
   // ============================================
   {
     id: 9,
-    slug: "plain-bends",
+    slug: "plain-bends-manufacturer-in-mumbai",
+    oldSlug: "plain-bends",
     image: plain,
     title: "Plain Bends",
     shortDescription:
@@ -600,7 +609,8 @@ const dairyfitting = [
   // ============================================
   // {
   //   id: 10,
-  //   slug: "j-bends",
+  //   slug: "j-bends-manufacturer-in-mumbai",
+  // oldSlug: "j-bends",
   //   image: j,
   //   title: "J Bends",
   //   shortDescription:
@@ -659,7 +669,8 @@ const dairyfitting = [
   // ============================================
   // {
   //   id: 11,
-  //   slug: "tc-bends",
+  //   slug: "tc-bends-manufacturer-in-mumbai",
+  // oldSlug: "tc-bends",
   //   image: tcc,
   //   title: "TC Bends",
   //   shortDescription:
@@ -723,7 +734,8 @@ const dairyfitting = [
   // ============================================
   // {
   //   id: 12,
-  //   slug: "sms-union",
+  //   slug: "sms-union-manufacturer-in-mumbai",
+  // oldSlug: "sms-union",
   //   image: sms,
   //   title: "SMS Union",
   //   shortDescription:
@@ -786,7 +798,8 @@ const dairyfitting = [
   // ============================================
   // {
   //   id: 13,
-  //   slug: "seamless-tees",
+  //   slug: "seamless-tees-manufacturer-in-mumbai",
+  // oldSlug: "seamless-tees",
   //   image: seam,
   //   title: "Seamless Tees",
   //   shortDescription:

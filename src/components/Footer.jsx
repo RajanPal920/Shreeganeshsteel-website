@@ -191,10 +191,10 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-col gap-1.5 text-[0.95rem] text-white/85 font-semibold">
                   <a
-                    href="mailto:info@shreeganeshsteel.com"
+                    href="mailto:shreeganeshsteel29@gmail.com"
                     className="hover:text-[#E63946] transition-colors break-all"
                   >
-                    info@shreeganeshsteel.com
+                    shreeganeshsteel29@gmail.com
                   </a>
                   <a
                     href="mailto:shreeganeshsteel25@gmail.com"
@@ -382,7 +382,15 @@ const Footer = () => {
           <span className="text-sm sm:text-[0.92rem] text-white/85 tracking-wider">
             © 2026{" "}
             <span className="text-white font-bold">SHREE GANESH STEEL</span>.
-            All rights reserved. | ISO 9001:2015 Certified
+            All rights reserved. | Design and SEO by{" "}
+            <a
+              href="https://sunmargindia.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-semibold hover:text-[#E63946] transition-colors underline underline-offset-2"
+            >
+              Sanmarg India
+            </a>
           </span>
 
           {/* Bottom links */}

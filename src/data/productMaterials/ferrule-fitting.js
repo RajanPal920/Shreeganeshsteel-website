@@ -22,7 +22,8 @@ const ferrulefitting = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-double-ferrule-tube-fittings",
+    slug: "stainless-steel-double-ferrule-tube-fittings-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-double-ferrule-tube-fittings",
     image: stainlessSteel,
     category: "Supplier",
     title: "Stainless Steel Double Ferrule Tube Fittings",
@@ -96,7 +97,8 @@ const ferrulefitting = [
   // ============================================
   {
     id: 2,
-    slug: "carbon-steel-double-ferrule-tube-fittings",
+    slug: "carbon-steel-double-ferrule-tube-fittings-manufacturer-in-mumbai",
+    oldSlug: "carbon-steel-double-ferrule-tube-fittings",
     image: carbonSteel,
     category: "Supplier",
     title: "Carbon Steel Double Ferrule Tube Fittings",
@@ -169,7 +171,8 @@ const ferrulefitting = [
   // ============================================
   {
     id: 3,
-    slug: "alloy-steel-double-ferrule-tube-fittings",
+    slug: "alloy-steel-double-ferrule-tube-fittings-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-double-ferrule-tube-fittings",
     image: alloySteel,
     category: "Supplier",
     title: "Alloy Steel Double Ferrule Tube Fittings",
@@ -250,7 +253,8 @@ const ferrulefitting = [
   // ============================================
   {
     id: 4,
-    slug: "nickel-alloy-double-ferrule-tube-fittings",
+    slug: "nickel-alloy-double-ferrule-tube-fittings-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-double-ferrule-tube-fittings",
     image: nickelAlloy,
     category: "Supplier",
     title: "Nickel Alloy Double Ferrule Tube Fittings",
@@ -335,7 +339,8 @@ const ferrulefitting = [
   // ============================================
   {
     id: 5,
-    slug: "high-alloy-hastelloy-c276-alloy20-double-ferrule-tube-fittings",
+    slug: "high-alloy-hastelloy-c276-alloy20-double-ferrule-tube-fittings-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-hastelloy-c276-alloy20-double-ferrule-tube-fittings",
     image: highAlloy,
     category: "Supplier",
     title:
@@ -414,7 +419,8 @@ const ferrulefitting = [
   // ============================================
   {
     id: 6,
-    slug: "duplex-steel-2205-double-ferrule-tube-fittings",
+    slug: "duplex-steel-2205-double-ferrule-tube-fittings-manufacturer-in-mumbai",
+    oldSlug: "duplex-steel-2205-double-ferrule-tube-fittings",
     image: duplex,
     category: "Supplier",
     title: "Duplex Steel 2205 Double Ferrule Tube Fittings",
@@ -486,7 +492,8 @@ const ferrulefitting = [
   // ============================================
   {
     id: 7,
-    slug: "super-duplex-2507-double-ferrule-tube-fittings",
+    slug: "super-duplex-2507-double-ferrule-tube-fittings-manufacturer-in-mumbai",
+    oldSlug: "super-duplex-2507-double-ferrule-tube-fittings",
     image: superDuplex,
     category: "Supplier",
     title: "Super Duplex 2507 Double Ferrule Tube Fittings",
@@ -558,7 +565,8 @@ const ferrulefitting = [
   // ============================================
   {
     id: 8,
-    slug: "titanium-grade-2-grade-5-double-ferrule-tube-fittings",
+    slug: "titanium-grade-2-grade-5-double-ferrule-tube-fittings-manufacturer-in-mumbai",
+    oldSlug: "titanium-grade-2-grade-5-double-ferrule-tube-fittings",
     image: titanium,
     category: "Supplier",
     title: "Titanium Grade 2 / Grade 5 Double Ferrule Tube Fittings",
@@ -637,7 +645,8 @@ const ferrulefitting = [
   // ============================================
   {
     id: 9,
-    slug: "exotic-alloys-zirconium-702-tantalum-double-ferrule-tube-fittings",
+    slug: "exotic-alloys-zirconium-702-tantalum-double-ferrule-tube-fittings-manufacturer-in-mumbai",
+    oldSlug: "exotic-alloys-zirconium-702-tantalum-double-ferrule-tube-fittings",
     image: exoticAlloys,
     category: "Supplier",
     title:

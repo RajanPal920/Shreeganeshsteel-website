@@ -18,7 +18,8 @@ const forgedfitting = [
   // ============================================
   {
     id: 1,
-    slug: "carbon-alloy-steel-forged-fittings",
+    slug: "carbon-alloy-steel-forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "carbon-alloy-steel-forged-fittings",
     image: car,
     title: "Carbon Alloy Steel Forged Fittings",
     shortDescription:
@@ -111,7 +112,8 @@ const forgedfitting = [
   // ============================================
   {
     id: 2,
-    slug: "hastelloy-forged-fittings",
+    slug: "hastelloy-forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "hastelloy-forged-fittings",
     image: hast,
     title: "Hastelloy Forged Fittings",
     shortDescription:
@@ -195,7 +197,8 @@ const forgedfitting = [
   // ============================================
   {
     id: 3,
-    slug: "incoloy-forged-fittings",
+    slug: "incoloy-forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "incoloy-forged-fittings",
     image: hast,
     title: "Incoloy Forged Fittings",
     shortDescription:
@@ -277,7 +280,8 @@ const forgedfitting = [
   // ============================================
   {
     id: 4,
-    slug: "inconel-forged-fittings",
+    slug: "inconel-forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "inconel-forged-fittings",
     image: inc,
     title: "Inconel Forged Fittings",
     shortDescription:
@@ -360,7 +364,8 @@ const forgedfitting = [
   // ============================================
   {
     id: 5,
-    slug: "monel-forged-fittings",
+    slug: "monel-forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "monel-forged-fittings",
     image: mon,
     title: "Monel Forged Fittings",
     shortDescription:
@@ -436,7 +441,8 @@ const forgedfitting = [
   // ============================================
   {
     id: 6,
-    slug: "nickel-copper-alloy-forged-fittings",
+    slug: "nickel-copper-alloy-forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "nickel-copper-alloy-forged-fittings",
     image: nic,
     title: "Nickel Copper Alloy Forged Fittings",
     shortDescription:
@@ -518,7 +524,8 @@ const forgedfitting = [
   // ============================================
   {
     id: 7,
-    slug: "stainless-duplex-steel-forged-fittings",
+    slug: "stainless-duplex-steel-forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "stainless-duplex-steel-forged-fittings",
     image: car,
     title: "Stainless & Duplex Steel Forged Fittings",
     shortDescription:
@@ -608,7 +615,8 @@ const forgedfitting = [
   // ============================================
   {
     id: 8,
-    slug: "tantalum-forged-fittings",
+    slug: "tantalum-forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "tantalum-forged-fittings",
     image: mon,
     title: "Tantalum Forged Fittings",
     shortDescription:
@@ -688,7 +696,8 @@ const forgedfitting = [
   // ============================================
   {
     id: 9,
-    slug: "titanium-forged-fittings",
+    slug: "titanium-forged-fittings-manufacturer-in-mumbai",
+    oldSlug: "titanium-forged-fittings",
     image: hast,
     title: "Titanium Forged Fittings",
     shortDescription:

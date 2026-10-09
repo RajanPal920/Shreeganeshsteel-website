@@ -19,7 +19,8 @@ const wireMesh = [
   // ============================================
   {
     id: 1,
-    slug: "woven-wire-mesh",
+    slug: "woven-wire-mesh-manufacturer-in-mumbai",
+    oldSlug: "woven-wire-mesh",
     image: woven,
     title: "Woven Wire Mesh",
     shortDescription:
@@ -106,7 +107,8 @@ const wireMesh = [
   // ============================================
   {
     id: 2,
-    slug: "welded-wire-mesh",
+    slug: "welded-wire-mesh-manufacturer-in-mumbai",
+    oldSlug: "welded-wire-mesh",
     image: weld,
     title: "Welded Wire Mesh",
     shortDescription:
@@ -185,7 +187,8 @@ const wireMesh = [
   // ============================================
   {
     id: 3,
-    slug: "crimped-wire-mesh",
+    slug: "crimped-wire-mesh-manufacturer-in-mumbai",
+    oldSlug: "crimped-wire-mesh",
     image: crim,
     title: "Crimped Wire Mesh",
     shortDescription:
@@ -260,7 +263,8 @@ const wireMesh = [
   // ============================================
   {
     id: 4,
-    slug: "chain-link-mesh",
+    slug: "chain-link-mesh-manufacturer-in-mumbai",
+    oldSlug: "chain-link-mesh",
     image: chain,
     title: "Chain Link Mesh",
     shortDescription:
@@ -337,7 +341,8 @@ const wireMesh = [
   // ============================================
   {
     id: 5,
-    slug: "stainless-steel-wire-mesh",
+    slug: "stainless-steel-wire-mesh-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-wire-mesh",
     image: stain,
     title: "Stainless Steel Wire Mesh",
     shortDescription:
@@ -418,7 +423,8 @@ const wireMesh = [
   // ============================================
   {
     id: 6,
-    slug: "hexagonal-wire-netting",
+    slug: "hexagonal-wire-netting-manufacturer-in-mumbai",
+    oldSlug: "hexagonal-wire-netting",
     image: hex,
     title: "Hexagonal Wire Netting",
     shortDescription:
@@ -496,7 +502,8 @@ const wireMesh = [
   // ============================================
   {
     id: 7,
-    slug: "dutch-weave-wire-mesh",
+    slug: "dutch-weave-wire-mesh-manufacturer-in-mumbai",
+    oldSlug: "dutch-weave-wire-mesh",
     image: woven,
     title: "Dutch Weave Wire Mesh",
     shortDescription:
@@ -574,7 +581,8 @@ const wireMesh = [
   // ============================================
   {
     id: 8,
-    slug: "gabion-wire-mesh",
+    slug: "gabion-wire-mesh-manufacturer-in-mumbai",
+    oldSlug: "gabion-wire-mesh",
     image: hex,
     title: "Gabion Wire Mesh",
     shortDescription:
@@ -648,7 +656,8 @@ const wireMesh = [
   // ============================================
   {
     id: 9,
-    slug: "pvc-coated-wire-mesh",
+    slug: "pvc-coated-wire-mesh-manufacturer-in-mumbai",
+    oldSlug: "pvc-coated-wire-mesh",
     image: weld,
     title: "PVC Coated Wire Mesh",
     shortDescription:

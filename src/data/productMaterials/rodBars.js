@@ -19,7 +19,8 @@ const rodBars = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-steel-round-bars",
+    slug: "stainless-steel-round-bars-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-round-bars",
     image: bright,
     title:
       "Stainless Steel Round Bars Supplier – 304, 304L, 316, 316L, 310S, 904L & More",
@@ -100,7 +101,8 @@ const rodBars = [
   // ============================================
   {
     id: 2,
-    slug: "carbon-steel-round-bars",
+    slug: "carbon-steel-round-bars-manufacturer-in-mumbai",
+    oldSlug: "carbon-steel-round-bars",
     image: round,
     title: "Carbon Steel Round Bars Supplier – ASTM A36, A105, C45, IS 2062",
     shortDescription:
@@ -177,7 +179,8 @@ const rodBars = [
   // ============================================
   {
     id: 3,
-    slug: "titanium-round-bars",
+    slug: "titanium-round-bars-manufacturer-in-mumbai",
+    oldSlug: "titanium-round-bars",
     image: round,
     title: "Titanium Round Bars Supplier – Grade 2 & Grade 5",
     shortDescription:
@@ -249,7 +252,8 @@ const rodBars = [
   // ============================================
   {
     id: 4,
-    slug: "alloy-steel-round-bars",
+    slug: "alloy-steel-round-bars-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-round-bars",
     image: square,
     title: "Alloy Steel Round Bars Supplier – 4140, 4340, EN24, EN19",
     shortDescription:
@@ -328,7 +332,8 @@ const rodBars = [
   // ============================================
   {
     id: 5,
-    slug: "high-performance-alloy-round-bars",
+    slug: "high-performance-alloy-round-bars-manufacturer-in-mumbai",
+    oldSlug: "high-performance-alloy-round-bars",
     image: hex,
     title:
       "High-Performance Alloy Round Bars Supplier – Nimonic, Nichrome, Nitronic & Alloy",
@@ -408,7 +413,8 @@ const rodBars = [
   // ============================================
   {
     id: 6,
-    slug: "nickel-alloy-round-bars",
+    slug: "nickel-alloy-round-bars-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-round-bars",
     image: rectangle,
     title:
       "Nickel Alloy Round Bars Supplier – 200, 201, Monel 400, Inconel 600/625/718, Incoloy 800/825",
@@ -493,7 +499,8 @@ const rodBars = [
   // ============================================
   {
     id: 7,
-    slug: "duplex-super-duplex-round-bars",
+    slug: "duplex-super-duplex-round-bars-manufacturer-in-mumbai",
+    oldSlug: "duplex-super-duplex-round-bars",
     image: flat,
     title:
       "Duplex & Super Duplex Steel Round Bars Supplier – S31803, S32205, S32750, S32760 & S32550",
@@ -572,7 +579,8 @@ const rodBars = [
   // ============================================
   {
     id: 8,
-    slug: "high-alloy-round-bars",
+    slug: "high-alloy-round-bars-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-round-bars",
     image: square,
     title:
       "High Alloy Round Bars Supplier – Hastelloy C22, C276, Alloy 20, SMO 254 & Alloy 28",
@@ -653,7 +661,8 @@ const rodBars = [
   // ============================================
   {
     id: 9,
-    slug: "copper-nickel-round-bars",
+    slug: "copper-nickel-round-bars-manufacturer-in-mumbai",
+    oldSlug: "copper-nickel-round-bars",
     image: rectangle,
     title: "Copper Nickel Round Bars Supplier – 70/30 & 90/10",
     shortDescription:

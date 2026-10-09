@@ -9,7 +9,7 @@ import weld from "../../assets/images/stock/welded-tubes.jpg";
 const tubes = [
   {
     id: 2,
-    slug: "stainless-steel-tubes",
+    slug: "stainless-steel-tubes-manufacturer-in-mumbai",
     image: weld,
     title:
       "Stainless Steel Tubes Supplier – 304, 304L, 316, 316L, 310S, 904L & More",
@@ -19,7 +19,7 @@ const tubes = [
 
   {
     id: 3,
-    slug: "high-performance-alloy-tubes",
+    slug: "high-performance-alloy-tubes-manufacturer-in-mumbai",
     image: heat,
     title:
       "High-Performance Alloy Tubes Supplier – Nimonic, Nichrome, Nitronic, Nilo & Alloy",
@@ -29,7 +29,7 @@ const tubes = [
 
   {
     id: 4,
-    slug: "alloy-28-tubes",
+    slug: "alloy-28-tubes-manufacturer-in-mumbai",
     image: special,
     title: "Alloy 28 Tubes Supplier",
     shortDescription:
@@ -38,7 +38,7 @@ const tubes = [
 
   {
     id: 5,
-    slug: "special-alloy-tubes",
+    slug: "special-alloy-tubes-manufacturer-in-mumbai",
     image: inst,
     title: "Special Alloy Tubes Supplier – SMO 254 (F44) & Alloy 20",
     shortDescription:
@@ -47,7 +47,7 @@ const tubes = [
 
   {
     id: 6,
-    slug: "nickel-alloy-200-201-tubes",
+    slug: "nickel-alloy-200-201-tubes-manufacturer-in-mumbai",
     image: seam,
     title: "Nickel Alloy 200 / 201 Tubes Supplier",
     shortDescription:
@@ -56,7 +56,7 @@ const tubes = [
 
   {
     id: 7,
-    slug: "monel-400-tubes",
+    slug: "monel-400-tubes-manufacturer-in-mumbai",
     image: heat,
     title: "Monel 400 Tubes Supplier",
     shortDescription:
@@ -65,7 +65,7 @@ const tubes = [
 
   {
     id: 8,
-    slug: "inconel-tubes",
+    slug: "inconel-tubes-manufacturer-in-mumbai",
     image: weld,
     title: "Inconel Tubes Supplier – 600, 601, 625, 690 & X-750",
     shortDescription:
@@ -74,7 +74,7 @@ const tubes = [
 
   {
     id: 9,
-    slug: "incoloy-tubes",
+    slug: "incoloy-tubes-manufacturer-in-mumbai",
     image: heat,
     title: "Incoloy Tubes Supplier – 800, 800H, 800HT, 825 & 330 (DS 330)",
     shortDescription:
@@ -83,7 +83,7 @@ const tubes = [
 
   {
     id: 10,
-    slug: "hastelloy-tubes",
+    slug: "hastelloy-tubes-manufacturer-in-mumbai",
     image: special,
     title: "Hastelloy Tubes Supplier – C22, C276, B2, B3, C2000, C59, C4 & HN",
     shortDescription:
@@ -92,7 +92,7 @@ const tubes = [
 
   {
     id: 11,
-    slug: "duplex-super-duplex-steel-tubes",
+    slug: "duplex-super-duplex-steel-tubes-manufacturer-in-mumbai",
     image: square,
     title:
       "Duplex & Super Duplex Steel Tubes Supplier – S31803, S32750 & S32760",
@@ -102,7 +102,7 @@ const tubes = [
 
   {
     id: 12,
-    slug: "copper-nickel-tubes",
+    slug: "copper-nickel-tubes-manufacturer-in-mumbai",
     image: inst,
     title: "Copper Nickel Tubes Supplier – 90/10 (C70600) & 70/30 (C71500)",
     shortDescription:

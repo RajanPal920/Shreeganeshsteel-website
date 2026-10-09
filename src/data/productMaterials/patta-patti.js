@@ -17,7 +17,8 @@ const pattapatti = [
   // ============================================
   {
     id: 1,
-    slug: "carbon-alloy-steel-flat-bars",
+    slug: "carbon-alloy-steel-flat-bars-manufacturer-in-mumbai",
+    oldSlug: "carbon-alloy-steel-flat-bars",
     image: carbon,
     title: "Carbon Alloy Steel Flat Bars (Patta)",
     shortDescription:
@@ -94,7 +95,8 @@ const pattapatti = [
   // ============================================
   {
     id: 2,
-    slug: "carbon-alloy-steel-patti",
+    slug: "carbon-alloy-steel-patti-manufacturer-in-mumbai",
+    oldSlug: "carbon-alloy-steel-patti",
     image: patti,
     title: "Carbon Alloy Steel Patti",
     shortDescription:
@@ -170,7 +172,8 @@ const pattapatti = [
   // ============================================
   {
     id: 3,
-    slug: "stainless-duplex-steel-patti",
+    slug: "stainless-duplex-steel-patti-manufacturer-in-mumbai",
+    oldSlug: "stainless-duplex-steel-patti",
     image: stainless,
     title: "Stainless & Duplex Steel Patti",
     shortDescription:
@@ -245,7 +248,8 @@ const pattapatti = [
   // ============================================
   {
     id: 4,
-    slug: "stainless-steel-flat-bars",
+    slug: "stainless-steel-flat-bars-manufacturer-in-mumbai",
+    oldSlug: "stainless-steel-flat-bars",
     image: bar,
     title: "Stainless Steel Flat Bars (Patta)",
     shortDescription:
@@ -324,7 +328,8 @@ const pattapatti = [
   // ============================================
   {
     id: 5,
-    slug: "nickel-alloy-flat-bars",
+    slug: "nickel-alloy-flat-bars-manufacturer-in-mumbai",
+    oldSlug: "nickel-alloy-flat-bars",
     image: stainless,
     title: "Nickel Alloy Flat Bars (Patta)",
     shortDescription:
@@ -405,7 +410,8 @@ const pattapatti = [
   // ============================================
   {
     id: 6,
-    slug: "high-alloy-flat-bars",
+    slug: "high-alloy-flat-bars-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-flat-bars",
     image: patti,
     title: "High Alloy Flat Bars (Patta)",
     shortDescription:
@@ -480,7 +486,8 @@ const pattapatti = [
   // ============================================
   {
     id: 7,
-    slug: "titanium-flat-bars",
+    slug: "titanium-flat-bars-manufacturer-in-mumbai",
+    oldSlug: "titanium-flat-bars",
     image: bar,
     title: "Titanium Flat Bars (Patta)",
     shortDescription:
@@ -552,7 +559,8 @@ const pattapatti = [
   // ============================================
   {
     id: 8,
-    slug: "alloy-flat-bars",
+    slug: "alloy-flat-bars-manufacturer-in-mumbai",
+    oldSlug: "alloy-flat-bars",
     image: stainless,
     title: "Alloy Flat Bars (Patta)",
     shortDescription:
@@ -626,7 +634,8 @@ const pattapatti = [
   // ============================================
   {
     id: 9,
-    slug: "alloy-steel-flat-bars",
+    slug: "alloy-steel-flat-bars-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-flat-bars",
     image: carbon,
     title: "Alloy Steel Flat Bars (Patta)",
     shortDescription:

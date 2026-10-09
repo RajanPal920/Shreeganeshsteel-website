@@ -18,7 +18,8 @@ const perforatedsheet = [
   // ============================================
   {
     id: 1,
-    slug: "stainless-duplex-steel-perforated-sheets",
+    slug: "stainless-duplex-steel-perforated-sheets-manufacturer-in-mumbai",
+    oldSlug: "stainless-duplex-steel-perforated-sheets",
     image: stain,
     title: "Stainless & Duplex Steel Perforated Sheets",
     shortDescription:
@@ -105,7 +106,8 @@ const perforatedsheet = [
   // ============================================
   {
     id: 2,
-    slug: "carbon-alloy-steel-perforated-sheets",
+    slug: "carbon-alloy-steel-perforated-sheets-manufacturer-in-mumbai",
+    oldSlug: "carbon-alloy-steel-perforated-sheets",
     image: car,
     title: "Carbon & Alloy Steel Perforated Sheets",
     shortDescription:
@@ -188,7 +190,8 @@ const perforatedsheet = [
   // ============================================
   {
     id: 3,
-    slug: "nickel-copper-alloy-perforated-sheets",
+    slug: "nickel-copper-alloy-perforated-sheets-manufacturer-in-mumbai",
+    oldSlug: "nickel-copper-alloy-perforated-sheets",
     image: nik,
     title: "Nickel & Copper Steel Perforated Sheets",
     shortDescription:
@@ -272,7 +275,8 @@ const perforatedsheet = [
   // ============================================
   {
     id: 4,
-    slug: "aluminum-perforated-sheets",
+    slug: "aluminum-perforated-sheets-manufacturer-in-mumbai",
+    oldSlug: "aluminum-perforated-sheets",
     image: alu,
     title: "Aluminum Perforated Sheets",
     shortDescription:
@@ -351,7 +355,8 @@ const perforatedsheet = [
   // ============================================
   {
     id: 5,
-    slug: "galvanized-perforated-sheets",
+    slug: "galvanized-perforated-sheets-manufacturer-in-mumbai",
+    oldSlug: "galvanized-perforated-sheets",
     image: gal,
     title: "Galvanized Perforated Sheets",
     shortDescription:
@@ -428,7 +433,8 @@ const perforatedsheet = [
   // ============================================
   {
     id: 6,
-    slug: "titanium-perforated-sheets",
+    slug: "titanium-perforated-sheets-manufacturer-in-mumbai",
+    oldSlug: "titanium-perforated-sheets",
     image: alu,
     title: "Titanium Perforated Sheets",
     shortDescription:
@@ -502,7 +508,8 @@ const perforatedsheet = [
   // ============================================
   {
     id: 7,
-    slug: "high-alloy-perforated-sheets",
+    slug: "high-alloy-perforated-sheets-manufacturer-in-mumbai",
+    oldSlug: "high-alloy-perforated-sheets",
     image: nik,
     title: "High Alloy Perforated Sheets",
     shortDescription:
@@ -579,7 +586,8 @@ const perforatedsheet = [
   // ============================================
   {
     id: 8,
-    slug: "copper-brass-perforated-sheets",
+    slug: "copper-brass-perforated-sheets-manufacturer-in-mumbai",
+    oldSlug: "copper-brass-perforated-sheets",
     image: nik,
     title: "Copper & Brass Perforated Sheets",
     shortDescription:
@@ -655,7 +663,8 @@ const perforatedsheet = [
   // ============================================
   {
     id: 9,
-    slug: "alloy-steel-perforated-sheets",
+    slug: "alloy-steel-perforated-sheets-manufacturer-in-mumbai",
+    oldSlug: "alloy-steel-perforated-sheets",
     image: car,
     title: "Alloy Steel Perforated Sheets",
     shortDescription:
