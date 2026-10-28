@@ -588,6 +588,14 @@ const Contact = () => {
                     Sant Sena Maharaj Marg, 2nd Kumbharwada Street, Mumbai — 400
                     004, Maharashtra, India
                   </p>
+                  <div className="mt-3 pt-2.5 border-t border-gray-200 flex items-center justify-between gap-2">
+                    <span className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                      GSTIN:
+                    </span>
+                    <span className="text-[0.82rem] font-mono font-bold text-[#0B3E8C]">
+                      27AQWPV4546L1ZP
+                    </span>
+                  </div>
                 </div>
 
                 {/* Contacts panel */}
@@ -599,8 +607,8 @@ const Contact = () => {
                     {[
                       "022-6743 7304",
                       "022-6610 9359",
-                      "+91 96194 35529",
-                      "+91 70215 19829",
+                      // "+91 96194 35529",
+                      // "+91 70215 19829",
                     ].map((num, i) => (
                       <div
                         key={i}
@@ -648,12 +656,45 @@ const Contact = () => {
                         </span>
                       </div>
                     ))}
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="flex-shrink-0 w-4 h-4 text-[#C8102E]">
+                          <MailIcon className="w-4 h-4" />
+                        </span>
+                        <a
+                          href="mailto:exports@shreeganeshsteel.com"
+                          className="text-[0.85rem] font-bold text-[#0B3E8C] hover:text-[#C8102E] transition-colors truncate"
+                        >
+                          exports@shreeganeshsteel.com
+                        </a>
+                      </div>
+                      <span className="flex-shrink-0 w-4 h-4 text-[#8896a6]/60">
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <rect
+                            x="9"
+                            y="9"
+                            width="13"
+                            height="13"
+                            rx="2"
+                            ry="2"
+                          />
+                          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </div>
 
                 {/* View map */}
                 {/* <a
-                  href="https://maps.google.com/?q=Mumbai+400004"
+                  href="https://maps.google.com/?q=Shree+Ganesh+Steel+Corporation+Mumbai"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-[0.78rem] font-bold tracking-wider text-[#C8102E] hover:text-[#0B3E8C] transition-colors group mt-auto pt-1"
@@ -735,6 +776,14 @@ const Contact = () => {
                     Plot No. 84/A, Phase-1, Shubhas Nagar, IDA Jeedimetla,
                     Hyderabad — 500 055, India
                   </p>
+                  <div className="mt-3 pt-2.5 border-t border-gray-200 flex items-center justify-between gap-2">
+                    <span className="text-[0.62rem] font-medium font-bold tracking-[0.18em] uppercase text-[#8896a6]">
+                      GSTIN:
+                    </span>
+                    <span className="text-[0.82rem] font-mono font-bold text-[#0B3E8C]">
+                      36AQWPV4546L1ZQ
+                    </span>
+                  </div>
                 </div>
 
                 <div className="bg-[#f7f8fa] border border-gray-200 rounded-xl p-4">
@@ -744,47 +793,83 @@ const Contact = () => {
                   <div className="text-[0.85rem] font-bold text-[#0B3E8C] mb-2.5">
                     Branch Manager
                   </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <span className="flex-shrink-0 w-4 h-4 text-[#C8102E]">
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="flex-shrink-0 w-4 h-4 text-[#C8102E]">
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                          </svg>
+                        </span>
+                        <a
+                          href="tel:+918828715529"
+                          className="text-[0.85rem] font-bold text-[#0B3E8C] hover:text-[#C8102E] transition-colors truncate"
+                        >
+                          +91 88287 15529
+                        </a>
+                      </div>
+                      <span className="flex-shrink-0 w-4 h-4 text-[#8896a6]/60">
                         <svg
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
-                          strokeWidth="2"
+                          strokeWidth="1.8"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         >
-                          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                          <rect
+                            x="9"
+                            y="9"
+                            width="13"
+                            height="13"
+                            rx="2"
+                            ry="2"
+                          />
+                          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
                         </svg>
                       </span>
-                      <a
-                        href="tel:+918828715529"
-                        className="text-[0.85rem] font-bold text-[#0B3E8C] hover:text-[#C8102E] transition-colors truncate"
-                      >
-                        +91 88287 15529
-                      </a>
                     </div>
-                    <span className="flex-shrink-0 w-4 h-4 text-[#8896a6]/60">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <rect
-                          x="9"
-                          y="9"
-                          width="13"
-                          height="13"
-                          rx="2"
-                          ry="2"
-                        />
-                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                      </svg>
-                    </span>
+
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="flex-shrink-0 w-4 h-4 text-[#C8102E]">
+                          <MailIcon className="w-4 h-4" />
+                        </span>
+                        <a
+                          href="mailto:shreeganeshsteel29@gmail.com"
+                          className="text-[0.85rem] font-bold text-[#0B3E8C] hover:text-[#C8102E] transition-colors truncate"
+                        >
+                          shreeganeshsteel29@gmail.com
+                        </a>
+                      </div>
+                      <span className="flex-shrink-0 w-4 h-4 text-[#8896a6]/60">
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <rect
+                            x="9"
+                            y="9"
+                            width="13"
+                            height="13"
+                            rx="2"
+                            ry="2"
+                          />
+                          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </div>
                 {/* 
@@ -925,6 +1010,40 @@ const Contact = () => {
                         </span>
                       </div>
                     ))}
+
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="flex-shrink-0 w-4 h-4 text-[#C8102E]">
+                          <MailIcon className="w-4 h-4" />
+                        </span>
+                        <a
+                          href="mailto:shreeganeshsteel25@gmail.com"
+                          className="text-[0.85rem] font-bold text-[#0B3E8C] hover:text-[#C8102E] transition-colors truncate"
+                        >
+                          shreeganeshsteel25@gmail.com
+                        </a>
+                      </div>
+                      <span className="flex-shrink-0 w-4 h-4 text-[#8896a6]/60">
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <rect
+                            x="9"
+                            y="9"
+                            width="13"
+                            height="13"
+                            rx="2"
+                            ry="2"
+                          />
+                          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -1127,9 +1246,8 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your name"
-                        className={`w-full px-4 py-3 bg-[#f7f8fa] border ${
-                          fieldErrors.name ? "border-red-500" : "border-gray-200"
-                        } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all`}
+                        className={`w-full px-4 py-3 bg-[#f7f8fa] border ${fieldErrors.name ? "border-red-500" : "border-gray-200"
+                          } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all`}
                       />
                       {fieldErrors.name && (
                         <p className="text-xs text-red-600 mt-1 font-medium">
@@ -1148,9 +1266,8 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+91 00000 00000"
-                        className={`w-full px-4 py-3 bg-[#f7f8fa] border ${
-                          fieldErrors.phone ? "border-red-500" : "border-gray-200"
-                        } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all`}
+                        className={`w-full px-4 py-3 bg-[#f7f8fa] border ${fieldErrors.phone ? "border-red-500" : "border-gray-200"
+                          } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all`}
                       />
                       {fieldErrors.phone && (
                         <p className="text-xs text-red-600 mt-1 font-medium">
@@ -1172,9 +1289,8 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="you@company.com"
-                        className={`w-full px-4 py-3 bg-[#f7f8fa] border ${
-                          fieldErrors.email ? "border-red-500" : "border-gray-200"
-                        } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all`}
+                        className={`w-full px-4 py-3 bg-[#f7f8fa] border ${fieldErrors.email ? "border-red-500" : "border-gray-200"
+                          } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all`}
                       />
                       {fieldErrors.email && (
                         <p className="text-xs text-red-600 mt-1 font-medium">
@@ -1222,9 +1338,8 @@ const Contact = () => {
                       onChange={handleChange}
                       rows={5}
                       placeholder="Tell us about your requirement — material grade, size, quantity, delivery location, etc."
-                      className={`w-full px-4 py-3 bg-[#f7f8fa] border ${
-                        fieldErrors.message ? "border-red-500" : "border-gray-200"
-                      } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all resize-none`}
+                      className={`w-full px-4 py-3 bg-[#f7f8fa] border ${fieldErrors.message ? "border-red-500" : "border-gray-200"
+                        } rounded-lg text-sm text-[#0B3E8C] placeholder:text-[#a0a9b8] focus:border-[#0B3E8C] focus:bg-white focus:ring-2 focus:ring-[#0B3E8C]/10 outline-none transition-all resize-none`}
                     />
                     {fieldErrors.message && (
                       <p className="text-xs text-red-600 mt-1 font-medium">
@@ -1314,11 +1429,12 @@ const Contact = () => {
 
           <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-[0_15px_40px_rgba(11,62,140,0.08)]">
             <iframe
-              title="Shree Ganesh Steel India Location"
-              src="https://www.google.com/maps?q=Kumbharwada,Mumbai,Maharashtra&output=embed"
+              title="Shree Ganesh Steel Corporation Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3414.3477136405245!2d72.8241743!3d18.976616399999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce6627ef5a31%3A0x1e71af0b08086c83!2sShree%20Ganesh%20Steel%20Corporation!5e1!3m2!1sen!2sin!4v1793191035696!5m2!1sen!2sin"
               className="w-full h-[400px] border-0"
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen=""
+              referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
         </div>

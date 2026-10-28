@@ -1674,7 +1674,7 @@ export default function Home() {
                     label: "Address",
                     value:
                       "191, Ground Floor, 2'nd Khumbharwada, Near Gol Deval Temple, Mumbai-400004, Maharashtra, India",
-                    href: "https://maps.google.com/?q=Mumbai,India",
+                    href: "https://maps.google.com/?q=Shree+Ganesh+Steel+Corporation+Mumbai",
                   },
                   {
                     icon: (
