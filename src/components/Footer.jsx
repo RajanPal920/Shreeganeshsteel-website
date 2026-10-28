@@ -191,6 +191,12 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-col gap-1.5 text-[0.95rem] text-white/85 font-semibold">
                   <a
+                    href="mailto:exports@shreeganeshsteel.com"
+                    className="hover:text-[#E63946] transition-colors break-all"
+                  >
+                    exports@shreeganeshsteel.com
+                  </a>
+                  <a
                     href="mailto:shreeganeshsteel29@gmail.com"
                     className="hover:text-[#E63946] transition-colors break-all"
                   >

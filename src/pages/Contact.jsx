@@ -62,6 +62,10 @@ const CONTACT_INFO = {
   // Emails
   emails: [
     {
+      label: "exports@shreeganeshsteel.com",
+      href: "mailto:exports@shreeganeshsteel.com",
+    },
+    {
       label: "shreeganeshsteel25@gmail.com",
       href: "mailto:shreeganeshsteel25@gmail.com",
     },

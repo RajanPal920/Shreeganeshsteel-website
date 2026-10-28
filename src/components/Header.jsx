@@ -39,8 +39,13 @@ const TOP_CONTACTS = [
   },
   {
     type: "email",
-    label: " shreeganeshsteel29@gmail.com",
-    href: "mailto: shreeganeshsteel29@gmail.com",
+    label: "exports@shreeganeshsteel.com",
+    href: "mailto:exports@shreeganeshsteel.com",
+  },
+  {
+    type: "email",
+    label: "shreeganeshsteel29@gmail.com",
+    href: "mailto:shreeganeshsteel29@gmail.com",
   },
   {
     type: "email",
@@ -2076,6 +2081,9 @@ const Header = () => {
             </a>
           </div>
           <div className="sgs-drawer-contact" style={{ marginTop: 10 }}>
+            <a href="mailto:exports@shreeganeshsteel.com">
+              exports@shreeganeshsteel.com
+            </a>
             <a href="mailto:info@shreeganeshsteel.com">
               info@shreeganeshsteel.com
             </a>

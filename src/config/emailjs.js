@@ -17,4 +17,7 @@ export const EMAILJS_CONFIG = {
 
   // Target business email recipient
   recipientEmail: "shreeganeshsteel29@gmail.com",
+
+  // Export department email
+  exportEmail: "exports@shreeganeshsteel.com",
 };
